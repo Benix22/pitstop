@@ -11,28 +11,28 @@ namespace Pitstop.Models
         public string CustomerId { get; set; }
 
         [Required]
-        [Display(Name = "Name")]
-        public string Name { get; set; }
+        [Display(Name = "Nombre")]
+        public string Nombre { get; set; }
 
         [Required]
-        [Display(Name = "Address")]
-        public string Address { get; set; }
+        [Display(Name = "Direccion")]
+        public string Direccion { get; set; }
 
         [Required]
-        [Display(Name = "Postal code")]
-        public string PostalCode { get; set; }
+        [Display(Name = "Codigo Postal")]
+        public string CodigoPostal { get; set; }
 
         [Required]
-        [Display(Name = "City")]
-        public string City { get; set; }
+        [Display(Name = "Poblacion")]
+        public string Poblacion { get; set; }
 
         [Required]
-        [Display(Name = "Phonenumber")]
-        public string TelephoneNumber { get; set; }
+        [Display(Name = "Telefono")]
+        public string Telefono { get; set; }
 
         [Required]
-        [Display(Name = "Email address")]
+        [Display(Name = "Email")]
         [EmailAddress()]
-        public string EmailAddress { get; set; }
+        public string Email { get; set; }
     }
 }

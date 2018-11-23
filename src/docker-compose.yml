@@ -18,7 +18,7 @@ services:
     environment:
       - ACCEPT_EULA=Y 
       - MSSQL_PID=Developer
-      - SA_PASSWORD=8jkGh47hnDw89Haq8LN2
+      - SA_PASSWORD=Pinveco123
 
   rabbitmq:
     image: rabbitmq:3-management

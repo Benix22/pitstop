@@ -53,7 +53,7 @@ namespace PitStop.Controllers
                 var model = new VehicleManagementDetailsViewModel
                 {
                     Vehicle = vehicle,
-                    Owner = customer.Name
+                    Owner = customer.Nombre
                 };
                 return View(model);
             }, View("Offline", new VehicleManagementOfflineViewModel()));
@@ -70,7 +70,7 @@ namespace PitStop.Controllers
                 var model = new VehicleManagementNewViewModel
                 {
                     Vehicle = new Vehicle(),
-                    Customers = customers.Select(c => new SelectListItem { Value = c.CustomerId, Text = c.Name })
+                    Customers = customers.Select(c => new SelectListItem { Value = c.CustomerId, Text = c.Nombre })
                 };
                 return View(model);
             }, View("Offline", new VehicleManagementOfflineViewModel()));

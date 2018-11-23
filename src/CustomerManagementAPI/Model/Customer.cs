@@ -7,11 +7,11 @@ namespace Pitstop.CustomerManagementAPI.Model
     public class Customer
     {
         public string CustomerId { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string PostalCode { get; set; }
-        public string City { get; set; }
-        public string TelephoneNumber { get; set; }
-        public string EmailAddress { get; set; }
+        public string Nombre { get; set; }
+        public string Direccion { get; set; }
+        public string CodigoPostal { get; set; }
+        public string Poblacion { get; set; }
+        public string Telefono { get; set; }
+        public string Email { get; set; }
     }
 }

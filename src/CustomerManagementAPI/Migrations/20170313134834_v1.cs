@@ -13,12 +13,12 @@ namespace Pitstop.CustomerManagementAPI.Migrations
                 columns: table => new
                 {
                     CustomerId = table.Column<string>(nullable: false),
-                    Address = table.Column<string>(nullable: true),
-                    City = table.Column<string>(nullable: true),
-                    EmailAddress = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    PostalCode = table.Column<string>(nullable: true),
-                    TelephoneNumber = table.Column<string>(nullable: true)
+                    Direccion = table.Column<string>(nullable: true),
+                    Poblacion = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    Nombre = table.Column<string>(nullable: true),
+                    CodigoPostal = table.Column<string>(nullable: true),
+                    Telefono = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

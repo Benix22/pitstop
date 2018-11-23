@@ -20,17 +20,17 @@ namespace Pitstop.CustomerManagementAPI.Migrations
                     b.Property<string>("CustomerId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Address");
+                    b.Property<string>("Direccion");
 
-                    b.Property<string>("City");
+                    b.Property<string>("Poblacion");
 
-                    b.Property<string>("EmailAddress");
+                    b.Property<string>("Email");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Nombre");
 
-                    b.Property<string>("PostalCode");
+                    b.Property<string>("CodigoPostal");
 
-                    b.Property<string>("TelephoneNumber");
+                    b.Property<string>("Telefono");
 
                     b.HasKey("CustomerId");
 

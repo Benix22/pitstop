@@ -134,7 +134,7 @@ namespace PitStop.Controllers
                         Customer customer = await _workshopManagementAPI.GetCustomerById(vehicle.OwnerId);
 
                         PlanMaintenanceJob cmd = new PlanMaintenanceJob(Guid.NewGuid(), Guid.NewGuid(), startTime, endTime,
-                            (customer.CustomerId, customer.Name, customer.TelephoneNumber),
+                            (customer.CustomerId, customer.Nombre, customer.Telefono),
                             (vehicle.LicenseNumber, vehicle.Brand, vehicle.Type), inputModel.Description);
                         await _workshopManagementAPI.PlanMaintenanceJob(dateStr, cmd);
                     }

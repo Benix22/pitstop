@@ -8,7 +8,7 @@
     <thead>
         <tr>
             <th>Name</th>
-            <th>Address</th>
+            <th>Direccion</th>
             <th>City</th>
             <th>Emailaddress</th>
         </tr>
@@ -17,10 +17,10 @@
         @foreach (var customer in Model.Customers)
         {
             <tr class="clickable" onclick="location.href = '@(Url.Action("Details", "CustomerManagement", new { id = customer.CustomerId }))'">
-                <td>@customer.Name</td>
-                <td>@customer.Address</td>
-                <td>@customer.City</td>
-                <td>@customer.EmailAddress</td>
+                <td>@customer.Nombre</td>
+                <td>@customer.Direccion</td>
+                <td>@customer.Poblacion</td>
+                <td>@customer.Email</td>
             </tr>
         }
     </tbody>
