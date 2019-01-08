@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Hosting.Server.Features;
 using System.Linq;
 using Pitstop.Infrastructure.ServiceDiscovery;
+using WorkshopManagementAPI.CommandHandlers;
 
 namespace Pitstop.WorkshopManagementAPI
 {
@@ -58,6 +59,9 @@ namespace Pitstop.WorkshopManagementAPI
             string password = configSection["Password"];
             services.AddTransient<IMessagePublisher>((sp) => new RabbitMQMessagePublisher(host, userName, password, "Pitstop"));
 
+            // add commandhandlers
+            services.AddCommandHandlers();
+
             // add consul
             services.Configure<ConsulConfig>(Configuration.GetSection("consulConfig"));
             services.AddSingleton<IConsulClient, ConsulClient>(p => new ConsulClient(consulConfig =>
@@ -95,7 +99,7 @@ namespace Pitstop.WorkshopManagementAPI
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            SetupAutoMapper();
+            AutomapperConfigurator.SetupAutoMapper();
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
@@ -108,18 +112,6 @@ namespace Pitstop.WorkshopManagementAPI
 
             // register service in Consul
             app.RegisterWithConsul(lifetime);
-        }
-
-        private void SetupAutoMapper()
-        {
-            // setup automapper
-            Mapper.Initialize(cfg =>
-            {
-                cfg.CreateMap<PlanMaintenanceJob, MaintenanceJobPlanned>()
-                    .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
-                cfg.CreateMap<FinishMaintenanceJob, MaintenanceJobFinished>()
-                    .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
-            });
-        }      
+        }     
     }
 }

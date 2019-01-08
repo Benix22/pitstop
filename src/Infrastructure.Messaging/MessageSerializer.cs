@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 
 namespace Pitstop.Infrastructure.Messaging
 {
@@ -18,10 +19,12 @@ namespace Pitstop.Infrastructure.Messaging
         {
             _serializerSettings = new JsonSerializerSettings()
             {
-                DateFormatHandling = DateFormatHandling.IsoDateFormat//,
-                //TypeNameHandling = TypeNameHandling.All
+                DateFormatHandling = DateFormatHandling.IsoDateFormat
             };
-            _serializerSettings.Converters.Add(new StringEnumConverter { CamelCaseText = true });
+            _serializerSettings.Converters.Add(new StringEnumConverter 
+            { 
+                NamingStrategy = new CamelCaseNamingStrategy()
+            });
         }
 
         /// <summary>
