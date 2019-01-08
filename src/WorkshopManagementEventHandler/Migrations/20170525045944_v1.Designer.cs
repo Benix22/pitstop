@@ -21,9 +21,9 @@ namespace Pitstop.WorkshopManagementEventHandler.Migrations
                     b.Property<string>("CustomerId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Nombre");
 
-                    b.Property<string>("TelephoneNumber");
+                    b.Property<string>("Telefono");
 
                     b.HasKey("CustomerId");
 

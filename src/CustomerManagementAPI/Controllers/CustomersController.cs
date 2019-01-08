@@ -55,7 +55,7 @@ namespace Pitstop.Application.VehicleManagement.Controllers
 
                     // send event
                     CustomerRegistered e = Mapper.Map<CustomerRegistered>(command);
-                    await _messagePublisher.PublishMessageAsync(e.MessageType, e , "");
+                    await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
 
                     // return result
                     return CreatedAtRoute("GetByCustomerId", new { customerId = customer.CustomerId }, customer);

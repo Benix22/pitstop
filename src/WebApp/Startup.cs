@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using Microsoft.Extensions.HealthChecks;
 using System.Threading.Tasks;
+using StackExchange.Redis;
 
 namespace PitStop
 {
@@ -28,7 +29,7 @@ namespace PitStop
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
-
+            
             CurrentEnvironment = env;
         }
 
@@ -45,7 +46,7 @@ namespace PitStop
             services.AddTransient<ICustomerManagementAPI, CustomerManagementAPI>();
             services.AddTransient<IVehicleManagementAPI, VehicleManagementAPI>();
             services.AddTransient<IWorkshopManagementAPI, WorkshopManagementAPI>();
-
+            
             services.AddHealthChecks(checks =>
             {
                 checks.WithDefaultCacheDuration(TimeSpan.FromSeconds(1));

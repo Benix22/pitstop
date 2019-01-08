@@ -6,7 +6,7 @@ namespace Pitstop.WorkshopManagementEventHandler
     public class Customer
     {
         public string CustomerId { get; set; }
-        public string Name { get; set; }
-        public string TelephoneNumber { get; set; }
+        public string Nombre { get; set; }
+        public string Telefono { get; set; }
     }
 }

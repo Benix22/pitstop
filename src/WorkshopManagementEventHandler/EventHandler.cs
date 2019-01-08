@@ -89,16 +89,16 @@ namespace Pitstop.WorkshopManagementEventHandler
 
         private async Task<bool> HandleAsync(CustomerRegistered e)
         {
-            Log.Information("Customer registered: {CustomerId}, {Name}, {TelephoneNumber}", 
-                e.CustomerId, e.Name, e.TelephoneNumber);
+            Log.Information("Customer registered: {CustomerId}, {Nombre}, {Telefono}", 
+                e.CustomerId, e.Nombre, e.Telefono);
 
             try
             {
                 await _dbContext.Customers.AddAsync(new Customer
                 {
                     CustomerId = e.CustomerId,
-                    Name = e.Name,
-                    TelephoneNumber = e.TelephoneNumber
+                    Nombre = e.Nombre,
+                    Telefono = e.Telefono
                 });
                 await _dbContext.SaveChangesAsync();
             }
@@ -113,7 +113,7 @@ namespace Pitstop.WorkshopManagementEventHandler
         private async Task<bool> HandleAsync(MaintenanceJobPlanned e)
         {
             Log.Information("Maintenance job planned: {JobId}, {StartTime}, {EndTime}, {CustomerName}, {LicenseNumber}", 
-                e.JobId, e.StartTime, e.EndTime, e.CustomerInfo.Name, e.VehicleInfo.LicenseNumber);
+                e.JobId, e.StartTime, e.EndTime, e.CustomerInfo.Nombre, e.VehicleInfo.LicenseNumber);
 
             try
             {
@@ -124,8 +124,8 @@ namespace Pitstop.WorkshopManagementEventHandler
                     customer = new Customer
                     {
                         CustomerId = e.CustomerInfo.Id,
-                        Name = e.CustomerInfo.Name,
-                        TelephoneNumber = e.CustomerInfo.TelephoneNumber
+                        Nombre = e.CustomerInfo.Nombre,
+                        Telefono = e.CustomerInfo.Telefono
                     };
                 }
 

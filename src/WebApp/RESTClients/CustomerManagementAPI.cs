@@ -46,7 +46,14 @@ namespace WebApp.RESTClients
 
         public async Task RegisterCustomer(RegisterCustomer command)
         {
-            await _client.RegisterCustomer(command);
+            try
+            {
+                await _client.RegisterCustomer(command);
+            }
+            catch (System.Exception e)
+            {
+                throw e.InnerException;
+            }
         }
     }
 }

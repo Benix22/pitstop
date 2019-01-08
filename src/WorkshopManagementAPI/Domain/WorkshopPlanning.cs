@@ -107,7 +107,7 @@ namespace Pitstop.WorkshopManagementAPI.Domain
         private IEnumerable<Event> Handle(MaintenanceJobPlanned e)
         {
             MaintenanceJob job = new MaintenanceJob();
-            Customer customer = new Customer(e.CustomerInfo.Id, e.CustomerInfo.Name, e.CustomerInfo.TelephoneNumber);
+            Customer customer = new Customer(e.CustomerInfo.Id, e.CustomerInfo.Nombre, e.CustomerInfo.Telefono);
             Vehicle vehicle = new Vehicle(e.VehicleInfo.LicenseNumber, e.VehicleInfo.Brand, e.VehicleInfo.Type, customer.CustomerId);
             job.Plan(e.JobId, e.StartTime, e.EndTime, vehicle, customer, e.Description);
             Jobs.Add(job);

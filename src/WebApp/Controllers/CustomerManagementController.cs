@@ -68,7 +68,38 @@ namespace PitStop.Controllers
             {
                 return await _resiliencyHelper.ExecuteResilient(async () =>
                 {
-                    RegisterCustomer cmd = Mapper.Map<RegisterCustomer>(inputModel.Customer);
+                    //RegisterCustomer cmd = Mapper.Map<RegisterCustomer>(inputModel.Customer);
+                    RegisterCustomer cmd = new RegisterCustomer(new Guid(),
+                        inputModel.Customer.CustomerId,
+                        inputModel.Customer.EsPersona,
+                        inputModel.Customer.Nombre,
+                        inputModel.Customer.Pais,
+                        inputModel.Customer.NIF,
+                        inputModel.Customer.FechaAlta,
+                        inputModel.Customer.FechaBaja,
+                        inputModel.Customer.Direccion,
+                        inputModel.Customer.PaisDireccion,
+                        inputModel.Customer.CodigoPostal,
+                        inputModel.Customer.Poblacion,
+                        inputModel.Customer.Provincia,
+                        inputModel.Customer.Telefono,
+                        inputModel.Customer.Telefono2,
+                        inputModel.Customer.Movil,
+                        inputModel.Customer.FechaExpNIF,
+                        inputModel.Customer.PoblacionExpNIF,
+                        inputModel.Customer.FechaNacimiento,
+                        inputModel.Customer.PoblacionNacimiento,
+                        inputModel.Customer.TipoPermiso,
+                        inputModel.Customer.NumeroPermiso,
+                        inputModel.Customer.FechaExpPermiso,
+                        inputModel.Customer.FechaCadPermiso,
+                        inputModel.Customer.Email,
+                        inputModel.Customer.Bloqueado,
+                        inputModel.Customer.Moroso,
+                        inputModel.Customer.NumeroTarjetaCred,
+                        inputModel.Customer.TitularTarjetaCred,
+                        inputModel.Customer.FechaCadTarjetaCred
+                        );
                     await _customerManagementAPI.RegisterCustomer(cmd);
                     return RedirectToAction("Index");
                 }, View("Offline", new CustomerManagementOfflineViewModel()));

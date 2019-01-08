@@ -40,12 +40,37 @@ namespace Pitstop.NotificationService.Repositories
                 conn.ChangeDatabase("Notification");
 
                 sql = "IF OBJECT_ID('Customer') IS NULL " +
-                      "CREATE TABLE Customer (" +
-                      "  CustomerId varchar(50) NOT NULL," +
-                      "  Name varchar(50) NOT NULL," +
-                      "  TelephoneNumber varchar(50)," +
-                      "  EmailAddress varchar(50)," +
-                      "  PRIMARY KEY(CustomerId));" +
+                       "CREATE TABLE Customer (" +
+                       "[CustomerId] [nvarchar](450) NOT NULL," +
+                       "[EsPersona][bit] NOT NULL," +
+                       "[Nombre] [nvarchar] (max) NOT NULL," +
+	                   "[Pais] [nvarchar] (max) NULL," +
+                       "[NIF] [nvarchar] (max) NOT NULL," +
+	                   "[FechaAlta] [datetime2] (7) NOT NULL," +
+                       "[FechaBaja] [datetime2] (7) NULL," +
+	                   "[Direccion] [nvarchar] (max) NOT NULL," +
+	                   "[PaisDireccion] [nvarchar] (max) NULL," +
+                       "[CodigoPostal] [nvarchar] (max) NOT NULL," +
+	                   "[Poblacion] [nvarchar] (max) NOT NULL," +
+	                   "[Provincia] [nvarchar] (max) NOT NULL," +
+	                   "[Telefono] [nvarchar] (max) NOT NULL," +
+	                   "[Telefono2] [nvarchar] (max) NULL," +
+                       "[Movil] [nvarchar] (max) NULL," +
+                       "[FechaExpNIF] [datetime2] (7) NOT NULL," +
+                       "[PoblacionExpNIF] [nvarchar] (max) NULL," +
+                       "[FechaNacimiento] [datetime2] (7) NOT NULL," +
+                       "[PoblacionNacimiento] [nvarchar] (max) NULL," +
+                       "[TipoPermiso] [nvarchar] (max) NOT NULL," +
+	                   "[NumeroPermiso] [nvarchar] (max) NOT NULL," +
+	                   "[FechaExpPermiso] [datetime2] (7) NOT NULL," +
+                       "[FechaCadPermiso] [datetime2] (7) NOT NULL," +
+                       "[Email] [nvarchar] (max) NOT NULL," +
+	                   "[Moroso] [bit] NOT NULL," +
+                       "[Bloqueado] [bit] NOT NULL," +
+                       "[NumeroTarjetaCred] [nvarchar] (max) NOT NULL," +
+	                   "[TitularTarjetaCred] [nvarchar] (max) NOT NULL," +
+	                   "[FechaCadTarjetaCred] [datetime2] (7) NOT NULL," +
+                       "  PRIMARY KEY(CustomerId));" +
 
                       "IF OBJECT_ID('MaintenanceJob') IS NULL " +
                       "CREATE TABLE MaintenanceJob (" +
@@ -85,8 +110,14 @@ namespace Pitstop.NotificationService.Repositories
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 string sql =
-                    "insert into Customer(CustomerId, Name, TelephoneNumber, EmailAddress) " +
-                    "values(@CustomerId, @Name, @TelephoneNumber, @EmailAddress);";
+                    "INSERT INTO[dbo].[Customer] ([CustomerId] ,[EsPersona] ,[Nombre] ,[Pais] ,[NIF] ,[FechaAlta] ,[FechaBaja] ,[Direccion]" +
+                    ",[PaisDireccion] ,[CodigoPostal] ,[Poblacion] ,[Provincia] ,[Telefono] ,[Telefono2] ,[Movil] ,[FechaExpNIF] ,[PoblacionExpNIF]" +
+                    ",[FechaNacimiento] ,[PoblacionNacimiento] ,[TipoPermiso] ,[NumeroPermiso] ,[FechaExpPermiso] ,[FechaCadPermiso] ,[Email] ,[Moroso]" +
+                    ",[Bloqueado] ,[NumeroTarjetaCred] ,[TitularTarjetaCred] ,[FechaCadTarjetaCred]) " +
+                    "VALUES  (@CustomerId, @EsPersona, @Nombre, @Pais, @NIF, @FechaAlta, @FechaBaja, @Direccion, @PaisDireccion, @CodigoPostal" +
+                    ", @Poblacion, @Provincia, @Telefono, @Telefono2, @Movil, @FechaExpNIF, @PoblacionExpNIF, @FechaNacimiento, @PoblacionNacimiento" +
+                    ", @TipoPermiso, @NumeroPermiso, @FechaExpPermiso, @FechaCadPermiso, @Email, @Moroso ,@Bloqueado, @NumeroTarjetaCred, @TitularTarjetaCred" +
+                    ", @FechaCadTarjetaCred);";
                 await conn.ExecuteAsync(sql, customer);
             }
         }

@@ -13,8 +13,8 @@ namespace Pitstop.WorkshopManagementEventHandler.Migrations
                 columns: table => new
                 {
                     CustomerId = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    TelephoneNumber = table.Column<string>(nullable: true)
+                    Nombre = table.Column<string>(nullable: true),
+                    Telefono = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

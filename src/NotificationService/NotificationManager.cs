@@ -64,10 +64,41 @@ namespace Pitstop.NotificationService
             Customer customer = new Customer
             {
                 CustomerId = cr.CustomerId,
-                Name = cr.Name,
-                TelephoneNumber = cr.TelephoneNumber,
-                EmailAddress = cr.EmailAddress
-            };
+
+                EsPersona = cr.EsPersona,
+                Nombre = cr.Nombre,
+                Pais = cr.Pais,
+                NIF = cr.NIF,
+                FechaAlta = cr.FechaAlta,
+                FechaBaja = cr.FechaBaja,
+
+                Direccion = cr.Direccion,
+                PaisDireccion = cr.PaisDireccion,
+                CodigoPostal = cr.CodigoPostal,
+                Poblacion = cr.Poblacion,
+                Provincia = cr.Provincia,
+                Telefono = cr.Telefono,
+                Telefono2 = cr.Telefono2,
+                Movil = cr.Movil,
+
+                FechaExpNIF = cr.FechaExpNIF,
+                PoblacionExpNIF = cr.PoblacionExpNIF,
+                FechaNacimiento = cr.FechaNacimiento,
+                PoblacionNacimiento = cr.PoblacionNacimiento,
+                TipoPermiso = cr.TipoPermiso,
+                NumeroPermiso = cr.NumeroPermiso,
+                FechaExpPermiso = cr.FechaExpPermiso,
+                FechaCadPermiso = cr.FechaCadPermiso,
+
+                Email = cr.Email,
+
+                Moroso = cr.Moroso,
+                Bloqueado = cr.Bloqueado,
+
+                NumeroTarjetaCred = cr.NumeroTarjetaCred,
+                TitularTarjetaCred = cr.TitularTarjetaCred,
+                FechaCadTarjetaCred = cr.FechaCadTarjetaCred
+        };
 
             await _repo.RegisterCustomerAsync(customer);
         }
@@ -102,7 +133,7 @@ namespace Pitstop.NotificationService
                 string customerId = jobsPerCustomer.Key;
                 Customer customer = await _repo.GetCustomerAsync(customerId);
                 StringBuilder body = new StringBuilder();
-                body.AppendLine($"Dear {customer.Name},\n");
+                body.AppendLine($"Dear {customer.Nombre},\n");
                 body.AppendLine($"We would like to remind you that you have an appointment with us for maintenance on your vehicle(s):\n");
                 foreach (MaintenanceJob job in jobsToNotify)
                 {
@@ -117,7 +148,7 @@ namespace Pitstop.NotificationService
 
                 // sent notification
                 await _emailNotifier.SendEmailAsync(
-                    customer.EmailAddress, "noreply@pitstop.nl", "Vehicle maintenance reminder", body.ToString());
+                    customer.Email, "noreply@pitstop.nl", "Vehicle maintenance reminder", body.ToString());
 
                 // remove jobs for which a notification was sent
                 await _repo.RemoveMaintenanceJobsAsync(jobsPerCustomer.Select(job => job.JobId));

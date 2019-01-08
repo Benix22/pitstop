@@ -63,10 +63,40 @@ namespace Pitstop.InvoiceService
             Customer customer = new Customer
             {
                 CustomerId = cr.CustomerId,
-                Name = cr.Name,
-                Address = cr.Address,
-                PostalCode = cr.PostalCode,
-                City = cr.City
+
+                EsPersona = cr.EsPersona,
+                Nombre = cr.Nombre,
+                Pais = cr.Pais,
+                NIF = cr.NIF,
+                FechaAlta = cr.FechaAlta,
+                FechaBaja = cr.FechaBaja,
+
+                Direccion = cr.Direccion,
+                PaisDireccion = cr.PaisDireccion,
+                CodigoPostal = cr.CodigoPostal,
+                Poblacion = cr.Poblacion,
+                Provincia = cr.Provincia,
+                Telefono = cr.Telefono,
+                Telefono2 = cr.Telefono2,
+                Movil = cr.Movil,
+
+                FechaExpNIF = cr.FechaExpNIF,
+                PoblacionExpNIF = cr.PoblacionExpNIF,
+                FechaNacimiento = cr.FechaNacimiento,
+                PoblacionNacimiento = cr.PoblacionNacimiento,
+                TipoPermiso = cr.TipoPermiso,
+                NumeroPermiso = cr.NumeroPermiso,
+                FechaExpPermiso = cr.FechaExpPermiso,
+                FechaCadPermiso = cr.FechaCadPermiso,
+
+                Email = cr.Email,
+
+                Moroso = cr.Moroso,
+                Bloqueado = cr.Bloqueado,
+
+                NumeroTarjetaCred = cr.NumeroTarjetaCred,
+                TitularTarjetaCred = cr.TitularTarjetaCred,
+                FechaCadTarjetaCred = cr.FechaCadTarjetaCred
             };
 
             await _repo.RegisterCustomerAsync(customer);
@@ -160,10 +190,10 @@ namespace Pitstop.InvoiceService
             body.AppendLine("</td>");
 
             body.AppendLine("<td valign='top'>");
-            body.AppendLine($"{customer.Name}<br/>");
-            body.AppendLine($"{customer.Address}<br/>");
-            body.AppendLine($"{customer.PostalCode}<br/>");
-            body.AppendLine($"{customer.City}<br/>");
+            body.AppendLine($"{customer.Nombre}<br/>");
+            body.AppendLine($"{customer.Direccion}<br/>");
+            body.AppendLine($"{customer.CodigoPostal}<br/>");
+            body.AppendLine($"{customer.Poblacion}<br/>");
             body.AppendLine("</td>");
 
             body.AppendLine("</tr></table>");
@@ -171,7 +201,7 @@ namespace Pitstop.InvoiceService
             body.AppendLine("<hr><br/>");
 
             // body
-            body.AppendLine($"Dear {customer.Name},<br/><br/>");
+            body.AppendLine($"Dear {customer.Nombre},<br/><br/>");
             body.AppendLine("Hereby we send you an invoice for maintenance we executed on your vehicle(s):<br/>");
 
             body.AppendLine("<ol>");
