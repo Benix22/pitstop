@@ -73,7 +73,7 @@ namespace Pitstop.NotificationService.Events
             string numeroTarjetaCred,
             string titulaTarjetaCred,
             DateTime fechaCadTarjetaCred
-            ) : base(messageId, MessageTypes.CustomerRegistered)
+            ) : base(messageId)
         {
             CustomerId = customerId;
 

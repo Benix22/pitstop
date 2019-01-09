@@ -39,8 +39,8 @@ namespace WorkshopManagement.UnitTests.TestdataBuilders
         {
             CustomerBuilder
                 .WithId(customer.CustomerId)
-                .WithName(customer.Name)
-                .WithTelephoneNumber(customer.TelephoneNumber);
+                .WithName(customer.Nombre)
+                .WithTelephoneNumber(customer.Telefono);
 
             VehicleBuilder.WithOwnerId(customer.CustomerId);
 

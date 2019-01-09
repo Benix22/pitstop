@@ -23,8 +23,8 @@ namespace WorkshopManagement.UnitTests.DomainTests
             Assert.Equal(maintenanceJobBuilder.StartTime, sut.StartTime);
             Assert.Equal(maintenanceJobBuilder.EndTime, sut.EndTime);
             Assert.Equal(maintenanceJobBuilder.CustomerBuilder.Id, sut.Customer.CustomerId);
-            Assert.Equal(maintenanceJobBuilder.CustomerBuilder.Name, sut.Customer.Name);
-            Assert.Equal(maintenanceJobBuilder.CustomerBuilder.TelephoneNumber, sut.Customer.TelephoneNumber);
+            Assert.Equal(maintenanceJobBuilder.CustomerBuilder.Name, sut.Customer.Nombre);
+            Assert.Equal(maintenanceJobBuilder.CustomerBuilder.TelephoneNumber, sut.Customer.Telefono);
             Assert.Equal(maintenanceJobBuilder.VehicleBuilder.LicenseNumber, sut.Vehicle.LicenseNumber);
             Assert.Equal(maintenanceJobBuilder.VehicleBuilder.Brand, sut.Vehicle.Brand);
             Assert.Equal(maintenanceJobBuilder.VehicleBuilder.Type, sut.Vehicle.Type);
@@ -56,8 +56,8 @@ namespace WorkshopManagement.UnitTests.DomainTests
             Assert.Equal(maintenanceJobBuilder.StartTime, sut.StartTime);
             Assert.Equal(maintenanceJobBuilder.EndTime, sut.EndTime);
             Assert.Equal(maintenanceJobBuilder.CustomerBuilder.Id, sut.Customer.CustomerId);
-            Assert.Equal(maintenanceJobBuilder.CustomerBuilder.Name, sut.Customer.Name);
-            Assert.Equal(maintenanceJobBuilder.CustomerBuilder.TelephoneNumber, sut.Customer.TelephoneNumber);
+            Assert.Equal(maintenanceJobBuilder.CustomerBuilder.Name, sut.Customer.Nombre);
+            Assert.Equal(maintenanceJobBuilder.CustomerBuilder.TelephoneNumber, sut.Customer.Telefono);
             Assert.Equal(maintenanceJobBuilder.VehicleBuilder.LicenseNumber, sut.Vehicle.LicenseNumber);
             Assert.Equal(maintenanceJobBuilder.VehicleBuilder.Brand, sut.Vehicle.Brand);
             Assert.Equal(maintenanceJobBuilder.VehicleBuilder.Type, sut.Vehicle.Type);

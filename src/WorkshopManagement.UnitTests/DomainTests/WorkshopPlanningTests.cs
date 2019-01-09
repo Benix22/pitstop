@@ -61,8 +61,8 @@ namespace WorkshopManagement.UnitTests.DomainTests
                     Assert.Equal(command.StartTime, item0.StartTime);
                     Assert.Equal(command.EndTime, item0.EndTime);
                     Assert.Equal(command.CustomerInfo.Id, item0.Customer.CustomerId);
-                    Assert.Equal(command.CustomerInfo.Name, item0.Customer.Name);
-                    Assert.Equal(command.CustomerInfo.TelephoneNumber, item0.Customer.TelephoneNumber);
+                    Assert.Equal(command.CustomerInfo.Name, item0.Customer.Nombre);
+                    Assert.Equal(command.CustomerInfo.TelephoneNumber, item0.Customer.Telefono);
                     Assert.Equal(command.VehicleInfo.LicenseNumber, item0.Vehicle.LicenseNumber);
                     Assert.Equal(command.VehicleInfo.Brand, item0.Vehicle.Brand);
                     Assert.Equal(command.VehicleInfo.Type, item0.Vehicle.Type);

@@ -43,7 +43,7 @@ namespace WorkshopManagement.UnitTests.TestdataBuilders
 
             PlanMaintenanceJob command = new PlanMaintenanceJob(
                 Guid.NewGuid(), job.Id, job.StartTime, job.EndTime,
-                (customer.CustomerId, customer.Name, customer.TelephoneNumber),
+                (customer.CustomerId, customer.Nombre, customer.Telefono),
                 (vehicle.LicenseNumber, vehicle.Brand, vehicle.Type),
                 job.Description
             );

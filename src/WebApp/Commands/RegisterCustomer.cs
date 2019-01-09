@@ -73,7 +73,7 @@ namespace WebApp.Commands
             string numeroTarjetaCred,
             string titulaTarjetaCred,
             DateTime fechaCadTarjetaCred
-            ) : base(messageId, MessageTypes.RegisterCustomer)
+            ) : base(messageId)
         {
             CustomerId = customerId;
 
