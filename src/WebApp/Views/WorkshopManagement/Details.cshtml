@@ -29,7 +29,7 @@
         </tr>
         <tr>
             <td width="150">Vehicle :</td>
-            <td><b><a href='@(Url.Action("Details", "VehicleManagement", new { licenseNumber = Model.MaintenanceJob.Vehicle.LicenseNumber }))'>@Model.MaintenanceJob.Vehicle.Brand @Model.MaintenanceJob.Vehicle.Type [@Model.MaintenanceJob.Vehicle.LicenseNumber]</a></b></td>
+            <td><b><a href='@(Url.Action("Details", "VehicleManagement", new { licenseNumber = Model.MaintenanceJob.Vehicle.Codigo }))'>@Model.MaintenanceJob.Vehicle.Marca @Model.MaintenanceJob.Vehicle.Modelo [@Model.MaintenanceJob.Vehicle.Matricula]</a></b></td>
         </tr>
         <tr>
             <td width="150">Owner :</td>

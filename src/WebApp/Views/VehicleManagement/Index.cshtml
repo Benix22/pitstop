@@ -7,18 +7,18 @@
 <table class="table">
     <thead>
         <tr>
-            <th>License No.</th>
-            <th>Brand</th>
-            <th>Type</th>
+            <th>Matrícula</th>
+            <th>Marca</th>
+            <th>Modelo</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var vehicle in Model.Vehicles)
         {
-            <tr class="clickable" onclick="location.href = '@(Url.Action("Details", "VehicleManagement", new { licenseNumber = vehicle.LicenseNumber }))'">
-                <td>@vehicle.LicenseNumber</td>
-                <td>@vehicle.Brand</td>
-                <td>@vehicle.Type</td>
+            <tr class="clickable" onclick="location.href = '@(Url.Action("Details", "VehicleManagement", new { licenseNumber = vehicle.Codigo }))'">
+                <td>@vehicle.Matricula</td>
+                <td>@vehicle.Marca</td>
+                <td>@vehicle.Modelo</td>
             </tr>
         }
     </tbody>

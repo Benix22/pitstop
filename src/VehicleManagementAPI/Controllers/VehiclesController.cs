@@ -30,10 +30,10 @@ namespace Pitstop.Application.VehicleManagement.Controllers
         }
 
         [HttpGet]
-        [Route("{licenseNumber}", Name = "GetByLicenseNumber")]
-        public async Task<IActionResult> GetByLicenseNumber(string licenseNumber)
+        [Route("{codigo}", Name = "GetByCodigo")]
+        public async Task<IActionResult> GetByCodigo(string codigo)
         {
-            var vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(v => v.LicenseNumber == licenseNumber);
+            var vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(v => v.Codigo == codigo);
             if (vehicle == null)
             {
                 return NotFound();
@@ -54,11 +54,11 @@ namespace Pitstop.Application.VehicleManagement.Controllers
                     await _dbContext.SaveChangesAsync();
 
                     // send event
-                    var e = Mapper.Map<VehicleRegistered>(command);
-                    await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
+                    //var e = Mapper.Map<VehicleRegistered>(command);
+                    //await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
 
                     //return result
-                    return CreatedAtRoute("GetByLicenseNumber", new { licenseNumber = vehicle.LicenseNumber }, vehicle);
+                    return CreatedAtRoute("GetByCodigo", new { codigo = vehicle.Codigo }, vehicle);
                 }
                 return BadRequest();
             }
