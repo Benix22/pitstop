@@ -66,22 +66,22 @@ namespace Pitstop.WorkshopManagementEventHandler
         private async Task<bool> HandleAsync(VehicleRegistered e)
         {
             Log.Information("Vehicle registered: {LicenseNumber}, {Brand}, {Type}, Owner Id: {OwnerId}", 
-                e.LicenseNumber, e.Brand, e.Type, e.OwnerId);
+                e.Matricula, e.Marca, e.Modelo, e.OwnerId);
 
             try
             {
                 await _dbContext.Vehicles.AddAsync(new Vehicle
                 {
-                    LicenseNumber = e.LicenseNumber,
-                    Brand = e.Brand,
-                    Type = e.Type,
+                    Matricula = e.Matricula,
+                    Marca = e.Marca,
+                    Modelo = e.Modelo,
                     OwnerId = e.OwnerId
                 });
                 await _dbContext.SaveChangesAsync();
             }
             catch(DbUpdateException)
             {
-                Console.WriteLine($"Skipped adding vehicle with license number {e.LicenseNumber}.");
+                Console.WriteLine($"Skipped adding vehicle with matricula {e.Matricula}.");
             }
 
             return true;
@@ -113,7 +113,7 @@ namespace Pitstop.WorkshopManagementEventHandler
         private async Task<bool> HandleAsync(MaintenanceJobPlanned e)
         {
             Log.Information("Maintenance job planned: {JobId}, {StartTime}, {EndTime}, {CustomerName}, {LicenseNumber}", 
-                e.JobId, e.StartTime, e.EndTime, e.CustomerInfo.Nombre, e.VehicleInfo.LicenseNumber);
+                e.JobId, e.StartTime, e.EndTime, e.CustomerInfo.Nombre, e.VehicleInfo.Matricula);
 
             try
             {
@@ -130,14 +130,14 @@ namespace Pitstop.WorkshopManagementEventHandler
                 }
 
                 // determine vehicle
-                Vehicle vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(v => v.LicenseNumber == e.VehicleInfo.LicenseNumber);
+                Vehicle vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(v => v.Matricula == e.VehicleInfo.Matricula);
                 if (vehicle == null)
                 {
                     vehicle = new Vehicle
                     {
-                        LicenseNumber = e.VehicleInfo.LicenseNumber,
-                        Brand = e.VehicleInfo.Brand,
-                        Type = e.VehicleInfo.Type,
+                        Matricula = e.VehicleInfo.Matricula,
+                        Marca = e.VehicleInfo.Marca,
+                        Modelo = e.VehicleInfo.Modelo,
                         OwnerId = customer.CustomerId
                     };
                 }

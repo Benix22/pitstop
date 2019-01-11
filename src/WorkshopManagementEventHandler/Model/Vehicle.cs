@@ -2,9 +2,9 @@
 {
     public class Vehicle
     {
-        public string LicenseNumber { get; set; }
-        public string Brand { get; set; }
-        public string Type { get; set; }
+        public string Matricula { get; set; }
+        public string Marca { get; set; }
+        public string Modelo { get; set; }
         public string OwnerId { get; set; }
     }
 }

@@ -7,16 +7,16 @@ namespace Pitstop.WorkshopManagementAPI.Domain
 {
     public class Vehicle
     {
-        public string LicenseNumber { get; private set; }
-        public string Brand { get; private set; }
-        public string Type { get; private set; }
+        public string Matricula { get; private set; }
+        public string Marca { get; private set; }
+        public string Modelo { get; private set; }
         public string OwnerId { get; private set; }
 
-        public Vehicle(string licenseNumber, string brand, string type, string ownerId)
+        public Vehicle(string matricula, string marca, string modelo, string ownerId)
         {
-            LicenseNumber = licenseNumber;
-            Brand = brand;
-            Type = type;
+            Matricula = matricula;
+            Marca = marca;
+            Modelo = modelo;
             OwnerId = ownerId;
         }
     }
