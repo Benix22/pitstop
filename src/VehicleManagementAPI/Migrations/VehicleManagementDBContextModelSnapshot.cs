@@ -17,18 +17,32 @@ namespace Pitstop.Application.VehicleManagement.Migrations
 
             modelBuilder.Entity("Pitstop.Application.VehicleManagement.Model.Vehicle", b =>
                 {
-                    b.Property<string>("LicenseNumber")
+                    b.Property<string>("Codigo")
                         .ValueGeneratedOnAdd();
+                    
+                    b.Property<string>("Matricula");
+                    b.Property<string>("Marca");
+                    b.Property<string>("Modelo");
+                    b.Property<string>("Color");
+                    b.Property<string>("Bastidor");
+                    b.Property<string>("Grupo");
+                    b.Property<string>("Daños");
+                    b.Property<string>("Extras");
+                    b.Property<string>("Observaciones");
+                    b.Property<string>("Aviso");
+                    b.Property<DateTime>("PrimerDiaFlota");
+                    b.Property<DateTime>("DevolucionPrevista");
+                    b.Property<DateTime>("UltimoDiaFlota");
+                    b.Property<DateTime>("FechaFabricacion");
+                    b.Property<DateTime>("FechaMatriculacion");
+                    b.Property<string>("Km");
+                    b.Property<string>("Combustible");
+                    b.Property<string>("DepositoLitros");
+                    b.Property<string>("Plazas");
+                    b.Property<string>("Puertas");
 
-                    b.Property<string>("Brand");
-
-                    b.Property<string>("OwnerId");
-
-                    b.Property<string>("Type");
-
-                    b.HasKey("LicenseNumber");
-
-                    b.ToTable("Vehicle");
+                    b.Property<string>("CustomerId");
+                    b.ToTable("Customer");
                 });
         }
     }
