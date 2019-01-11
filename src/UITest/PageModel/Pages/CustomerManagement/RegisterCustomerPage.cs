@@ -14,12 +14,12 @@ namespace Pitstop.UITest.PageModel.Pages.CustomerManagement
         public RegisterCustomerPage FillCustomerDetails(string name, string address,
             string city, string postalCode, string telephoneNumber, string emailAddress)
         {
-            WebDriver.FindElement(By.Name("Customer.Name")).SendKeys(name);
-            WebDriver.FindElement(By.Name("Customer.Address")).SendKeys(address);
-            WebDriver.FindElement(By.Name("Customer.PostalCode")).SendKeys(postalCode);
-            WebDriver.FindElement(By.Name("Customer.City")).SendKeys(city);
-            WebDriver.FindElement(By.Name("Customer.TelephoneNumber")).SendKeys(telephoneNumber);
-            WebDriver.FindElement(By.Name("Customer.EmailAddress")).SendKeys(emailAddress);
+            WebDriver.FindElement(By.Name("Customer.Nombre")).SendKeys(name);
+            WebDriver.FindElement(By.Name("Customer.Direccion")).SendKeys(address);
+            WebDriver.FindElement(By.Name("Customer.CodigoPostal")).SendKeys(postalCode);
+            WebDriver.FindElement(By.Name("Customer.Poblacion")).SendKeys(city);
+            WebDriver.FindElement(By.Name("Customer.Telefono")).SendKeys(telephoneNumber);
+            WebDriver.FindElement(By.Name("Customer.Email")).SendKeys(emailAddress);
             return this;
         }
 

@@ -21,6 +21,11 @@
         <span asp-validation-for="Customer.Nombre" class="text-danger"></span>
     </div>
     <div class="form-group">
+        <label asp-for="Customer.Pais"></label>
+        <input asp-for="Customer.Pais" type="text" class="form-control" />
+        <span asp-validation-for="Customer.Pais" class="text-danger"></span>
+    </div>
+    <div class="form-group">
         <label asp-for="Customer.NIF"></label>
         <input asp-for="Customer.NIF" type="text" class="form-control" />
         <span asp-validation-for="Customer.NIF" class="text-danger"></span>
@@ -142,7 +147,7 @@
         <input asp-for="Customer.TitularTarjetaCred" type="text" class="form-control" />
         <span asp-validation-for="Customer.TitularTarjetaCred" class="text-danger"></span>
     </div>
-    </div><div class="form-group">
+    <div class="form-group">
         <label asp-for="Customer.FechaCadTarjetaCred"></label>
         <input asp-for="Customer.FechaCadTarjetaCred" type="text" class="form-control" />
         <span asp-validation-for="Customer.FechaCadTarjetaCred" class="text-danger"></span>

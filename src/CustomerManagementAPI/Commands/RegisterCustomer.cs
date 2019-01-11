@@ -73,7 +73,7 @@ namespace Pitstop.CustomerManagementAPI.Commands
             bool bloqueado,
             bool moroso,
             string numeroTarjetaCred,
-            string titulaTarjetaCred,
+            string titularTarjetaCred,
             DateTime fechaCadTarjetaCred
             ) : base(messageId)
         {
@@ -110,7 +110,7 @@ namespace Pitstop.CustomerManagementAPI.Commands
             Bloqueado = bloqueado;
 
             NumeroTarjetaCred = numeroTarjetaCred;
-            TitularTarjetaCred = titulaTarjetaCred;
+            TitularTarjetaCred = titularTarjetaCred;
             FechaCadTarjetaCred = fechaCadTarjetaCred;
         }
     }
