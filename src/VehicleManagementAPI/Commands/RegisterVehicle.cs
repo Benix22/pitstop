@@ -7,7 +7,7 @@ namespace Pitstop.Application.VehicleManagement.Commands
 {
     public class RegisterVehicle : Command
     {
-        public readonly string Codigo;
+        public readonly Guid Codigo;
         public readonly string CustomerId;
         public readonly string Matricula;
         public readonly string Marca;
@@ -30,8 +30,8 @@ namespace Pitstop.Application.VehicleManagement.Commands
         public readonly string Plazas;
         public readonly string Puertas;
 
-        public RegisterVehicle(Guid messageId, 
-            string codigo, 
+        public RegisterVehicle(Guid messageId,
+            Guid codigo, 
             string matricula, 
             string ownerId, 
             string marca,

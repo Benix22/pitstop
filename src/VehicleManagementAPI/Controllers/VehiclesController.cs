@@ -30,10 +30,10 @@ namespace Pitstop.Application.VehicleManagement.Controllers
         }
 
         [HttpGet]
-        [Route("{codigo}", Name = "GetByCodigo")]
-        public async Task<IActionResult> GetByCodigo(string codigo)
+        [Route("{matricula}", Name = "GetByMatricula")]
+        public async Task<IActionResult> GetByMatricula(string matricula)
         {
-            var vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(v => v.Codigo == codigo);
+            var vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(v => v.Matricula == matricula);
             if (vehicle == null)
             {
                 return NotFound();
@@ -58,7 +58,7 @@ namespace Pitstop.Application.VehicleManagement.Controllers
                     await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
 
                     //return result
-                    return CreatedAtRoute("GetByCodigo", new { codigo = vehicle.Codigo }, vehicle);
+                    return CreatedAtRoute("matricula", new { matricula = vehicle.Matricula }, vehicle);
                 }
                 return BadRequest();
             }

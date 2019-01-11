@@ -17,7 +17,7 @@ namespace Pitstop.Application.VehicleManagement.Migrations
 
             modelBuilder.Entity("Pitstop.Application.VehicleManagement.Model.Vehicle", b =>
                 {
-                    b.Property<string>("Codigo")
+                    b.Property<Guid>("Codigo")
                         .ValueGeneratedOnAdd();
                     
                     b.Property<string>("Matricula");

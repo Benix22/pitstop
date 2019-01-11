@@ -12,7 +12,7 @@ namespace WebApp.RESTClients
         Task<List<Vehicle>> GetVehicles();
 
         [Get("/vehicles/{id}")]
-        Task<Vehicle> GetVehicleByLicenseNumber([AliasAs("id")] string licenseNumber);
+        Task<Vehicle> GetVehicleByCode([AliasAs("id")] string codigo);
 
         [Post("/vehicles")]
         Task RegisterVehicle(RegisterVehicle command);
