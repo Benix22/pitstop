@@ -54,8 +54,8 @@ namespace Pitstop.Application.VehicleManagement.Controllers
                     await _dbContext.SaveChangesAsync();
 
                     // send event
-                    //var e = Mapper.Map<VehicleRegistered>(command);
-                    //await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
+                    var e = Mapper.Map<VehicleRegistered>(command);
+                    await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
 
                     //return result
                     return CreatedAtRoute("GetByCodigo", new { codigo = vehicle.Codigo }, vehicle);
