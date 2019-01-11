@@ -12,7 +12,8 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                 name: "Vehicle",
                 columns: table => new
                 {
-                    Codigo = table.Column<string>(nullable: false),
+                    Codigo = table.Column<Guid>(nullable: false),
+                    Matricula = table.Column<string>(nullable: false),
                     CustomerId = table.Column<int>(nullable: false),
                     Marca = table.Column<string>(nullable: true),
                     Modelo = table.Column<string>(nullable: true),
