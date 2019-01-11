@@ -54,19 +54,19 @@ namespace Pitstop.Application.VehicleManagement.Controllers
                     await _dbContext.SaveChangesAsync();
 
                     // send event
-                    CustomerRegistered e = Mapper.Map<CustomerRegistered>(command);
-                    await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
+                    //CustomerRegistered e = Mapper.Map<CustomerRegistered>(command);
+                    //await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
 
                     // return result
                     return CreatedAtRoute("GetByCustomerId", new { customerId = customer.CustomerId }, customer);
                 }
                 return BadRequest();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
                 ModelState.AddModelError("", "Unable to save changes. " +
                     "Try again, and if the problem persists " +
-                    "see your system administrator.");
+                    "see your system administrator." + " -" + ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }

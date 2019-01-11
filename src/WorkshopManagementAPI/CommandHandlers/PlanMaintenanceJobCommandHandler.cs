@@ -39,10 +39,10 @@ namespace WorkshopManagementAPI.CommandHandlers
                 planning.Id, planning.OriginalVersion, planning.Version, events);
 
             // publish event
-            foreach (var e in events)
-            {
-                await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
-            }
+            //foreach (var e in events)
+            //{
+            //    await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
+            //}
 
             // return result
             return planning;

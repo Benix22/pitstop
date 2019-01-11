@@ -71,45 +71,45 @@ namespace WebApp.Commands
             bool bloqueado,
             bool moroso,
             string numeroTarjetaCred,
-            string titulaTarjetaCred,
+            string titularTarjetaCred,
             DateTime fechaCadTarjetaCred
             ) : base(messageId)
         {
             CustomerId = customerId;
 
-            //EsPersona = esPersona;
-            //Nombre = nombre;
-            //Pais = pais;
-            //NIF = nif;
-            //FechaAlta = fechaAlta;
-            //FechaBaja = fechaBaja;
+            EsPersona = esPersona;
+            Nombre = nombre;
+            Pais = pais;
+            NIF = nif;
+            FechaAlta = fechaAlta;
+            FechaBaja = fechaBaja;
 
-            //Direccion = direccion;
-            //PaisDireccion = paisDireccion;
-            //CodigoPostal = codigoPostal;
-            //Poblacion = poblacion;
-            //Provincia = provincia;
-            //Telefono = telefono;
-            //Telefono2 = telefono2;
-            //Movil = movil;
+            Direccion = direccion;
+            PaisDireccion = paisDireccion;
+            CodigoPostal = codigoPostal;
+            Poblacion = poblacion;
+            Provincia = provincia;
+            Telefono = telefono;
+            Telefono2 = telefono2;
+            Movil = movil;
 
-            //FechaExpNIF = fechaExpNIF;
-            //Poblacio ExpNIF = poblacionExpNIF;
-            //FechaNacimiento = fechaNacimiento;
-            //PoblacionNacimiento = poblacionNacimiento;
-            //TipoPermiso = tipoPermiso;
-            //NumeroPermiso = numeroPermiso;
-            //FechaExpPermiso = fechaExpPermiso;
-            //FechaCadPermiso = fechaCadPermiso;
+            FechaExpNIF = fechaExpNIF;
+            PoblacionExpNIF = poblacionExpNIF;
+            FechaNacimiento = fechaNacimiento;
+            PoblacionNacimiento = poblacionNacimiento;
+            TipoPermiso = tipoPermiso;
+            NumeroPermiso = numeroPermiso;
+            FechaExpPermiso = fechaExpPermiso;
+            FechaCadPermiso = fechaCadPermiso;
 
             Email = email;
 
-            //Moroso = moroso;
-            //Bloqueado = bloqueado;
+            Moroso = moroso;
+            Bloqueado = bloqueado;
 
-            //NumeroTarjetaCred = numeroTarjetaCred;
-            //TitularTarjetaCred = titulaTarjetaCred;
-            //FechaCadTarjetaCred = fechaCadTarjetaCred;
+            NumeroTarjetaCred = numeroTarjetaCred;
+            TitularTarjetaCred = titularTarjetaCred;
+            FechaCadTarjetaCred = fechaCadTarjetaCred;
         }
     }
 }
