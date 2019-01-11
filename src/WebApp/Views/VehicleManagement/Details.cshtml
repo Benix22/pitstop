@@ -8,20 +8,20 @@
 <table class="table">
     <tbody>
         <tr>
-            <td width="150">License Number :</td>
-            <td><b>@Model.Vehicle.LicenseNumber</b></td>
+            <td width="150">Matricula :</td>
+            <td><b>@Model.Vehicle.Matricula</b></td>
         </tr>
         <tr>
-            <td width="150">Brand :</td>
-            <td><b>@Model.Vehicle.Brand</b></td>
+            <td width="150">Marca :</td>
+            <td><b>@Model.Vehicle.Marca</b></td>
         </tr>
         <tr>
-            <td width="150">Type :</td>
-            <td><b>@Model.Vehicle.Type</b></td>
+            <td width="150">Modelo :</td>
+            <td><b>@Model.Vehicle.Modelo</b></td>
         </tr>
         <tr>
             <td width="150">Owner :</td>
-            <td><b><a href='@(Url.Action("Details", "CustomerManagement", new { id = Model.Vehicle.OwnerId }))'>@Model.Owner</a></b></td>
+            <td><b><a href='@(Url.Action("Details", "CustomerManagement", new { id = Model.Vehicle.CustomerId }))'>@Model.Owner</a></b></td>
         </tr>
     </tbody>
 </table>

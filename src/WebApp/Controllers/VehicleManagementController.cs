@@ -48,7 +48,7 @@ namespace PitStop.Controllers
             return await _resiliencyHelper.ExecuteResilient(async () =>
             {
                 Vehicle vehicle = await _vehicleManagementAPI.GetVehicleByLicenseNumber(licenseNumber);
-                Customer customer = await _customerManagementAPI.GetCustomerById(vehicle.OwnerId);
+                Customer customer = await _customerManagementAPI.GetCustomerById(vehicle.CustomerId);
 
                 var model = new VehicleManagementDetailsViewModel
                 {

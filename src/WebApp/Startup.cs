@@ -96,7 +96,11 @@ namespace PitStop
                 cfg.CreateMap<Vehicle, RegisterVehicle>()
                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
                 cfg.CreateMap<VehicleManagementNewViewModel, RegisterVehicle>().ConvertUsing((vm, rv) =>
-                    new RegisterVehicle(Guid.NewGuid(), vm.Vehicle.LicenseNumber, vm.Vehicle.Brand, vm.Vehicle.Type, vm.SelectedCustomerId));
+                    new RegisterVehicle(Guid.NewGuid(), vm.Vehicle.Codigo, vm.Vehicle.Matricula,vm.SelectedCustomerId
+                    ,vm.Vehicle.Marca,vm.Vehicle.Modelo,vm.Vehicle.Color,vm.Vehicle.Bastidor,vm.Vehicle.Grupo,vm.Vehicle.Daños,
+                    vm.Vehicle.Extras,vm.Vehicle.Observaciones,vm.Vehicle.Aviso,vm.Vehicle.PrimerDiaFlota,vm.Vehicle.DevolucionPrevista,
+                    vm.Vehicle.UltimoDiaFlota,vm.Vehicle.FechaFabricacion,vm.Vehicle.FechaMatriculacion,vm.Vehicle.Km,
+                    vm.Vehicle.Combustible,vm.Vehicle.DepositoLitros,vm.Vehicle.Plazas,vm.Vehicle.Puertas));
             });
         }
     }
