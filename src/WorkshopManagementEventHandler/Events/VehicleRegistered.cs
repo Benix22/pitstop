@@ -7,17 +7,17 @@ namespace Pitstop.WorkshopManagementEventHandler.Events
 {
     public class VehicleRegistered : Event
     {
-        public readonly string LicenseNumber;
-        public readonly string Brand;
-        public readonly string Type;
+        public readonly string Matricula;
+        public readonly string Marca;
+        public readonly string Modelo;
         public readonly string OwnerId;
 
-        public VehicleRegistered(Guid messageId, string licenseNumber, string brand, string type, string ownerId) : 
+        public VehicleRegistered(Guid messageId, string matricula, string marca, string modelo, string ownerId) : 
             base(messageId)
         {
-            LicenseNumber = licenseNumber;
-            Brand = brand;
-            Type = type;
+            Matricula = matricula;
+            Marca = marca;
+            Modelo = modelo;
             OwnerId = ownerId;
         }
     }

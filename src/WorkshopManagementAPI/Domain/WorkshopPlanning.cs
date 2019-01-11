@@ -105,7 +105,7 @@ namespace Pitstop.WorkshopManagementAPI.Domain
             }
 
             // only 1 maintenance job can be executed on a vehicle during a certain time-slot
-            if (Jobs.Any(j => j.Vehicle.LicenseNumber == command.VehicleInfo.LicenseNumber && 
+            if (Jobs.Any(j => j.Vehicle.Matricula == command.VehicleInfo.Matricula && 
                     (j.StartTime >= command.StartTime && j.StartTime <= command.EndTime ||
                     j.EndTime >= command.StartTime && j.EndTime <= command.EndTime) ))
             {
@@ -153,7 +153,7 @@ namespace Pitstop.WorkshopManagementAPI.Domain
         {
             MaintenanceJob job = new MaintenanceJob();
             Customer customer = new Customer(e.CustomerInfo.Id, e.CustomerInfo.Nombre, e.CustomerInfo.Telefono);
-            Vehicle vehicle = new Vehicle(e.VehicleInfo.LicenseNumber, e.VehicleInfo.Brand, e.VehicleInfo.Type, customer.CustomerId);
+            Vehicle vehicle = new Vehicle(e.VehicleInfo.Matricula, e.VehicleInfo.Marca, e.VehicleInfo.Modelo, customer.CustomerId);
             job.Plan(e.JobId, e.StartTime, e.EndTime, vehicle, customer, e.Description);
             Jobs.Add(job);
             return new Event[] { e };

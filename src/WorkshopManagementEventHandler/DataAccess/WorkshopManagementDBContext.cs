@@ -17,7 +17,7 @@ namespace Pitstop.WorkshopManagementEventHandler.DataAccess
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Vehicle>().HasKey(entity => entity.LicenseNumber);
+            builder.Entity<Vehicle>().HasKey(entity => entity.Matricula);
             builder.Entity<Vehicle>().ToTable("Vehicle");
 
             builder.Entity<Customer>().HasKey(entity => entity.CustomerId);
