@@ -39,7 +39,7 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Vehicle", x => x.Codigo);
-                    table.ForeignKey("FK_Customer", x => x.CustomerId,"Customer", "CustomerId");
+                    //table.ForeignKey("FK_Customer", x => x.CustomerId, "CustomerManagement", "CustomerId");
                 });
         }
 

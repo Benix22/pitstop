@@ -33,7 +33,7 @@ namespace Pitstop.Application.VehicleManagement.Commands
         public RegisterVehicle(Guid messageId,
             Guid codigo, 
             string matricula, 
-            string ownerId, 
+            string customerId, 
             string marca,
             string modelo,
             string color,
@@ -58,7 +58,7 @@ namespace Pitstop.Application.VehicleManagement.Commands
         {
             Codigo = codigo;
             Matricula = matricula;
-            CustomerId = ownerId;
+            CustomerId = customerId;
             Marca = marca;
             Modelo = modelo;
             Color = color;
