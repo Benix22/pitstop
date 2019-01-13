@@ -12,8 +12,8 @@
 <form asp-controller="VehicleManagement" asp-action="Register" method="post">
     <div class="form-group">
         <label asp-for="Vehicle.CustomerId"></label>
-        <select asp-for="SelectedCustomerId" asp-items="Model.Customers" class="form-control"></select>
-        <span asp-validation-for="SelectedCustomerId" class="text-danger"></span>
+        <select asp-for="Vehicle.CustomerId" asp-items="Model.Customers" class="form-control"></select>
+        <span asp-validation-for="Vehicle.CustomerId" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Vehicle.Matricula"></label>

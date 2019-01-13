@@ -13,7 +13,8 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                 columns: table => new
                 {
                     Codigo = table.Column<Guid>(nullable: false),
-                    Matricula = table.Column<string>(nullable: false),
+
+                    Matricula = table.Column<string>(nullable: true),
                     CustomerId = table.Column<int>(nullable: false),
                     Marca = table.Column<string>(nullable: true),
                     Modelo = table.Column<string>(nullable: true),
@@ -24,17 +25,17 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                     Extras = table.Column<string>(nullable: true),
                     Observaciones = table.Column<string>(nullable: true),
                     Aviso = table.Column<string>(nullable: true),
-                    PrimerDiaFlota = table.Column<DateTime>(nullable: false),
-                    DevolucionPrevista = table.Column<DateTime>(nullable: true),
-                    UltimoDiaFlota = table.Column<DateTime>(nullable: true),
-                    FechaFabricacion = table.Column<DateTime>(nullable: false),
-                    FechaMatriculacion = table.Column<DateTime>(nullable: false),
                     Km = table.Column<string>(nullable: true),
                     Combustible = table.Column<string>(nullable: true),
                     DepositoLitros = table.Column<string>(nullable: true),
-                    Plazas = table.Column<string>(nullable: false),
-                    Puertas = table.Column<string>(nullable: false),
-                    LastUpdateTimestamp = table.Column<DateTimeOffset>(nullable: false),
+                    Plazas = table.Column<string>(nullable: true),
+                    Puertas = table.Column<string>(nullable: true),
+
+                    PrimerDiaFlota = table.Column<DateTime>(nullable: true),
+                    DevolucionPrevista = table.Column<DateTime>(nullable: true),
+                    UltimoDiaFlota = table.Column<DateTime>(nullable: true),
+                    FechaFabricacion = table.Column<DateTime>(nullable: true),
+                    FechaMatriculacion = table.Column<DateTime>(nullable: true)                    
                 },
                 constraints: table =>
                 {

@@ -8,14 +8,12 @@ namespace Pitstop.Models
 {
     public class Vehicle
     {
-        [Required]
         [Display(Name = "Código")]
         public Guid Codigo { get; set; }
 
         [Display(Name = "Cliente")]
-        public string CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
 
-        [Required]
         [Display(Name = "Matrícula")]
         public string Matricula { get; set; }
 
@@ -58,9 +56,11 @@ namespace Pitstop.Models
 
         [Display(Name = "Ultimo Dia Flota")]
         public DateTime UltimoDiaFlota { get; set; }
+
         [Required]
         [Display(Name = "Fecha Fabricación")]
         public DateTime FechaFabricacion { get; set; }
+
         [Required]
         [Display(Name = "Fecha Matriculación")]
         public DateTime FechaMatriculacion { get; set; }
@@ -77,6 +77,7 @@ namespace Pitstop.Models
         [Required]
         [Display(Name = "Plazas")]
         public string Plazas { get; set; }
+
         [Required]
         [Display(Name = "Puertas")]
         public string Puertas { get; set; }

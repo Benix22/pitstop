@@ -79,7 +79,7 @@ namespace WebApp.RESTClients
             return await _client.GetCustomers();
         }
 
-        public async Task<Customer> GetCustomerById(string id)
+        public async Task<Customer> GetCustomerById(Guid id)
         {
             try
             {

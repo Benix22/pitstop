@@ -39,7 +39,7 @@ namespace PitStop.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(Guid id)
         {
             return await _resiliencyHelper.ExecuteResilient(async () =>
             {

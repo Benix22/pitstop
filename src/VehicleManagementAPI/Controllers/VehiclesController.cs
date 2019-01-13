@@ -8,6 +8,7 @@ using AutoMapper;
 using Pitstop.Infrastructure.Messaging;
 using Pitstop.Application.VehicleManagement.Events;
 using Pitstop.Application.VehicleManagement.Commands;
+using System;
 
 namespace Pitstop.Application.VehicleManagement.Controllers
 {
@@ -30,10 +31,10 @@ namespace Pitstop.Application.VehicleManagement.Controllers
         }
 
         [HttpGet]
-        [Route("{matricula}", Name = "GetByMatricula")]
-        public async Task<IActionResult> GetByMatricula(string matricula)
+        [Route("{codigo}", Name = "GetByCodigo")]
+        public async Task<IActionResult> GetByCodigo(Guid codigo)
         {
-            var vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(v => v.Matricula == matricula);
+            var vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(v => v.Codigo == codigo);
             if (vehicle == null)
             {
                 return NotFound();
@@ -58,7 +59,7 @@ namespace Pitstop.Application.VehicleManagement.Controllers
                     await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
 
                     //return result
-                    return CreatedAtRoute("matricula", new { matricula = vehicle.Matricula }, vehicle);
+                    return CreatedAtRoute("GetByCodigo", new { codigo = vehicle.Codigo }, vehicle);
                 }
                 return BadRequest();
             }

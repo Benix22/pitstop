@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Refit;
 using WebApp.Commands;
 using System.Net;
+using System;
 
 namespace WebApp.RESTClients
 {
@@ -25,7 +26,7 @@ namespace WebApp.RESTClients
             return await _client.GetCustomers();
         }
 
-        public async Task<Customer> GetCustomerById([AliasAs("id")] string customerId)
+        public async Task<Customer> GetCustomerById([AliasAs("id")] Guid customerId)
         {
             try
             {
