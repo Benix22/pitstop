@@ -9,10 +9,6 @@ namespace Pitstop.ViewModels
     {
         public Vehicle Vehicle { get; set; }
 
-        public IEnumerable<SelectListItem> Customers { get; set; }
-
-        [Required(ErrorMessage = "Owner is required")]
-        public string SelectedCustomerId { get; set; }
-        
+     //   public IEnumerable<SelectListItem> Customers { get; set; }
     }
 }

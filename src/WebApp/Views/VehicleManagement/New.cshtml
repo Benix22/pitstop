@@ -10,11 +10,11 @@
 <h3 id="PageTitle">Vehicle Management - register vehicle</h3>
 
 <form asp-controller="VehicleManagement" asp-action="Register" method="post">
-    <div class="form-group">
+    @*<div class="form-group">
         <label asp-for="Vehicle.CustomerId"></label>
         <select asp-for="Vehicle.CustomerId" asp-items="Model.Customers" class="form-control"></select>
         <span asp-validation-for="Vehicle.CustomerId" class="text-danger"></span>
-    </div>
+    </div>*@
     <div class="form-group">
         <label asp-for="Vehicle.Matricula"></label>
         <input asp-for="Vehicle.Matricula" type="text" class="form-control" />

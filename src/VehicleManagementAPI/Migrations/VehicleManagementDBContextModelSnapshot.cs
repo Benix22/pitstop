@@ -19,7 +19,7 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                 {
                     b.Property<Guid>("Codigo")
                         .ValueGeneratedOnAdd();
-                    
+
                     b.Property<string>("Matricula");
                     b.Property<string>("Marca");
                     b.Property<string>("Modelo");
@@ -41,8 +41,7 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                     b.Property<string>("Plazas");
                     b.Property<string>("Puertas");
 
-                    b.Property<string>("CustomerId");
-                    b.ToTable("Customer");
+                    b.ToTable("Vehicle");
                 });
         }
     }

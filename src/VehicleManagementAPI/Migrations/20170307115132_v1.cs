@@ -15,7 +15,6 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                     Codigo = table.Column<Guid>(nullable: false),
 
                     Matricula = table.Column<string>(nullable: true),
-                    CustomerId = table.Column<int>(nullable: false),
                     Marca = table.Column<string>(nullable: true),
                     Modelo = table.Column<string>(nullable: true),
                     Color = table.Column<string>(nullable: true),

@@ -9,6 +9,5 @@ namespace Pitstop.ViewModels
     public class VehicleManagementDetailsViewModel
     {
         public Vehicle Vehicle { get; set; }
-        public string Owner { get; set; }
     }
 }

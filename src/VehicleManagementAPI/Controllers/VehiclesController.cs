@@ -27,19 +27,34 @@ namespace Pitstop.Application.VehicleManagement.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
-            return Ok(await _dbContext.Vehicles.ToListAsync());
+            try
+            {
+                return Ok(await _dbContext.Vehicles.ToListAsync());
+            }
+            catch (Exception ex)
+            {
+
+                throw ex.InnerException;
+            }
         }
 
         [HttpGet]
         [Route("{codigo}", Name = "GetByCodigo")]
         public async Task<IActionResult> GetByCodigo(Guid codigo)
         {
-            var vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(v => v.Codigo == codigo);
-            if (vehicle == null)
+            try
             {
-                return NotFound();
+                var vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(v => v.Codigo == codigo);
+                if (vehicle == null)
+                {
+                    return NotFound();
+                }
+                return Ok(vehicle);
             }
-            return Ok(vehicle);
+            catch (Exception ex)
+            {
+                throw ex.InnerException;
+            }
         }
 
         [HttpPost]
@@ -55,8 +70,8 @@ namespace Pitstop.Application.VehicleManagement.Controllers
                     await _dbContext.SaveChangesAsync();
 
                     // send event
-                    var e = Mapper.Map<VehicleRegistered>(command);
-                    await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
+                    //var e = Mapper.Map<VehicleRegistered>(command);
+                    //await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
 
                     //return result
                     return CreatedAtRoute("GetByCodigo", new { codigo = vehicle.Codigo }, vehicle);

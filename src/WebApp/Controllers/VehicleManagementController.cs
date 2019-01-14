@@ -16,15 +16,15 @@ namespace PitStop.Controllers
     public class VehicleManagementController : Controller
     {
         private IVehicleManagementAPI _vehicleManagementAPI;
-        private ICustomerManagementAPI _customerManagementAPI;
+       // private ICustomerManagementAPI _customerManagementAPI;
         private readonly ILogger _logger;
         private ResiliencyHelper _resiliencyHelper;
 
         public VehicleManagementController(IVehicleManagementAPI vehicleManagementAPI, 
-            ICustomerManagementAPI customerManagementAPI, ILogger<VehicleManagementController> logger)
+            ILogger<VehicleManagementController> logger)
         {
             _vehicleManagementAPI = vehicleManagementAPI;
-            _customerManagementAPI = customerManagementAPI;
+         //   _customerManagementAPI = customerManagementAPI;
             _logger = logger;
             _resiliencyHelper = new ResiliencyHelper(_logger);
         }
@@ -48,12 +48,12 @@ namespace PitStop.Controllers
             return await _resiliencyHelper.ExecuteResilient(async () =>
             {
                 Vehicle vehicle = await _vehicleManagementAPI.GetVehicleByCode(id);
-                Customer customer = await _customerManagementAPI.GetCustomerById(vehicle.CustomerId);
+               //Customer customer = await _customerManagementAPI.GetCustomerById(vehicle.CustomerId);
 
                 var model = new VehicleManagementDetailsViewModel
                 {
-                    Vehicle = vehicle,
-                    Owner = customer.Nombre
+                    Vehicle = vehicle
+                  // CustomerId = customer.Nombre
                 };
                 return View(model);
             }, View("Offline", new VehicleManagementOfflineViewModel()));
@@ -65,12 +65,12 @@ namespace PitStop.Controllers
             return await _resiliencyHelper.ExecuteResilient(async () =>
             {
                 // get customerlist
-                var customers = await _customerManagementAPI.GetCustomers();
+               // var customers = await _customerManagementAPI.GetCustomers();
 
                 var model = new VehicleManagementNewViewModel
                 {
-                    Vehicle = new Vehicle(),
-                    Customers = customers.Select(c => new SelectListItem { Value = c.CustomerId, Text = c.Nombre })
+                    Vehicle = new Vehicle()
+                   // Customers = customers.Select(c => new SelectListItem { Value = c.CustomerId, Text = c.Nombre })
                 };
                 return View(model);
             }, View("Offline", new VehicleManagementOfflineViewModel()));
@@ -83,7 +83,7 @@ namespace PitStop.Controllers
             {
                 return await _resiliencyHelper.ExecuteResilient(async () =>
                 {
-                    RegisterVehicle cmd = Mapper.Map<RegisterVehicle>(inputModel);
+                    RegisterVehicle cmd = Mapper.Map<RegisterVehicle>(inputModel.Vehicle);
                     await _vehicleManagementAPI.RegisterVehicle(cmd);
                     return RedirectToAction("Index");
                 }, View("Offline", new VehicleManagementOfflineViewModel()));

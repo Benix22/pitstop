@@ -105,6 +105,9 @@ namespace Pitstop.Application.VehicleManagement
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<RegisterVehicle, Vehicle>();
+                cfg.CreateMap<Vehicle, RegisterVehicle>();
+                cfg.CreateMap<Vehicle, RegisterVehicle>()
+                 .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid())); ;
                 cfg.CreateMap<RegisterVehicle, VehicleRegistered>()
                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
             });

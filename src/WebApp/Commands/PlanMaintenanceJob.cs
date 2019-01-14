@@ -15,14 +15,14 @@ namespace WebApp.Commands
         public readonly string Description;
 
         public PlanMaintenanceJob(Guid messageId, Guid jobId, DateTime startTime, DateTime endTime,
-            (string Id, string Name, string TelephoneNumber) customerInfo,
+            //(string Id, string Name, string TelephoneNumber) customerInfo,
             (Guid Codigo, string Marca, string Modelo) vehicleInfo,
             string description) : base(messageId)
         {
             JobId = jobId;
             StartTime = startTime;
             EndTime = endTime;
-            CustomerInfo = customerInfo;
+           // CustomerInfo = customerInfo;
             VehicleInfo = vehicleInfo;
             Description = description;
         }
