@@ -1,0 +1,31 @@
+﻿@model Pitstop.ViewModels.VehicleOwnerManagementDetailsViewModel
+@{
+    ViewData["Title"] = "Vehicle Details";
+}
+
+<h3 id="PageTitle">Vehicle Owner Management - Details</h3>
+
+<table class="table">
+    <tbody>
+        <tr>
+            <td width="150">Razón Social :</td>
+            <td><b>@Model.Owner.RazonSocial</b></td>
+        </tr>
+        <tr>
+            <td width="150">Direccion :</td>
+            <td><b>@Model.Owner.Direccion</b></td>
+        </tr>
+        <tr>
+            <td width="150">Contacto :</td>
+            <td><b>@Model.Owner.Contacto</b></td>
+        </tr>
+        <tr>
+            <td width="150">Telefono :</td>
+            <td><b>@Model.Owner.Telefono</b></td>
+        </tr>        
+    </tbody>
+</table>
+<span><a id="BackButton" asp-action="Index" asp-controller="CustomerOwnerManagement" class="btn btn-default">Back</a></span>
+
+
+

@@ -1,0 +1,28 @@
+﻿@model Pitstop.ViewModels.VehicleOwnerManagementViewModel
+@{
+    ViewData["Title"] = "Owners Overview";
+}
+<h3 id="PageTitle">Vehicle Owner Management - Overview</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Razón Social</th>
+            <th>CIF</th>
+            <th>Telefono</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var owner in Model.Owners)
+        {
+            <tr class="clickable" onclick="location.href = '@(Url.Action("Details", "VehicleOwnerManagement", new { id = owner.OwnerId }))'">
+                <td>@owner.RazonSocial</td>
+                <td>@owner.CIF</td>
+                <td>@owner.Telefono</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a id="RegisterOwnerButton" asp-action="New" asp-controller="VehicleOwnerManagement" class="btn btn-default">Register Owner</a>
+
+

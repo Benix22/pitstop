@@ -19,15 +19,12 @@ namespace Pitstop.Application.VehicleManagement.DataAccess
                 .Execute(() => Database.Migrate());
         }
 
-        public DbSet<Owner> Owners { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Vehicle>().HasKey(m => m.Codigo);
             builder.Entity<Vehicle>().ToTable("Vehicle");
-            builder.Entity<Owner>().HasKey(m => m.OwnerId);
-            builder.Entity<Vehicle>().ToTable("Owner");
             base.OnModelCreating(builder);
         }
     }

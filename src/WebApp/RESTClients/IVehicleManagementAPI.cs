@@ -1,4 +1,5 @@
-﻿using Pitstop.Models;
+﻿using Pitstop.Application.VehicleManagement.Model;
+using Pitstop.Models;
 using Refit;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -16,5 +17,14 @@ namespace WebApp.RESTClients
 
         [Post("/vehicles")]
         Task RegisterVehicle(RegisterVehicle command);
+
+        [Get("/owners")]
+        Task<List<Owner>> GetOwners();
+
+        [Get("/owners/{id}")]
+        Task<Owner> GetOwnerById([AliasAs("id")] int ownerId);
+
+        [Post("/owners")]
+        Task RegisterOwner(RegisterOwner command);
     }
 }

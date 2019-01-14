@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Refit;
 using WebApp.Commands;
 using System.Net;
+using Pitstop.Application.VehicleManagement.Model;
 
 namespace WebApp.RESTClients
 {
@@ -19,6 +20,8 @@ namespace WebApp.RESTClients
             string baseUri = $"http://{apiHost}:{apiPort}/api";
             _client = RestService.For<IVehicleManagementAPI>(baseUri);
         }
+
+        #region Vehicles
 
         public async Task<List<Vehicle>> GetVehicles()
         {
@@ -48,5 +51,40 @@ namespace WebApp.RESTClients
         {
             await _client.RegisterVehicle(command);
         }
+
+        #endregion
+
+        #region Owners
+
+        public async Task<List<Owner>> GetOwners()
+        {
+            return await _client.GetOwners();
+        }
+
+        public async Task<Owner> GetOwnerById([AliasAs("id")] int ownerId)
+        {
+            try
+            {
+                return await _client.GetOwnerById(ownerId);
+            }
+            catch (ApiException ex)
+            {
+                if (ex.StatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
+        public async Task RegisterOwner(RegisterOwner command)
+        {
+            await _client.RegisterOwner(command);
+        }
+
+        #endregion
     }
 }
