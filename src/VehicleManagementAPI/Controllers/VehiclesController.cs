@@ -8,6 +8,7 @@ using AutoMapper;
 using Pitstop.Infrastructure.Messaging;
 using Pitstop.Application.VehicleManagement.Events;
 using Pitstop.Application.VehicleManagement.Commands;
+using System;
 
 namespace Pitstop.Application.VehicleManagement.Controllers
 {
@@ -31,7 +32,7 @@ namespace Pitstop.Application.VehicleManagement.Controllers
 
         [HttpGet]
         [Route("{codigo}", Name = "GetByCodigo")]
-        public async Task<IActionResult> GetByCodigo(string codigo)
+        public async Task<IActionResult> GetByCodigo(Guid codigo)
         {
             var vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(v => v.Codigo == codigo);
             if (vehicle == null)
@@ -62,7 +63,7 @@ namespace Pitstop.Application.VehicleManagement.Controllers
                 }
                 return BadRequest();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
                 ModelState.AddModelError("", "Unable to save changes. " +
                     "Try again, and if the problem persists " +

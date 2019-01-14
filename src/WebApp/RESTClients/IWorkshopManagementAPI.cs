@@ -28,7 +28,7 @@ namespace WebApp.RESTClients
         Task<List<Customer>> GetCustomers();
 
         [Get("/refdata/customers/{id}")]
-        Task<Customer> GetCustomerById(string id);
+        Task<Customer> GetCustomerById(Guid id);
 
         [Get("/refdata/vehicles")]
         Task<List<Vehicle>> GetVehicles();

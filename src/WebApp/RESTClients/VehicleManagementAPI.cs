@@ -24,11 +24,12 @@ namespace WebApp.RESTClients
         {
             return await _client.GetVehicles();
         }
-        public async Task<Vehicle> GetVehicleByLicenseNumber([AliasAs("id")] string licenseNumber)
+
+        public async Task<Vehicle> GetVehicleByCode([AliasAs("id")] string codigo)
         {
             try
             {
-                return await _client.GetVehicleByLicenseNumber(licenseNumber);
+                return await _client.GetVehicleByCode(codigo);
             }
             catch (ApiException ex)
             {

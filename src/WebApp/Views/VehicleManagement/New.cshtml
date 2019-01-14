@@ -12,13 +12,8 @@
 <form asp-controller="VehicleManagement" asp-action="Register" method="post">
     <div class="form-group">
         <label asp-for="Vehicle.CustomerId"></label>
-        <select asp-for="SelectedCustomerId" asp-items="Model.Customers" class="form-control"></select>
-        <span asp-validation-for="SelectedCustomerId" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Vehicle.Codigo"></label>
-        <input asp-for="Vehicle.Codigo" type="text" class="form-control" />
-        <span asp-validation-for="Vehicle.Codigo" class="text-danger"></span>
+        <select asp-for="Vehicle.CustomerId" asp-items="Model.Customers" class="form-control"></select>
+        <span asp-validation-for="Vehicle.CustomerId" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Vehicle.Matricula"></label>
@@ -72,27 +67,27 @@
     </div>
     <div class="form-group">
         <label asp-for="Vehicle.PrimerDiaFlota"></label>
-        <input asp-for="Vehicle.PrimerDiaFlota" type="datetime" class="form-control" />
+        <input asp-for="Vehicle.PrimerDiaFlota" type="text" class="form-control" />
         <span asp-validation-for="Vehicle.PrimerDiaFlota" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Vehicle.DevolucionPrevista"></label>
-        <input asp-for="Vehicle.DevolucionPrevista" type="datetime" class="form-control" />
+        <input asp-for="Vehicle.DevolucionPrevista" type="text" class="form-control" />
         <span asp-validation-for="Vehicle.DevolucionPrevista" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Vehicle.UltimoDiaFlota"></label>
-        <input asp-for="Vehicle.UltimoDiaFlota" type="datetime" class="form-control" />
+        <input asp-for="Vehicle.UltimoDiaFlota" type="text" class="form-control" />
         <span asp-validation-for="Vehicle.UltimoDiaFlota" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Vehicle.FechaFabricacion"></label>
-        <input asp-for="Vehicle.FechaFabricacion" type="datetime" class="form-control" />
+        <input asp-for="Vehicle.FechaFabricacion" type="text" class="form-control" />
         <span asp-validation-for="Vehicle.FechaFabricacion" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Vehicle.FechaMatriculacion"></label>
-        <input asp-for="Vehicle.FechaMatriculacion" type="datetime" class="form-control" />
+        <input asp-for="Vehicle.FechaMatriculacion" type="text" class="form-control" />
         <span asp-validation-for="Vehicle.FechaMatriculacion" class="text-danger"></span>
     </div>
     <div class="form-group">

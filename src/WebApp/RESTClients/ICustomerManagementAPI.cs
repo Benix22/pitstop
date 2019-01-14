@@ -1,5 +1,6 @@
 ﻿using Pitstop.Models;
 using Refit;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebApp.Commands;
@@ -12,7 +13,7 @@ namespace WebApp.RESTClients
         Task<List<Customer>> GetCustomers();
 
         [Get("/customers/{id}")]
-        Task<Customer> GetCustomerById([AliasAs("id")] string customerId);
+        Task<Customer> GetCustomerById([AliasAs("id")] Guid customerId);
 
         [Post("/customers")]
         Task RegisterCustomer(RegisterCustomer command);

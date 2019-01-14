@@ -192,7 +192,7 @@ namespace PitStop.Controllers
             return vehicles.Select(v =>
                 new SelectListItem
                 {
-                    Value = v.Codigo,
+                    Value = v.Codigo.ToString(),
                     Text = $"{v.Marca} {v.Modelo} [{v.Matricula}]"
                 });
         }

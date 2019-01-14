@@ -6,8 +6,8 @@ namespace Pitstop.Application.VehicleManagement.Model
 {
     public class Vehicle
     {
-        public string Codigo { get; set; }
-        public string CustomerId { get; set; }        
+        public Guid Codigo { get; set; }
+        public Guid CustomerId { get; set; }        
         public string Matricula { get; set; }
         public string Marca { get; set; }
         public string Modelo { get; set; }
@@ -18,11 +18,11 @@ namespace Pitstop.Application.VehicleManagement.Model
         public string Extras { get; set; }
         public string Observaciones { get; set; }
         public string Aviso { get; set; }
-        public string PrimerDiaFlota { get; set; }
-        public string DevolucionPrevista { get; set; }
-        public string UltimoDiaFlota { get; set; }
-        public string FechaFabricacion { get; set; }
-        public string FechaMatriculacion { get; set; }
+        public DateTime PrimerDiaFlota { get; set; }
+        public DateTime DevolucionPrevista { get; set; }
+        public DateTime UltimoDiaFlota { get; set; }
+        public DateTime FechaFabricacion { get; set; }
+        public DateTime FechaMatriculacion { get; set; }
         public string Km { get; set; }
         public string Combustible { get; set; }
         public string DepositoLitros { get; set; }
