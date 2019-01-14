@@ -53,8 +53,7 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                 b.Property<string>("Plazas");
                 b.Property<string>("Puertas");
 
-                b.Property<string>("CustomerId");
-                b.ToTable("Customer");
+                    b.ToTable("Vehicle");
             });
         }
     }

@@ -123,10 +123,10 @@ namespace PitStop.Controllers
                         DateTime startTime = inputModel.Date.Add(inputModel.StartTime.TimeOfDay);
                         DateTime endTime = inputModel.Date.Add(inputModel.EndTime.TimeOfDay);
                         Vehicle vehicle = await _workshopManagementAPI.GetVehicleByLicenseNumber(inputModel.SelectedVehicleLicenseNumber);
-                        Customer customer = await _workshopManagementAPI.GetCustomerById(vehicle.CustomerId);
+                      //  Customer customer = await _workshopManagementAPI.GetCustomerById(vehicle.CustomerId);
 
                         PlanMaintenanceJob planMaintenanceJobCommand = new PlanMaintenanceJob(Guid.NewGuid(), Guid.NewGuid(), startTime, endTime,
-                            (customer.CustomerId, customer.Nombre, customer.Telefono),
+                            //(customer.CustomerId, customer.Nombre, customer.Telefono),
                             (vehicle.Codigo, vehicle.Matricula, vehicle.Marca), inputModel.Description);
                         await _workshopManagementAPI.PlanMaintenanceJob(dateStr, planMaintenanceJobCommand);
                     }

@@ -8,7 +8,6 @@ namespace Pitstop.Application.VehicleManagement.Events
     public class VehicleRegistered : Event
     {
         public readonly Guid Codigo;
-        public readonly Guid CustomerId;
         public readonly string Matricula;
         public readonly string Marca;
         public readonly string Modelo;
@@ -33,7 +32,6 @@ namespace Pitstop.Application.VehicleManagement.Events
         public VehicleRegistered(Guid messageId,
             Guid codigo,
             string matricula,
-            Guid customerId,
             string marca,
             string modelo,
             string color,
@@ -58,7 +56,6 @@ namespace Pitstop.Application.VehicleManagement.Events
         {
             Codigo = codigo;
             Matricula = matricula;
-            CustomerId = customerId;
             Marca = marca;
             Modelo = modelo;
             Color = color;

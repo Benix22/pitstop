@@ -19,10 +19,10 @@
             <td width="150">Modelo :</td>
             <td><b>@Model.Vehicle.Modelo</b></td>
         </tr>
-        <tr>
+        @*<tr>
             <td width="150">Owner :</td>
-            <td><b><a href='@(Url.Action("Details", "CustomerManagement", new { id = Model.Vehicle.CustomerId }))'>@Model.Owner</a></b></td>
-        </tr>
+            <td><b><a href='@(Url.Action("Details", "CustomerManagement", new { id = Model.Vehicle.CustomerId }))'>@Model.CustomerId</a></b></td>
+        </tr>*@
     </tbody>
 </table>
 <span><a id="BackButton" asp-action="Index" asp-controller="VehicleManagement" class="btn btn-default">Back</a></span>

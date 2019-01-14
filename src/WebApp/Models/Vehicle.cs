@@ -11,9 +11,6 @@ namespace Pitstop.Models
         [Display(Name = "Código")]
         public Guid Codigo { get; set; }
 
-        [Display(Name = "Cliente")]
-        public Guid CustomerId { get; set; }
-
         [Display(Name = "Matrícula")]
         public string Matricula { get; set; }
 
