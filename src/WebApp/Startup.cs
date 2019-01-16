@@ -14,6 +14,7 @@ using Serilog;
 using Microsoft.Extensions.HealthChecks;
 using System.Threading.Tasks;
 using StackExchange.Redis;
+using Pitstop.Application.VehicleManagement.Model;
 
 namespace PitStop
 {
@@ -94,8 +95,10 @@ namespace PitStop
                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()))
                     .ForCtorParam("customerId", opt => opt.MapFrom(c => Guid.NewGuid()));
                 cfg.CreateMap<Vehicle, RegisterVehicle>()
-                    .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()))
-                    .ForCtorParam("codigo", opt => opt.MapFrom(c => Guid.NewGuid()));
+                    .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
+                //    .ForCtorParam("codigo", opt => opt.MapFrom(c => Guid.NewGuid()));
+                cfg.CreateMap<Owner,RegisterOwner>()
+                    .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
                 //cfg.CreateMap<VehicleManagementNewViewModel, RegisterVehicle>().ConvertUsing((vm, rv) =>
                 //    new RegisterVehicle(Guid.NewGuid(), vm.Vehicle.Codigo, vm.Vehicle.Matricula, vm.SelectedCustomerId
                 //    , vm.Vehicle.Marca, vm.Vehicle.Modelo, vm.Vehicle.Color, vm.Vehicle.Bastidor, vm.Vehicle.Grupo, vm.Vehicle.Daños,

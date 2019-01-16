@@ -27,19 +27,20 @@ namespace Pitstop.Application.VehicleManagement.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
-            return Ok(await _dbContext.Owners.ToListAsync());
+            var items = await _dbContext.Owners.ToListAsync();
+            return Ok(items);
         }
 
         [HttpGet]
         [Route("{ownerId}", Name = "GetById")]
         public async Task<IActionResult> GetById(int ownerId)
         {
-            var vehicle = await _dbContext.Owners.FirstOrDefaultAsync(v => v.OwnerId == ownerId);
-            if (vehicle == null)
+            var owner = await _dbContext.Owners.FirstOrDefaultAsync(v => v.OwnerId == ownerId);
+            if (owner == null)
             {
                 return NotFound();
             }
-            return Ok(vehicle);
+            return Ok(owner);
         }
 
         [HttpPost]
@@ -49,14 +50,14 @@ namespace Pitstop.Application.VehicleManagement.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    // insert vehicle
+                    // insert owner
                     Owner owner = Mapper.Map<Owner>(command);
                     _dbContext.Owners.Add(owner);
                     await _dbContext.SaveChangesAsync();
 
                     // send event
-                    var e = Mapper.Map<VehicleRegistered>(command);
-                    await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
+                    //var e = Mapper.Map<OwnerRegistered>(command);
+                    //await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
 
                     //return result
                     return CreatedAtRoute("GetById", new { ownerID = owner.OwnerId }, owner);

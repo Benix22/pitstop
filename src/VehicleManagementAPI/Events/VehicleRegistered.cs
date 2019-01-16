@@ -7,7 +7,7 @@ namespace Pitstop.Application.VehicleManagement.Events
 {
     public class VehicleRegistered : Event
     {
-        public readonly Guid Codigo;
+        public readonly int Codigo;
         public readonly string Matricula;
         public readonly string Marca;
         public readonly string Modelo;
@@ -30,7 +30,7 @@ namespace Pitstop.Application.VehicleManagement.Events
         public readonly string Puertas;
 
         public VehicleRegistered(Guid messageId,
-            Guid codigo,
+            int codigo,
             string matricula,
             string marca,
             string modelo,

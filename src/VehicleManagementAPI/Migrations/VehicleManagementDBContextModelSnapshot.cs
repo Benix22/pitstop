@@ -25,11 +25,13 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                 b.Property<string>("Direccion");
                 b.Property<string>("Contacto");
                 b.Property<string>("Telefono");
+
+                b.ToTable("Owner");
             });
 
             modelBuilder.Entity("Pitstop.Application.VehicleManagement.Model.Vehicle", b =>
             {
-                b.Property<Guid>("Codigo")
+                b.Property<int>("Codigo")
                     .ValueGeneratedOnAdd();
 
                 b.Property<string>("Matricula");
@@ -53,7 +55,7 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                 b.Property<string>("Plazas");
                 b.Property<string>("Puertas");
 
-                    b.ToTable("Vehicle");
+                b.ToTable("Vehicle");
             });
         }
     }

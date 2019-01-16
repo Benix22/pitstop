@@ -17,6 +17,7 @@ using Serilog;
 using Microsoft.Extensions.HealthChecks;
 using Pitstop.Infrastructure.ServiceDiscovery;
 using Consul;
+using Pitstop.Application.VehicleOwnerManagement.Commands;
 
 namespace Pitstop.Application.VehicleManagement
 {
@@ -96,7 +97,7 @@ namespace Pitstop.Application.VehicleManagement
             });
 
             // register service in Consul
-            app.RegisterWithConsul(lifetime);            
+            //app.RegisterWithConsul(lifetime);            
         }
 
         private void SetupAutoMapper()
@@ -104,11 +105,14 @@ namespace Pitstop.Application.VehicleManagement
             // setup automapper
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<RegisterVehicle, Vehicle>();
-                cfg.CreateMap<Vehicle, RegisterVehicle>();
                 cfg.CreateMap<Vehicle, RegisterVehicle>()
                  .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid())); ;
                 cfg.CreateMap<RegisterVehicle, VehicleRegistered>()
+                    .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
+
+                cfg.CreateMap<Owner, RegisterOwner>()
+                 .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid())); ;
+                cfg.CreateMap<RegisterOwner, Owner>()
                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
             });
         }

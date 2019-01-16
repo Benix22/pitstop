@@ -17,7 +17,6 @@ namespace PitStop.Controllers
     public class VehicleOwnerManagementController : Controller
     {
         private IVehicleManagementAPI _vehicleManagementAPI;
-        private ICustomerManagementAPI _customerManagementAPI;
         private readonly ILogger _logger;
         private ResiliencyHelper _resiliencyHelper;
 

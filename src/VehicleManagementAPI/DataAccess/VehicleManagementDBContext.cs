@@ -24,10 +24,12 @@ namespace Pitstop.Application.VehicleManagement.DataAccess
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Vehicle>().HasKey(m => m.Codigo);
+            builder.Entity<Vehicle>().HasKey(m => m.Codigo);            
             builder.Entity<Vehicle>().ToTable("Vehicle");
+
             builder.Entity<Owner>().HasKey(m => m.OwnerId);
-            builder.Entity<Vehicle>().ToTable("Owner");
+            builder.Entity<Owner>().ToTable("Owner");
+
             base.OnModelCreating(builder);
         }
     }

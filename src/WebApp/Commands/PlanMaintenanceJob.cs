@@ -11,12 +11,12 @@ namespace WebApp.Commands
         public readonly DateTime StartTime;
         public readonly DateTime EndTime;
         public readonly (string Id, string Name, string TelephoneNumber) CustomerInfo;
-        public readonly (Guid Codigo, string Marca, string Modelo) VehicleInfo;
+        public readonly (int Codigo, string Marca, string Modelo) VehicleInfo;
         public readonly string Description;
 
         public PlanMaintenanceJob(Guid messageId, Guid jobId, DateTime startTime, DateTime endTime,
             //(string Id, string Name, string TelephoneNumber) customerInfo,
-            (Guid Codigo, string Marca, string Modelo) vehicleInfo,
+            (int Codigo, string Marca, string Modelo) vehicleInfo,
             string description) : base(messageId)
         {
             JobId = jobId;

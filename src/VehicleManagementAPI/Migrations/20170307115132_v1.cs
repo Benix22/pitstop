@@ -27,8 +27,9 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                 name: "Vehicle",
                 columns: table => new
                 {
-                    Codigo = table.Column<string>(nullable: false),
+                    Codigo = table.Column<int>(nullable: false),
 
+                    OwnerId = table.Column<int>(nullable:false),
                     Matricula = table.Column<string>(nullable: true),
                     Marca = table.Column<string>(nullable: true),
                     Modelo = table.Column<string>(nullable: true),
@@ -56,7 +57,7 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                     table.PrimaryKey("PK_Vehicle", x => x.Codigo);
                     table.ForeignKey(
                         name: "FK_Vehicle_OwnerId",
-                        column: x => x.CustomerId,
+                        column: x => x.OwnerId,
                         principalTable: "Owner",
                         principalColumn: "OwnerId",
                         onDelete: ReferentialAction.Restrict);

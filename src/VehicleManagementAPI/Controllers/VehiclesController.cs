@@ -40,7 +40,7 @@ namespace Pitstop.Application.VehicleManagement.Controllers
 
         [HttpGet]
         [Route("{codigo}", Name = "GetByCodigo")]
-        public async Task<IActionResult> GetByCodigo(Guid codigo)
+        public async Task<IActionResult> GetByCodigo(int codigo)
         {
             try
             {

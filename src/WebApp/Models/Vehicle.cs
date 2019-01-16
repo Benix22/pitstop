@@ -9,7 +9,7 @@ namespace Pitstop.Models
     public class Vehicle
     {
         [Display(Name = "Código")]
-        public Guid Codigo { get; set; }
+        public int Codigo { get; set; }
 
         [Display(Name = "Matrícula")]
         public string Matricula { get; set; }
