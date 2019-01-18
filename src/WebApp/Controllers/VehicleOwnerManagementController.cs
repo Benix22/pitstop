@@ -21,7 +21,7 @@ namespace PitStop.Controllers
         private ResiliencyHelper _resiliencyHelper;
 
         public VehicleOwnerManagementController(IVehicleManagementAPI vehicleManagementAPI, 
-            ICustomerManagementAPI customerManagementAPI, ILogger<VehicleManagementController> logger)
+            ICustomerManagementAPI customerManagementAPI, ILogger<VehicleOwnerManagementController> logger)
         {
             _vehicleManagementAPI = vehicleManagementAPI;
             _logger = logger;
@@ -76,7 +76,7 @@ namespace PitStop.Controllers
             {
                 return await _resiliencyHelper.ExecuteResilient(async () =>
                 {
-                    RegisterOwner cmd = Mapper.Map<RegisterOwner>(inputModel);
+                    RegisterOwner cmd = Mapper.Map<RegisterOwner>(inputModel.Owner);
                     await _vehicleManagementAPI.RegisterOwner(cmd);
                     return RedirectToAction("Index");
                 }, View("Offline", new VehicleOwnerManagementOfflineViewModel()));

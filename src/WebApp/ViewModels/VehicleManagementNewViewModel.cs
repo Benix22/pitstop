@@ -9,6 +9,6 @@ namespace Pitstop.ViewModels
     {
         public Vehicle Vehicle { get; set; }
 
-     //   public IEnumerable<SelectListItem> Customers { get; set; }
+        public IEnumerable<SelectListItem> Owners { get; set; }
     }
 }

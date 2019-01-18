@@ -10,6 +10,5 @@ namespace Pitstop.ViewModels
     public class VehicleOwnerManagementDetailsViewModel
     {
         public Owner Owner { get; set; }
-        public IEnumerable<Vehicle> Vehicles { get; set; }
     }
 }

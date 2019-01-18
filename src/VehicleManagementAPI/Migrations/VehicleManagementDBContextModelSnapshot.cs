@@ -34,6 +34,7 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                 b.Property<int>("Codigo")
                     .ValueGeneratedOnAdd();
 
+                b.Property<int>("OwnerId");
                 b.Property<string>("Matricula");
                 b.Property<string>("Marca");
                 b.Property<string>("Modelo");

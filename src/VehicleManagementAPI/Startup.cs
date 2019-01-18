@@ -97,7 +97,7 @@ namespace Pitstop.Application.VehicleManagement
             });
 
             // register service in Consul
-            //app.RegisterWithConsul(lifetime);            
+            app.RegisterWithConsul(lifetime);            
         }
 
         private void SetupAutoMapper()
@@ -105,15 +105,22 @@ namespace Pitstop.Application.VehicleManagement
             // setup automapper
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<Vehicle, RegisterVehicle>()
-                 .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid())); ;
-                cfg.CreateMap<RegisterVehicle, VehicleRegistered>()
-                    .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
+                try
+                {
+                    cfg.CreateMap<Vehicle, RegisterVehicle>()
+                            .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid())); ;
+                    cfg.CreateMap<RegisterVehicle, VehicleRegistered>()
+                        .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
 
-                cfg.CreateMap<Owner, RegisterOwner>()
-                 .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid())); ;
-                cfg.CreateMap<RegisterOwner, Owner>()
-                    .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
+                    cfg.CreateMap<Owner, RegisterOwner>()
+                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid())); ;
+                    cfg.CreateMap<RegisterOwner, OwnerRegistered>()
+                        .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             });
         }
     }

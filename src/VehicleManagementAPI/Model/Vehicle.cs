@@ -7,6 +7,7 @@ namespace Pitstop.Application.VehicleManagement.Model
     public class Vehicle
     {
         public int Codigo { get; set; }
+        public int OwnerId { get; set; }
         public string Matricula { get; set; }
         public string Marca { get; set; }
         public string Modelo { get; set; }

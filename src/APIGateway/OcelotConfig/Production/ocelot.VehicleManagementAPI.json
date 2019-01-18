@@ -1,24 +1,44 @@
 ﻿{
-  "ReRoutes": [
-    {
-      "Key": "VehicleManagementAPI",
-      "UpstreamPathTemplate": "/api/vehicles/",
-      "DownstreamPathTemplate": "/api/vehicles",
-      "DownstreamScheme": "http",
-      "ServiceName": "vehiclemanagementapi",
-      "LoadBalancerOptions": {
-        "Type": "RoundRobin"
-      }
-    },
-    {
-      "Key": "VehicleManagementAPI",
-      "UpstreamPathTemplate": "/api/vehicles/{trailingSegments}",
-      "DownstreamPathTemplate": "/api/vehicles/{trailingSegments}",
-      "DownstreamScheme": "http",
-      "ServiceName": "vehiclemanagementapi",
-      "LoadBalancerOptions": {
-        "Type": "RoundRobin"
-      }
-    }
-  ]
+    "ReRoutes": [
+        {
+            "Key": "VehicleManagementAPI",
+            "UpstreamPathTemplate": "/api/vehicles/",
+            "DownstreamPathTemplate": "/api/vehicles",
+            "DownstreamScheme": "http",
+            "ServiceName": "vehiclemanagementapi",
+            "LoadBalancerOptions": {
+                "Type": "RoundRobin"
+            }
+        },
+        {
+            "Key": "VehicleManagementAPI",
+            "UpstreamPathTemplate": "/api/owners/",
+            "DownstreamPathTemplate": "/api/owners",
+            "DownstreamScheme": "http",
+            "ServiceName": "vehiclemanagementapi",
+            "LoadBalancerOptions": {
+                "Type": "RoundRobin"
+            }
+        },
+        {
+            "Key": "VehicleManagementAPI",
+            "UpstreamPathTemplate": "/api/vehicles/{trailingSegments}",
+            "DownstreamPathTemplate": "/api/vehicles/{trailingSegments}",
+            "DownstreamScheme": "http",
+            "ServiceName": "vehiclemanagementapi",
+            "LoadBalancerOptions": {
+                "Type": "RoundRobin"
+            }
+        },
+        {
+            "Key": "VehicleManagementAPI",
+            "UpstreamPathTemplate": "/api/owners/{trailingSegments}",
+            "DownstreamPathTemplate": "/api/owners/{trailingSegments}",
+            "DownstreamScheme": "http",
+            "ServiceName": "vehiclemanagementapi",
+            "LoadBalancerOptions": {
+                "Type": "RoundRobin"
+            }
+        }
+    ]
 }

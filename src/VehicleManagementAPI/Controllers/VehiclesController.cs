@@ -69,7 +69,7 @@ namespace Pitstop.Application.VehicleManagement.Controllers
                     _dbContext.Vehicles.Add(vehicle);
                     await _dbContext.SaveChangesAsync();
 
-                    // send event
+                    // send event.
                     //var e = Mapper.Map<VehicleRegistered>(command);
                     //await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
 

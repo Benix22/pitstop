@@ -14,6 +14,7 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                 {
                     OwnerId = table.Column<int>(nullable: false),
                     RazonSocial = table.Column<string>(nullable: false),
+                    CIF = table.Column<string>(nullable: false),
                     Direccion = table.Column<string>(nullable: true),
                     Contacto = table.Column<string>(nullable: true),
                     Telefono = table.Column<string>(nullable: true)

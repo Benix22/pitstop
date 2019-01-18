@@ -16,23 +16,49 @@ namespace Pitstop.Application.VehicleManagement.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1");
 
-            modelBuilder.Entity("Pitstop.Application.VehicleManagement.Model.Vehicle", b =>
-                {
-                    b.Property<string>("LicenseNumber")
+            modelBuilder.Entity("Pitstop.Application.VehicleManagement.Model.Owner", b =>
+            {
+                b.Property<int>("OwnerId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Brand");
+                b.Property<string>("RazonSocial");
+                b.Property<string>("CIF");
+                b.Property<string>("Direccion");
+                b.Property<string>("Contacto");
+                b.Property<string>("Telefono");
 
-                    b.Property<DateTimeOffset>("LastUpdateTimestamp");
+                b.ToTable("Owner");
+            });
 
-                    b.Property<string>("OwnerId");
+            modelBuilder.Entity("Pitstop.Application.VehicleManagement.Model.Vehicle", b =>
+            {
+                b.Property<int>("Codigo")
+                    .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Type");
+                b.Property<int>("OwnerId");
+                b.Property<string>("Matricula");
+                b.Property<string>("Marca");
+                b.Property<string>("Modelo");
+                b.Property<string>("Color");
+                b.Property<string>("Bastidor");
+                b.Property<string>("Grupo");
+                b.Property<string>("Daños");
+                b.Property<string>("Extras");
+                b.Property<string>("Observaciones");
+                b.Property<string>("Aviso");
+                b.Property<DateTime>("PrimerDiaFlota");
+                b.Property<DateTime>("DevolucionPrevista");
+                b.Property<DateTime>("UltimoDiaFlota");
+                b.Property<DateTime>("FechaFabricacion");
+                b.Property<DateTime>("FechaMatriculacion");
+                b.Property<string>("Km");
+                b.Property<string>("Combustible");
+                b.Property<string>("DepositoLitros");
+                b.Property<string>("Plazas");
+                b.Property<string>("Puertas");
 
-                    b.HasKey("LicenseNumber");
-
-                    b.ToTable("Vehicle");
-                });
+                b.ToTable("Vehicle");
+            });
         }
     }
 }

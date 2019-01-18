@@ -1,4 +1,5 @@
-﻿using Pitstop.Models;
+﻿using Pitstop.Application.VehicleManagement.Model;
+using Pitstop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

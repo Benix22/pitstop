@@ -27,8 +27,15 @@ namespace Pitstop.Application.VehicleManagement.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
-            var items = await _dbContext.Owners.ToListAsync();
-            return Ok(items);
+            try
+            {
+                var items = await _dbContext.Owners.ToListAsync();
+                return Ok(items);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         [HttpGet]

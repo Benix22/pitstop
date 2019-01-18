@@ -8,6 +8,7 @@ namespace WebApp.Commands
     public class RegisterVehicle : Command
     {
         public readonly int Codigo;
+        public readonly int OwnerId;
         public readonly string Matricula;
         public readonly string Marca;
         public readonly string Modelo;
@@ -31,6 +32,7 @@ namespace WebApp.Commands
 
         public RegisterVehicle(Guid messageId,
             int codigo,
+            int ownerId,
             string matricula,
             string marca,
             string modelo,
@@ -55,6 +57,7 @@ namespace WebApp.Commands
             base(messageId)
         {
             Codigo = codigo;
+            OwnerId = ownerId;
             Matricula = matricula;
             Marca = marca;
             Modelo = modelo;

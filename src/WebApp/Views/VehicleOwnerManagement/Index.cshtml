@@ -9,17 +9,19 @@
         <tr>
             <th>Razón Social</th>
             <th>CIF</th>
+            <th>Contacto</th>
             <th>Telefono</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var owner in Model.Owners)
         {
-            <tr class="clickable" onclick="location.href = '@(Url.Action("Details", "VehicleOwnerManagement", new { id = owner.OwnerId }))'">
-                <td>@owner.RazonSocial</td>
-                <td>@owner.CIF</td>
-                <td>@owner.Telefono</td>
-            </tr>
+        <tr class="clickable" onclick="location.href = '@(Url.Action("Details", "VehicleOwnerManagement", new { id = owner.OwnerId }))'">
+            <td>@owner.RazonSocial</td>
+            <td>@owner.CIF</td>
+            <td>@owner.Contacto</td>
+            <td>@owner.Telefono</td>
+        </tr>
         }
     </tbody>
 </table>
