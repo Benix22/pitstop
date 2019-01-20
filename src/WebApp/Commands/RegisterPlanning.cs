@@ -1,5 +1,5 @@
-using System;
 using Pitstop.Infrastructure.Messaging;
+using System;
 
 namespace WebApp.Commands
 {

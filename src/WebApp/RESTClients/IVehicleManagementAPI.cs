@@ -26,5 +26,14 @@ namespace WebApp.RESTClients
 
         [Post("/owners")]
         Task RegisterOwner(RegisterOwner command);
+
+        [Get("/insurances")]
+        Task<List<Insurance>> GetInsurances();
+
+        [Get("/insurances/{id}")]
+        Task<Insurance> GeInsuranceById([AliasAs("id")] int insuranceId);
+
+        [Post("/insurances")]
+        Task RegisterInsurance(RegisterInsurance command);
     }
 }

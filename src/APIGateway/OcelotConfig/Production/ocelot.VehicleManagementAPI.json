@@ -1,44 +1,64 @@
 ﻿{
-    "ReRoutes": [
-        {
-            "Key": "VehicleManagementAPI",
-            "UpstreamPathTemplate": "/api/vehicles/",
-            "DownstreamPathTemplate": "/api/vehicles",
-            "DownstreamScheme": "http",
-            "ServiceName": "vehiclemanagementapi",
-            "LoadBalancerOptions": {
-                "Type": "RoundRobin"
-            }
-        },
-        {
-            "Key": "VehicleManagementAPI",
-            "UpstreamPathTemplate": "/api/owners/",
-            "DownstreamPathTemplate": "/api/owners",
-            "DownstreamScheme": "http",
-            "ServiceName": "vehiclemanagementapi",
-            "LoadBalancerOptions": {
-                "Type": "RoundRobin"
-            }
-        },
-        {
-            "Key": "VehicleManagementAPI",
-            "UpstreamPathTemplate": "/api/vehicles/{trailingSegments}",
-            "DownstreamPathTemplate": "/api/vehicles/{trailingSegments}",
-            "DownstreamScheme": "http",
-            "ServiceName": "vehiclemanagementapi",
-            "LoadBalancerOptions": {
-                "Type": "RoundRobin"
-            }
-        },
-        {
-            "Key": "VehicleManagementAPI",
-            "UpstreamPathTemplate": "/api/owners/{trailingSegments}",
-            "DownstreamPathTemplate": "/api/owners/{trailingSegments}",
-            "DownstreamScheme": "http",
-            "ServiceName": "vehiclemanagementapi",
-            "LoadBalancerOptions": {
-                "Type": "RoundRobin"
-            }
-        }
-    ]
+  "ReRoutes": [
+    {
+      "Key": "VehicleManagementAPI",
+      "UpstreamPathTemplate": "/api/Vehicles/",
+      "DownstreamPathTemplate": "/api/vehicles",
+      "DownstreamScheme": "http",
+      "ServiceName": "vehiclemanagementapi",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "Key": "VehicleManagementAPI",
+      "UpstreamPathTemplate": "/api/Owners/",
+      "DownstreamPathTemplate": "/api/owners",
+      "DownstreamScheme": "http",
+      "ServiceName": "vehiclemanagementapi",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "Key": "VehicleManagementAPI",
+      "UpstreamPathTemplate": "/api/Insurances/",
+      "DownstreamPathTemplate": "/api/insurances",
+      "DownstreamScheme": "http",
+      "ServiceName": "vehiclemanagementapi",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "Key": "VehicleManagementAPI",
+      "UpstreamPathTemplate": "/api/Vehicles/{trailingSegments}",
+      "DownstreamPathTemplate": "/api/vehicles/{trailingSegments}",
+      "DownstreamScheme": "http",
+      "ServiceName": "vehiclemanagementapi",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "Key": "VehicleManagementAPI",
+      "UpstreamPathTemplate": "/api/Owners/{trailingSegments}",
+      "DownstreamPathTemplate": "/api/owners/{trailingSegments}",
+      "DownstreamScheme": "http",
+      "ServiceName": "vehiclemanagementapi",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "Key": "VehicleManagementAPI",
+      "UpstreamPathTemplate": "/api/Insurances/{trailingSegments}",
+      "DownstreamPathTemplate": "/api/insurances/{trailingSegments}",
+      "DownstreamScheme": "http",
+      "ServiceName": "vehiclemanagementapi",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    }
+  ]
 }

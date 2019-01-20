@@ -1,0 +1,47 @@
+﻿@model Pitstop.ViewModels.VehicleInsuranceManagementDetailsViewModel
+@{
+    ViewData["Title"] = "Insurance Details";
+}
+
+<h3 id="PageTitle">Vehicle Insurance Management - Details</h3>
+
+<table class="table">
+    <tbody>
+        <tr>
+            <td width="150">Compañia :</td>
+            <td><b>@Model.Insurance.Nombre</b></td>
+        </tr>
+        <tr>
+            <td width="150">Nº Poliza :</td>
+            <td><b>@Model.Insurance.Poliza</b></td>
+        </tr>
+        <tr>
+            <td width="150">Corredor :</td>
+            <td><b>@Model.Insurance.Corredor</b></td>
+        </tr>
+        <tr>
+            <td width="150">FechaAlta :</td>
+            <td><b>@Model.Insurance.FechaAlta</b></td>
+        </tr>
+        <tr>
+            <td width="150">FechaVencimiento :</td>
+            <td><b>@Model.Insurance.FechaVencimiento</b></td>
+        </tr>
+        <tr>
+            <td width="150">Importe :</td>
+            <td><b>@Model.Insurance.Importe</b></td>
+        </tr>
+        <tr>
+            <td width="150">Tipo :</td>
+            <td><b>@Model.Insurance.Tipo</b></td>
+        </tr>
+        <tr>
+            <td width="150">Vehículo :</td>
+            <td><b>@string.Format("{0} {1} ({2})", Model.Vehicle.Marca, Model.Vehicle.Modelo, Model.Vehicle.Matricula)</b></td>
+        </tr>
+    </tbody>
+</table>
+<span><a id="BackButton" asp-action="Index" asp-controller="VehicleInsuranceManagement" class="btn btn-default">Back</a></span>
+
+
+

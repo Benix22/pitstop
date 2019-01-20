@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Pitstop.Application.VehicleManagement.Commands;
 using Pitstop.Application.VehicleManagement.DataAccess;
 using Pitstop.Application.VehicleManagement.Events;
 using Pitstop.Application.VehicleManagement.Model;
-using Pitstop.Application.VehicleOwnerManagement.Commands;
 using Pitstop.Infrastructure.Messaging;
 using System;
 using System.Threading.Tasks;
@@ -13,12 +13,12 @@ using System.Threading.Tasks;
 namespace Pitstop.Application.VehicleManagement.Controllers
 {
     [Route("/api/[controller]")]
-    public class OwnersController : Controller
+    public class InsurancesController : Controller
     {
         IMessagePublisher _messagePublisher;
         VehicleManagementDBContext _dbContext;
 
-        public OwnersController(VehicleManagementDBContext dbContext, IMessagePublisher messagePublisher)
+        public InsurancesController(VehicleManagementDBContext dbContext, IMessagePublisher messagePublisher)
         {
             _dbContext = dbContext;
             _messagePublisher = messagePublisher;
@@ -29,7 +29,7 @@ namespace Pitstop.Application.VehicleManagement.Controllers
         {
             try
             {
-                var items = await _dbContext.Owners.ToListAsync();
+                var items = await _dbContext.Insurances.ToListAsync();
                 return Ok(items);
             }
             catch (Exception ex)
@@ -39,35 +39,35 @@ namespace Pitstop.Application.VehicleManagement.Controllers
         }
 
         [HttpGet]
-        [Route("{ownerId}", Name = "GetOwnerById")]
-        public async Task<IActionResult> GetById(int ownerId)
+        [Route("{insuranceId}", Name = "GetInsuranceById")]
+        public async Task<IActionResult> GetInsuranceById(int insuranceId)
         {
-            var owner = await _dbContext.Owners.FirstOrDefaultAsync(v => v.OwnerId == ownerId);
-            if (owner == null)
+            var insurance = await _dbContext.Insurances.FirstOrDefaultAsync(v => v.InsuranceId == insuranceId);
+            if (insurance == null)
             {
                 return NotFound();
             }
-            return Ok(owner);
+            return Ok(insurance);
         }
 
         [HttpPost]
-        public async Task<IActionResult> RegisterAsync([FromBody] RegisterOwner command)
+        public async Task<IActionResult> RegisterAsync([FromBody] RegisterInsurance command)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    // insert owner
-                    Owner owner = Mapper.Map<Owner>(command);
-                    _dbContext.Owners.Add(owner);
+                    // insert insurance
+                    Insurance insurance = Mapper.Map<Insurance>(command);
+                    _dbContext.Insurances.Add(insurance);
                     await _dbContext.SaveChangesAsync();
 
                     // send event
-                    //var e = Mapper.Map<OwnerRegistered>(command);
+                    //var e = Mapper.Map<InsuranceRegistered>(command);
                     //await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
 
                     //return result
-                    return CreatedAtRoute("GetOwnerById", new { ownerID = owner.OwnerId }, owner);
+                    return CreatedAtRoute("GetInsuranceById", new { insuranceId = insurance.InsuranceId }, insurance);
                 }
                 return BadRequest();
             }

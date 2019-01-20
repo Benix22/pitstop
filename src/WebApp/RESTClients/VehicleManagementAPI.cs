@@ -86,5 +86,38 @@ namespace WebApp.RESTClients
         }
 
         #endregion
+
+        #region Insurance       
+
+        public async Task<List<Insurance>> GetInsurances()
+        {
+            return await _client.GetInsurances();
+        }
+
+        public async Task<Insurance> GeInsuranceById([AliasAs("id")] int insuranceId)
+        {
+            try
+            {
+                return await _client.GeInsuranceById(insuranceId);
+            }
+            catch (ApiException ex)
+            {
+                if (ex.StatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
+        public async Task RegisterInsurance(RegisterInsurance command)
+        {
+            await _client.RegisterInsurance(command);
+        }
+
+        #endregion
     }
 }

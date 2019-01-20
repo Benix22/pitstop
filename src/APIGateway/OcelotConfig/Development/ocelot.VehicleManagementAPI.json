@@ -1,52 +1,76 @@
 ﻿{
-    "ReRoutes": [
+  "ReRoutes": [
+    {
+      "Key": "VehicleManagementAPI",
+      "UpstreamPathTemplate": "/api/Vehicles/",
+      "DownstreamPathTemplate": "/api/vehicles",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
         {
-            "Key": "VehicleManagementAPI",
-            "UpstreamPathTemplate": "/api/vehicles/",
-            "DownstreamPathTemplate": "/api/vehicles",
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 5000
-                }
-            ]
-        },
-        {
-            "Key": "VehicleManagementAPI",
-            "UpstreamPathTemplate": "/api/Owners/",
-            "DownstreamPathTemplate": "/api/owners",
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 5000
-                }
-            ]
-        },
-        {
-            "Key": "VehicleManagementAPI",
-            "UpstreamPathTemplate": "/api/vehicles/{trailingSegments}",
-            "DownstreamPathTemplate": "/api/vehicles/{trailingSegments}",
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 5000
-                }
-            ]
-        },
-        {
-            "Key": "VehicleManagementAPI",
-            "UpstreamPathTemplate": "/api/owners/{trailingSegments}",
-            "DownstreamPathTemplate": "/api/owners/{trailingSegments}",
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 5000
-                }
-            ]
+          "Host": "localhost",
+          "Port": 5000
         }
-    ]
+      ]
+    },
+    {
+      "Key": "VehicleManagementAPI",
+      "UpstreamPathTemplate": "/api/Owners/",
+      "DownstreamPathTemplate": "/api/owners",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5000
+        }
+      ]
+    },
+    {
+      "Key": "VehicleManagementAPI",
+      "UpstreamPathTemplate": "/api/Insurances/",
+      "DownstreamPathTemplate": "/api/insurances",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5000
+        }
+      ]
+    },
+    {
+      "Key": "VehicleManagementAPI",
+      "UpstreamPathTemplate": "/api/Vehicles/{trailingSegments}",
+      "DownstreamPathTemplate": "/api/vehicles/{trailingSegments}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5000
+        }
+      ]
+    },
+    {
+      "Key": "VehicleManagementAPI",
+      "UpstreamPathTemplate": "/api/Owners/{trailingSegments}",
+      "DownstreamPathTemplate": "/api/owners/{trailingSegments}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5000
+        }
+      ]
+    },
+    {
+      "Key": "VehicleManagementAPI",
+      "UpstreamPathTemplate": "/api/Insurances/{trailingSegments}",
+      "DownstreamPathTemplate": "/api/insurances/{trailingSegments}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5000
+        }
+      ]
+    }
+  ]
 }

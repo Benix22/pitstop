@@ -21,6 +21,7 @@ namespace Pitstop.Application.VehicleManagement.DataAccess
 
         public DbSet<Owner> Owners { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<Insurance> Insurances { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -29,6 +30,9 @@ namespace Pitstop.Application.VehicleManagement.DataAccess
 
             builder.Entity<Vehicle>().HasKey(m => m.Codigo);            
             builder.Entity<Vehicle>().ToTable("Vehicle");
+
+            builder.Entity<Insurance>().HasKey(m => m.InsuranceId);
+            builder.Entity<Insurance>().ToTable("Insurance");
 
             base.OnModelCreating(builder);
         }
