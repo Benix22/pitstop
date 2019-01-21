@@ -62,18 +62,17 @@ namespace PitStop.Controllers
         [HttpGet]
         public async Task<IActionResult> New()
         {
-            return await _resiliencyHelper.ExecuteResilient(async () =>
-            {
-                // get customerlist
-               // var customers = await _customerManagementAPI.GetCustomers();
+            
+                //get ownersList
+                var owners = await _vehicleManagementAPI.GetOwners();
 
                 var model = new VehicleManagementNewViewModel
                 {
-                    Vehicle = new Vehicle()
-                   // Customers = customers.Select(c => new SelectListItem { Value = c.CustomerId, Text = c.Nombre })
+                    Vehicle = new Vehicle(),
+                    Owners = owners.Select(c => new SelectListItem { Value = c.OwnerId.ToString(), Text = c.RazonSocial })
                 };
                 return View(model);
-            }, View("Offline", new VehicleManagementOfflineViewModel()));
+           
         }
 
         [HttpPost]
@@ -83,9 +82,16 @@ namespace PitStop.Controllers
             {
                 return await _resiliencyHelper.ExecuteResilient(async () =>
                 {
+                    try
+                {
                     RegisterVehicle cmd = Mapper.Map<RegisterVehicle>(inputModel.Vehicle);
                     await _vehicleManagementAPI.RegisterVehicle(cmd);
                     return RedirectToAction("Index");
+                } 
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
                 }, View("Offline", new VehicleManagementOfflineViewModel()));
             }
             else
