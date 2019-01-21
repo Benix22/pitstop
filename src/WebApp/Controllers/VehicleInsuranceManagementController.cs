@@ -14,14 +14,14 @@ using Pitstop.Application.VehicleManagement.Model;
 
 namespace PitStop.Controllers
 {
-    public class VehicleInsuranceController : Controller
+    public class VehicleInsuranceManagement : Controller
     {
         private IVehicleManagementAPI _vehicleManagementAPI;
         private readonly ILogger _logger;
         private ResiliencyHelper _resiliencyHelper;
 
-        public VehicleInsuranceController(IVehicleManagementAPI vehicleManagementAPI, 
-            ILogger<VehicleInsuranceController> logger)
+        public VehicleInsuranceManagement(IVehicleManagementAPI vehicleManagementAPI, 
+            ILogger<VehicleInsuranceManagement> logger)
         {
             _vehicleManagementAPI = vehicleManagementAPI;
             _logger = logger;
@@ -77,14 +77,14 @@ namespace PitStop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register([FromForm] VehicleManagementNewViewModel inputModel)
+        public async Task<IActionResult> Register([FromForm] VehicleInsuranceManagementNewViewModel inputModel)
         {
             if (ModelState.IsValid)
             {
                 return await _resiliencyHelper.ExecuteResilient(async () =>
                 {
-                    RegisterVehicle cmd = Mapper.Map<RegisterVehicle>(inputModel.Vehicle);
-                    await _vehicleManagementAPI.RegisterVehicle(cmd);
+                    RegisterInsurance cmd = Mapper.Map<RegisterInsurance>(inputModel.Insurance);
+                    await _vehicleManagementAPI.RegisterInsurance(cmd);
                     return RedirectToAction("Index");
                 }, View("Offline", new VehicleInsuranceManagementOfflineViewModel()));
             }
