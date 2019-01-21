@@ -97,12 +97,12 @@ namespace PitStop
                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
                 cfg.CreateMap<Owner,RegisterOwner>()
                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
-                //cfg.CreateMap<VehicleManagementNewViewModel, RegisterVehicle>().ConvertUsing((vm, rv) =>
-                //    new RegisterVehicle(Guid.NewGuid(), vm.Vehicle.Codigo, vm.Vehicle.Matricula, vm.SelectedCustomerId
-                //    , vm.Vehicle.Marca, vm.Vehicle.Modelo, vm.Vehicle.Color, vm.Vehicle.Bastidor, vm.Vehicle.Grupo, vm.Vehicle.Daños,
-                //    vm.Vehicle.Extras, vm.Vehicle.Observaciones, vm.Vehicle.Aviso, vm.Vehicle.PrimerDiaFlota, vm.Vehicle.DevolucionPrevista,
-                //    vm.Vehicle.UltimoDiaFlota, vm.Vehicle.FechaFabricacion, vm.Vehicle.FechaMatriculacion, vm.Vehicle.Km,
-                //    vm.Vehicle.Combustible, vm.Vehicle.DepositoLitros, vm.Vehicle.Plazas, vm.Vehicle.Puertas));
+                cfg.CreateMap<VehicleManagementNewViewModel, RegisterVehicle>().ConvertUsing((vm, rv) =>
+                    new RegisterVehicle(Guid.NewGuid(), vm.Vehicle.Codigo, vm.Vehicle.OwnerId, vm.Vehicle.Matricula,
+                    vm.Vehicle.Marca, vm.Vehicle.Modelo, vm.Vehicle.Color, vm.Vehicle.Bastidor, vm.Vehicle.Grupo, vm.Vehicle.Daños,
+                    vm.Vehicle.Extras, vm.Vehicle.Observaciones, vm.Vehicle.Aviso, vm.Vehicle.PrimerDiaFlota, vm.Vehicle.DevolucionPrevista,
+                    vm.Vehicle.UltimoDiaFlota, vm.Vehicle.FechaFabricacion, vm.Vehicle.FechaMatriculacion, vm.Vehicle.Km,
+                    vm.Vehicle.Combustible, vm.Vehicle.DepositoLitros, vm.Vehicle.Plazas, vm.Vehicle.Puertas));
             });
         }
     }
