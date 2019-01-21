@@ -93,10 +93,20 @@ namespace PitStop
             {
                 cfg.CreateMap<Customer, RegisterCustomer>()
                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
+
                 cfg.CreateMap<Vehicle, RegisterVehicle>()
                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
+
                 cfg.CreateMap<Owner,RegisterOwner>()
                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
+
+                cfg.CreateMap<Insurance, RegisterInsurance>()
+                    .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
+
+                cfg.CreateMap<VehicleInsuranceManagementNewViewModel, RegisterInsurance>().ConvertUsing((vi, ri) =>
+                new RegisterInsurance(Guid.NewGuid(), vi.Insurance.InsuranceId, vi.Insurance.Nombre, vi.Insurance.Poliza, vi.Insurance.Corredor,
+                vi.Insurance.FechaAlta, vi.Insurance.FechaVencimiento, vi.Insurance.Importe, vi.Insurance.Tipo, vi.Insurance.VehicleId));
+
                 cfg.CreateMap<VehicleManagementNewViewModel, RegisterVehicle>().ConvertUsing((vm, rv) =>
                     new RegisterVehicle(Guid.NewGuid(), vm.Vehicle.Codigo, vm.Vehicle.OwnerId, vm.Vehicle.Matricula,
                     vm.Vehicle.Marca, vm.Vehicle.Modelo, vm.Vehicle.Color, vm.Vehicle.Bastidor, vm.Vehicle.Grupo, vm.Vehicle.Daños,
