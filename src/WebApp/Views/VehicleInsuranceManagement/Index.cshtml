@@ -1,0 +1,38 @@
+﻿@model Pitstop.ViewModels.VehicleInsuranceManagementViewModel
+@{
+    ViewData["Title"] = "Insurance Overview";
+}
+<h3 id="PageTitle">Vehicle Insurance Management - Overview</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Compañía</th>
+            <th>Poliza</th>
+            <th>Corredor</th>
+            <th>Fecha Alta</th>
+            <th>Fecha Vencimiento</th>
+            <th>Importe</th>
+            <th>Tipo</th>
+            <th>Vehículo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var insurance in Model.Insurances)
+        {
+        <tr class="clickable" onclick="location.href = '@(Url.Action("Details", "VehicleInsuranceManagement", new { id = insurance.InsuranceId }))'">
+            <td>@insurance.Nombre</td>
+            <td>@insurance.Poliza</td>
+            <td>@insurance.Corredor</td>
+            <td>@insurance.FechaAlta</td>
+            <td>@insurance.FechaVencimiento</td>
+            <td>@insurance.Importe</td>
+            <td>@insurance.Tipo</td>
+            <td><a href='@(Url.Action("Details", "VehicleManagement", new { id = insurance.VehicleId }))'>@insurance.VehicleId</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+<a id="RegisterInsuranceButton" asp-action="New" asp-controller="VehicleInsuranceManagement" class="btn btn-default">Register Insurance</a>
+
+

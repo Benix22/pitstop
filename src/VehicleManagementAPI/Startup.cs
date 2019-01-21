@@ -97,7 +97,7 @@ namespace Pitstop.Application.VehicleManagement
             });
 
             // register service in Consul
-            app.RegisterWithConsul(lifetime);            
+            //app.RegisterWithConsul(lifetime);            
         }
 
         private void SetupAutoMapper()
@@ -115,6 +115,11 @@ namespace Pitstop.Application.VehicleManagement
                     cfg.CreateMap<Owner, RegisterOwner>()
                      .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid())); ;
                     cfg.CreateMap<RegisterOwner, OwnerRegistered>()
+                        .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
+
+                    cfg.CreateMap<Insurance, RegisterInsurance>()
+                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid())); ;
+                    cfg.CreateMap<RegisterInsurance, InsuranceRegistered>()
                         .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
                 }
                 catch (Exception ex)

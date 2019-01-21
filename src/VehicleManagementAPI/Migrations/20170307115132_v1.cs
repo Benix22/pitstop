@@ -21,7 +21,7 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Owner", x => x.OwnerId);                    
+                    table.PrimaryKey("PK_Owner", x => x.OwnerId);
                 });
 
             migrationBuilder.CreateTable(
@@ -30,7 +30,7 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                 {
                     Codigo = table.Column<int>(nullable: false),
 
-                    OwnerId = table.Column<int>(nullable:false),
+                    OwnerId = table.Column<int>(nullable: false),
                     Matricula = table.Column<string>(nullable: true),
                     Marca = table.Column<string>(nullable: true),
                     Modelo = table.Column<string>(nullable: true),
@@ -51,7 +51,7 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                     DevolucionPrevista = table.Column<DateTime>(nullable: true),
                     UltimoDiaFlota = table.Column<DateTime>(nullable: true),
                     FechaFabricacion = table.Column<DateTime>(nullable: true),
-                    FechaMatriculacion = table.Column<DateTime>(nullable: true)                    
+                    FechaMatriculacion = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -63,6 +63,31 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                         principalColumn: "OwnerId",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateTable(
+               name: "Insurance",
+               columns: table => new
+               {
+                   InsuranceId = table.Column<int>(nullable: false),
+                   Nombre = table.Column<string>(nullable: false),
+                   Poliza = table.Column<string>(nullable: false),
+                   Corredor = table.Column<string>(nullable: true),
+                   FechaAlta = table.Column<DateTime>(nullable: true),
+                   FechaVencimiento = table.Column<DateTime>(nullable: true),
+                   Importe = table.Column<decimal>(nullable: true),
+                   Tipo = table.Column<string>(nullable: true),
+                   Codigo = table.Column<int>(nullable: true)
+               },
+               constraints: table =>
+               {
+                   table.PrimaryKey("PK_Insurance", x => x.InsuranceId);
+                   table.ForeignKey(
+                       name: "FK_Insurance_Codigo",
+                       column: x => x.Codigo,
+                       principalTable: "Insurance",
+                       principalColumn: "InsuranceId",
+                       onDelete: ReferentialAction.Restrict);
+               });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -72,6 +97,9 @@ namespace Pitstop.Application.VehicleManagement.Migrations
 
             migrationBuilder.DropTable(
                 name: "Vehicle");
+
+            migrationBuilder.DropTable(
+                name: "Insurance");
         }
     }
 }
