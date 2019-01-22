@@ -1,25 +1,20 @@
+using AutoMapper;
+using Consul;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
-using Pitstop.CustomerManagementAPI.DataAccess;
-using Swashbuckle.AspNetCore.Swagger;
-using AutoMapper;
-using Pitstop.CustomerManagementAPI.Model;
-using Pitstop.Infrastructure.Messaging;
-using System;
-using Pitstop.CustomerManagementAPI.Events;
-using Pitstop.CustomerManagementAPI.Commands;
-using Microsoft.AspNetCore.Mvc;
-using Serilog;
-using Microsoft.Extensions.HealthChecks;
-using Pitstop.Infrastructure.ServiceDiscovery;
-using Consul;
-using Pitstop.ContractManagementAPI.DataAccess;
 using Pitstop.ContractManagementAPI.Commands;
+using Pitstop.ContractManagementAPI.DataAccess;
+using Pitstop.ContractManagementAPI.Events;
 using Pitstop.ContractManagementAPI.Model;
+using Pitstop.Infrastructure.Messaging;
+using Pitstop.Infrastructure.ServiceDiscovery;
+using Serilog;
+using Swashbuckle.AspNetCore.Swagger;
+using System;
 
 namespace Pitstop.CustomerManagementAPI
 {
@@ -66,13 +61,13 @@ namespace Pitstop.CustomerManagementAPI
             // Register the Swagger generator, defining one or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "CustomerManagement API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "ContractManagement API", Version = "v1" });
             });
 
             services.AddHealthChecks(checks =>
             {
                 checks.WithDefaultCacheDuration(TimeSpan.FromSeconds(1));
-                checks.AddSqlCheck("CustomerManagementCN", Configuration.GetConnectionString("CustomerManagementCN"));
+                checks.AddSqlCheck("ContractManagementCN", Configuration.GetConnectionString("ContractManagementCN"));
             });
         }
 
@@ -107,11 +102,10 @@ namespace Pitstop.CustomerManagementAPI
             // setup automapper
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<RegisterTarifa, Tarifa>();
-                cfg.CreateMap<Tarifa, RegisterTarifa>();
-                cfg.CreateMap<Customer, RegisterCustomer>()
+                cfg.CreateMap<Tarifa, RegisterTarifa>()
                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
-                cfg.CreateMap<RegisterCustomer, CustomerRegistered>()
+
+                cfg.CreateMap<RegisterTarifa, TarifaRegistered>()
                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
             });
         }
