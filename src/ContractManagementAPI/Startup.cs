@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.HealthChecks;
 using Pitstop.ContractManagementAPI.Commands;
 using Pitstop.ContractManagementAPI.DataAccess;
 using Pitstop.ContractManagementAPI.Events;
@@ -36,7 +37,7 @@ namespace Pitstop.CustomerManagementAPI
         public void ConfigureServices(IServiceCollection services)
         {
             // add DBContext classes
-            var sqlConnectionString = Configuration.GetConnectionString("CustomerManagementCN");
+            var sqlConnectionString = Configuration.GetConnectionString("ContractManagementCN");
             services.AddDbContext<ContractManagementDBContext>(options => options.UseSqlServer(sqlConnectionString));
 
             // add messagepublisher classes
@@ -102,10 +103,10 @@ namespace Pitstop.CustomerManagementAPI
             // setup automapper
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<Tarifa, RegisterTarifa>()
+                cfg.CreateMap<Rate, RegisterRate>()
                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
 
-                cfg.CreateMap<RegisterTarifa, TarifaRegistered>()
+                cfg.CreateMap<RegisterRate, RateRegistered>()
                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
             });
         }

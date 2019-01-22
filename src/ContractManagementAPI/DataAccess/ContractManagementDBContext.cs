@@ -15,12 +15,12 @@ namespace Pitstop.ContractManagementAPI.DataAccess
                 .Execute(() => Database.Migrate());
         }
 
-        public DbSet<Tarifa> Tarifas { get; set; }
+        public DbSet<Rate> Rates { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Tarifa>().HasKey(m => m.TarifaId);
-            builder.Entity<Tarifa>().ToTable("Tarifa");
+            builder.Entity<Rate>().HasKey(m => m.RateId);
+            builder.Entity<Rate>().ToTable("Tarifa");
             base.OnModelCreating(builder);
         }
     }

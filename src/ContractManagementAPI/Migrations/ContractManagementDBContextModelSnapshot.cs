@@ -15,9 +15,9 @@ namespace Pitstop.ContractManagementAPI.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1");
 
-            modelBuilder.Entity("Pitstop.ContractManagementAPI.Model.Tarifa", b =>
+            modelBuilder.Entity("Pitstop.ContractManagementAPI.Model.Rate", b =>
                 {
-                    b.Property<int>("TarifaId")
+                    b.Property<int>("RateId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Nombre");
@@ -25,7 +25,7 @@ namespace Pitstop.ContractManagementAPI.Migrations
                     b.Property<int>("Dias");
                     b.Property<decimal>("Precio");
 
-                    b.HasKey("TarifaId");
+                    b.HasKey("RateId");
 
                     b.ToTable("Tarifa");
                 });

@@ -1,8 +1,8 @@
 ﻿namespace Pitstop.ContractManagementAPI.Model
 {
-    public class Tarifa
+    public class Rate
     {
-        public int TarifaId { get; set; }
+        public int RateId { get; set; }
 
         public string Nombre { get; set; }
         public string Grupo { get; set; }
