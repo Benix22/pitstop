@@ -1,0 +1,24 @@
+﻿{
+  "ReRoutes": [
+    {
+      "Key": "ContractManagementAPI",
+      "UpstreamPathTemplate": "/api/Rates/",
+      "DownstreamPathTemplate": "/api/rates",
+      "DownstreamScheme": "http",
+      "ServiceName": "contractmanagementapi",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "Key": "ContractManagementAPI",
+      "UpstreamPathTemplate": "/api/Rates/{trailingSegments}",
+      "DownstreamPathTemplate": "/api/rates/{trailingSegments}",
+      "DownstreamScheme": "http",
+      "ServiceName": "contractmanagementapi",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    }
+  ]
+}

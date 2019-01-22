@@ -1,0 +1,28 @@
+﻿{
+  "ReRoutes": [
+    {
+      "Key": "ContractManagementAPI",
+      "UpstreamPathTemplate": "/api/Rates/",
+      "DownstreamPathTemplate": "/api/rates",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5200
+        }
+      ]
+    },
+    {
+      "Key": "ContractManagementAPI",
+      "UpstreamPathTemplate": "/api/Rates/{trailingSegments}",
+      "DownstreamPathTemplate": "/api/rates/{trailingSegments}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5200
+        }
+      ]
+    }
+  ]
+}

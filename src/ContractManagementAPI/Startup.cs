@@ -17,7 +17,7 @@ using Serilog;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
 
-namespace Pitstop.CustomerManagementAPI
+namespace Pitstop.ContractManagementAPI
 {
     public class Startup
     {
@@ -95,7 +95,7 @@ namespace Pitstop.CustomerManagementAPI
             });
 
             // register service in Consul
-            app.RegisterWithConsul(lifetime);
+            //app.RegisterWithConsul(lifetime);
         }
 
         private void SetupAutoMapper()

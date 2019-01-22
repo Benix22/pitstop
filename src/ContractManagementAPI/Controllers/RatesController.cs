@@ -54,8 +54,8 @@ namespace Pitstop.Application.VehicleManagement.Controllers
                     await _dbContext.SaveChangesAsync();
 
                     // send event
-                    RateRegistered e = Mapper.Map<RateRegistered>(command);
-                    await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
+                    //RateRegistered e = Mapper.Map<RateRegistered>(command);
+                    //await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
 
                     // return result
                     return CreatedAtRoute("GetByRateId", new { rateId = customer.RateId }, customer);
