@@ -76,14 +76,14 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                    FechaVencimiento = table.Column<DateTime>(nullable: true),
                    Importe = table.Column<decimal>(nullable: true),
                    Tipo = table.Column<string>(nullable: true),
-                   Codigo = table.Column<int>(nullable: true)
+                   VehicleId = table.Column<int>(nullable: true)
                },
                constraints: table =>
                {
                    table.PrimaryKey("PK_Insurance", x => x.InsuranceId);
                    table.ForeignKey(
-                       name: "FK_Insurance_Codigo",
-                       column: x => x.Codigo,
+                       name: "FK_Insurance_VehicleId",
+                       column: x => x.VehicleId,
                        principalTable: "Insurance",
                        principalColumn: "InsuranceId",
                        onDelete: ReferentialAction.Restrict);
