@@ -8,6 +8,7 @@ namespace Pitstop.ContractManagementAPI.Events
         public readonly int RateId;
 
         public readonly string Nombre;
+        public readonly string Poliza;
         public readonly string Grupo;
         public readonly int Dias;
         public readonly decimal Precio;
@@ -15,6 +16,7 @@ namespace Pitstop.ContractManagementAPI.Events
         public RateRegistered(Guid messageId,
             int rateId,
             string nombre,
+            string poliza,
             string grupo,
             int dias,
             decimal precio
@@ -23,6 +25,7 @@ namespace Pitstop.ContractManagementAPI.Events
             RateId = rateId;
 
             Nombre = nombre;
+            Poliza = poliza;
             Grupo = grupo;
             Dias = dias;
             Precio = precio;

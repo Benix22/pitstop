@@ -1,20 +1,18 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using AutoMapper;
+using Microsoft.Extensions.HealthChecks;
+using Pitstop.Application.VehicleManagement.Model;
 using Pitstop.Models;
 using Pitstop.ViewModels;
+using Serilog;
 using System;
+using System.Threading.Tasks;
 using WebApp.Commands;
 using WebApp.RESTClients;
-using Microsoft.AspNetCore.Mvc;
-using Serilog;
-using Microsoft.Extensions.HealthChecks;
-using System.Threading.Tasks;
-using StackExchange.Redis;
-using Pitstop.Application.VehicleManagement.Model;
 
 namespace PitStop
 {
@@ -44,6 +42,7 @@ namespace PitStop
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // add custom services
+            services.AddTransient<IContractManagementAPI, ContractManagementAPI>();
             services.AddTransient<ICustomerManagementAPI, CustomerManagementAPI>();
             services.AddTransient<IVehicleManagementAPI, VehicleManagementAPI>();
             services.AddTransient<IWorkshopManagementAPI, WorkshopManagementAPI>();
@@ -91,6 +90,9 @@ namespace PitStop
             // setup automapper
             Mapper.Initialize(cfg =>
             {
+                cfg.CreateMap<Rate, RegisterRate>()
+                    .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
+
                 cfg.CreateMap<Customer, RegisterCustomer>()
                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
 

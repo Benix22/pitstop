@@ -9,7 +9,7 @@ using Pitstop.ContractManagementAPI.Model;
 using Pitstop.Infrastructure.Messaging;
 using System.Threading.Tasks;
 
-namespace Pitstop.Application.VehicleManagement.Controllers
+namespace Pitstop.ContractManagementAPI.Controllers
 {
     [Route("/api/[controller]")]
     public class RatesController : Controller
@@ -30,15 +30,15 @@ namespace Pitstop.Application.VehicleManagement.Controllers
         }
 
         [HttpGet]
-        [Route("{customerId}", Name = "GetByRateId")]
+        [Route("{rateId}", Name = "GetByRateId")]
         public async Task<IActionResult> GetByRateId(int rateId)
         {
-            var customer = await _dbContext.Rates.FirstOrDefaultAsync(c => c.RateId == rateId);
-            if (customer == null)
+            var rate = await _dbContext.Rates.FirstOrDefaultAsync(c => c.RateId == rateId);
+            if (rate == null)
             {
                 return NotFound();
             }
-            return Ok(customer);
+            return Ok(rate);
         }
 
         [HttpPost]
@@ -49,16 +49,16 @@ namespace Pitstop.Application.VehicleManagement.Controllers
                 if (ModelState.IsValid)
                 {
                     // insert customer
-                    Rate customer = Mapper.Map<Rate>(command);
-                    _dbContext.Rates.Add(customer);
+                    Rate rate = Mapper.Map<Rate>(command);
+                    _dbContext.Rates.Add(rate);
                     await _dbContext.SaveChangesAsync();
 
                     // send event
-                    //RateRegistered e = Mapper.Map<RateRegistered>(command);
-                    //await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
+                    RateRegistered e = Mapper.Map<RateRegistered>(command);
+                    await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
 
                     // return result
-                    return CreatedAtRoute("GetByRateId", new { rateId = customer.RateId }, customer);
+                    return CreatedAtRoute("GetByRateId", new { rateId = rate.RateId }, rate);
                 }
                 return BadRequest();
             }

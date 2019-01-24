@@ -108,6 +108,7 @@ services:
       - vehiclemanagementapi
       - customermanagementapi
       - workshopmanagementapi
+      - contractmanagementapi
     ports:
       - "10000:10000"
     environment:
