@@ -5,12 +5,12 @@ namespace Pitstop.ContractManagementAPI.Events
 {
     public class RateRegistered : Event
     {
-        public int RateId { get; set; }
+        public readonly int RateId;
 
-        public string Nombre { get; set; }
-        public string Grupo { get; set; }
-        public int Dias { get; set; }
-        public decimal Precio { get; set; }
+        public readonly string Nombre;
+        public readonly string Grupo;
+        public readonly int Dias;
+        public readonly decimal Precio;
 
         public RateRegistered(Guid messageId,
             int rateId,

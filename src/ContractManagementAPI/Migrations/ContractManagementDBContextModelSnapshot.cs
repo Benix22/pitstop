@@ -27,7 +27,7 @@ namespace Pitstop.ContractManagementAPI.Migrations
 
                     b.HasKey("RateId");
 
-                    b.ToTable("Tarifa");
+                    b.ToTable("Rate");
                 });
         }
     }

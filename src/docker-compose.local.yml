@@ -17,3 +17,7 @@ services:
   workshopmanagementapi:
     ports:
       - "5200:5200"
+
+  contractmanagementapi:
+    ports:
+      - "5300:5300"

@@ -20,7 +20,7 @@ namespace Pitstop.ContractManagementAPI.DataAccess
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Rate>().HasKey(m => m.RateId);
-            builder.Entity<Rate>().ToTable("Tarifa");
+            builder.Entity<Rate>().ToTable("Rate");
             base.OnModelCreating(builder);
         }
     }
