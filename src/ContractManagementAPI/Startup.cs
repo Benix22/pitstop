@@ -91,11 +91,11 @@ namespace Pitstop.ContractManagementAPI
             // Enable middleware to serve swagger-ui (HTML, JS, CSS etc.), specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "CustomerManagement API - v1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "ContractManagement API - v1");
             });
 
             // register service in Consul
-            //app.RegisterWithConsul(lifetime);
+            app.RegisterWithConsul(lifetime);
         }
 
         private void SetupAutoMapper()

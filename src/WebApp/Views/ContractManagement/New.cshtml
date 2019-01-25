@@ -1,0 +1,40 @@
+﻿@model Pitstop.ViewModels.ContractManagement.ContractManagementNewViewModel
+@{
+    ViewData["Title"] = "Register Rate";
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
+
+<h3 id="PageTitle">Contract Management - Register Rate</h3>
+
+<form asp-controller="ContractManagement" asp-action="Register" method="post">
+    <div class="form-group">
+        <label asp-for="Rate.Nombre"></label>
+        <input asp-for="Rate.Nombre" type="text" class="form-control" />
+        <span asp-validation-for="Rate.Nombre" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Rate.Poliza"></label>
+        <input asp-for="Rate.Poliza" type="text" class="form-control" />
+        <span asp-validation-for="Rate.Poliza" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Rate.Grupo"></label>
+        <input asp-for="Rate.Grupo" type="text" class="form-control" />
+        <span asp-validation-for="Rate.Grupo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Rate.Dias"></label>
+        <input asp-for="Rate.Dias" type="text" class="form-control" />
+        <span asp-validation-for="Rate.Dias" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Rate.Precio"></label>
+        <input asp-for="Rate.Precio" type="text" class="form-control" />
+        <span asp-validation-for="Rate.Precio" class="text-danger"></span>
+    </div>
+    <span><button id="SubmitButton" type="submit" class="btn btn-default">Register</button></span>
+    <span><a id="CancelButton" asp-action="Index" asp-controller="ContractManagement" class="btn btn-default">Cancel</a></span>
+</form>

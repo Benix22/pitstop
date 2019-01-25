@@ -5,16 +5,18 @@ namespace Pitstop.ContractManagementAPI.Events
 {
     public class RateRegistered : Event
     {
-        public int RateId { get; set; }
+        public readonly int RateId;
 
-        public string Nombre { get; set; }
-        public string Grupo { get; set; }
-        public int Dias { get; set; }
-        public decimal Precio { get; set; }
+        public readonly string Nombre;
+        public readonly string Poliza;
+        public readonly string Grupo;
+        public readonly int Dias;
+        public readonly decimal Precio;
 
         public RateRegistered(Guid messageId,
             int rateId,
             string nombre,
+            string poliza,
             string grupo,
             int dias,
             decimal precio
@@ -23,6 +25,7 @@ namespace Pitstop.ContractManagementAPI.Events
             RateId = rateId;
 
             Nombre = nombre;
+            Poliza = poliza;
             Grupo = grupo;
             Dias = dias;
             Precio = precio;

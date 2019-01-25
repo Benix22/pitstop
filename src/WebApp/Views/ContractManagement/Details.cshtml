@@ -1,0 +1,32 @@
+﻿@model Pitstop.ViewModels.ContractManagement.ContractManagementDetailsViewModel
+@{
+    ViewData["Title"] = "Rate Details";
+}
+<h3 id="PageTitle">Contract Management - Rate Details</h3>
+
+<table class="table">
+    <tbody>
+        <tr>
+            <td width="150">Tarifa :</td>
+            <td><b>@Model.Rate.Nombre</b></td>
+        </tr>
+        <tr>
+            <td width="150">Poliza :</td>
+            <td><b>@Model.Rate.Poliza</b></td>
+        </tr>
+        <tr>
+            <td width="150">Grupo :</td>
+            <td><b>@Model.Rate.Grupo</b></td>
+        </tr>
+        <tr>
+            <td width="150">Dias :</td>
+            <td><b>@Model.Rate.Dias</b></td>
+        </tr>
+        <tr>
+            <td width="150">Precio :</td>
+            <td><b>@Model.Rate.Precio</b></td>
+        </tr>
+    </tbody>
+</table>
+<span><a id="BackButton" asp-action="Index" asp-controller="ContractManagement" class="btn btn-default">Back</a></span>
+

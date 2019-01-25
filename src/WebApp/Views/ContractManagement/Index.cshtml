@@ -1,0 +1,32 @@
+﻿@model Pitstop.ViewModels.ContractManagement.ContractManagementViewModel
+@{
+    ViewData["Title"] = "Rates Overview";
+}
+<h3 id="PageTitle">Contract Management - Rates Overview</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Nombre</td>
+            <td>Poliza</td>
+            <td>Grupo</td>
+            <td>Dias</td>
+            <td>Precio</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var rate in Model.Rates)
+        {
+        <tr class="clickable" onclick="location.href = '@(Url.Action("Details", "ContractManagement", new { id = rate.RateId }))'">
+            <td>@rate.Nombre</td>
+            <td>@rate.Poliza</td>
+            <td>@rate.Grupo</td>
+            <td>@rate.Dias</td>
+            <td>@rate.Precio</td>
+        </tr>
+        }
+    </tbody>
+</table>
+<a id="RegisterRateButton" asp-action="New" asp-controller="ContractManagement" class="btn btn-default">Register rate</a>
+
+

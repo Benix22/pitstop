@@ -111,7 +111,7 @@ namespace Pitstop.WorkshopManagementAPI
             });
 
             // register service in Consul
-            app.RegisterWithConsul(lifetime);
+            //app.RegisterWithConsul(lifetime);
         }     
     }
 }

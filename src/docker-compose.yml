@@ -60,6 +60,19 @@ services:
       - ASPNETCORE_ENVIRONMENT=Production
       - ApplicationInsights:InstrumentationKey=${PitStopAIKey}
 
+  contractmanagementapi:
+    image: pitstop/contractmanagementapi:latest
+    build: ContractManagementAPI
+    depends_on:
+      - discoveryservice
+      - rabbitmq
+      - sqlserver
+    ports:
+      - "5300"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ApplicationInsights:InstrumentationKey=${PitStopAIKey}
+
   customermanagementapi:
     image: pitstop/customermanagementapi:latest
     build: CustomerManagementAPI
@@ -108,6 +121,7 @@ services:
       - vehiclemanagementapi
       - customermanagementapi
       - workshopmanagementapi
+      - contractmanagementapi
     ports:
       - "10000:10000"
     environment:

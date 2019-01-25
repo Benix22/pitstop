@@ -14,7 +14,7 @@ FROM microsoft/dotnet:2.2-aspnetcore-runtime
 COPY --from=build-env /app/out .
 
 # Expose ports
-EXPOSE 5200/tcp
+EXPOSE 5300/tcp
 ENV ASPNETCORE_URLS http://*:5300
 HEALTHCHECK --interval=30s --timeout=3s --retries=1 CMD curl --silent --fail http://localhost:5300/hc || exit 1
 

@@ -1,10 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace Pitstop.ContractManagementAPI.Migrations
 {
     public class v1 : Migration
@@ -15,7 +10,7 @@ namespace Pitstop.ContractManagementAPI.Migrations
                 name: "Rate",
                 columns: table => new
                 {
-                    RateId = table.Column<int>(nullable: false),
+                    RateId = table.Column<int>(nullable: false).Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Nombre = table.Column<string>(nullable: false),
                     Grupo = table.Column<string>(nullable: false),
                     Dias = table.Column<int>(nullable: false),
