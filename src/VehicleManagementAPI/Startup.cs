@@ -97,7 +97,7 @@ namespace Pitstop.Application.VehicleManagement
             });
 
             // register service in Consul
-            //app.RegisterWithConsul(lifetime);            
+            app.RegisterWithConsul(lifetime);            
         }
 
         private void SetupAutoMapper()
