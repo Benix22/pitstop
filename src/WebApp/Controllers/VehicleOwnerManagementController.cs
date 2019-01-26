@@ -31,20 +31,24 @@ namespace PitStop.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            return await _resiliencyHelper.ExecuteResilient(async () =>
+            try
             {
                 var model = new VehicleOwnerManagementViewModel
                 {
                     Owners = await _vehicleManagementAPI.GetOwners()
                 };
                 return View(model);
-            }, View("Offline", new VehicleOwnerManagementOfflineViewModel()));
+            }
+            catch (Exception ex)
+            {
+                return View("Offline", new VehicleOwnerManagementOfflineViewModel(ex.Message));
+            }
         }
 
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
-            return await _resiliencyHelper.ExecuteResilient(async () =>
+            try
             {
                 Owner owner = await _vehicleManagementAPI.GetOwnerById(id);
 
@@ -53,7 +57,11 @@ namespace PitStop.Controllers
                     Owner = owner
                 };
                 return View(model);
-            }, View("Offline", new VehicleOwnerManagementOfflineViewModel()));
+            }
+            catch (Exception ex)
+            {
+                return View("Offline", new VehicleOwnerManagementOfflineViewModel(ex.Message));
+            }
         }
 
         [HttpGet]
@@ -71,12 +79,17 @@ namespace PitStop.Controllers
         {
             if (ModelState.IsValid)
             {
-                return await _resiliencyHelper.ExecuteResilient(async () =>
+
+                try
                 {
                     RegisterOwner cmd = Mapper.Map<RegisterOwner>(inputModel.Owner);
                     await _vehicleManagementAPI.RegisterOwner(cmd);
                     return RedirectToAction("Index");
-                }, View("Offline", new VehicleOwnerManagementOfflineViewModel()));
+                }
+                catch (Exception ex)
+                {
+                    return View("Offline", new VehicleOwnerManagementOfflineViewModel(ex.Message));
+                }
             }
             else
             {
