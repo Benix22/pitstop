@@ -7,12 +7,12 @@ namespace Pitstop.Application.VehicleOwnerManagement.Commands
 {
     public class RegisterOwner : Command
     {
-        public readonly int OwnerId;
-        public readonly string RazonSocial;
-        public readonly string CIF;
-        public readonly string Direccion;
-        public readonly string Contacto;
-        public readonly string Telefono;
+        public int OwnerId { get; set; }
+        public string RazonSocial { get; set; }
+        public string CIF { get; set; }
+        public string Direccion { get; set; }
+        public string Contacto { get; set; }
+        public string Telefono { get; set; }
 
         public RegisterOwner(Guid messageId,
             int ownerId,

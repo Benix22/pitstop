@@ -5,7 +5,7 @@ namespace Pitstop.ContractManagementAPI.Commands
 {
     public class RegisterRate : Command
     {
-        public readonly int RateId;
+        public int RateId { get; set; }
 
         public string Nombre { get; set; }
         public string Poliza { get; set; }

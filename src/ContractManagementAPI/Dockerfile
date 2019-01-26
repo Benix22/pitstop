@@ -22,4 +22,4 @@ HEALTHCHECK --interval=30s --timeout=3s --retries=1 CMD curl --silent --fail htt
 ENV WEBSITE_SITE_NAME ContractManagementAPI
 
 # Start
-ENTRYPOINT ["dotnet", "Pitstop.ContractManagement.dll"]
+ENTRYPOINT ["dotnet", "Pitstop.ContractManagementAPI.dll"]
