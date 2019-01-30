@@ -68,7 +68,7 @@ namespace Pitstop.ContractManagementAPI
             services.AddHealthChecks(checks =>
             {
                 checks.WithDefaultCacheDuration(TimeSpan.FromSeconds(1));
-                checks.AddSqlCheck("ContractManagementCN", Configuration.GetConnectionString("ContractManagementCN"));
+                checks.AddSqlCheck("ContractManagementCN", sqlConnectionString);
             });
         }
 
@@ -104,10 +104,10 @@ namespace Pitstop.ContractManagementAPI
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<Rate, RegisterRate>()
-                    .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
+                .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
 
-                cfg.CreateMap<RegisterRate, RateRegistered>()
-                    .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
+                cfg.CreateMap<RegisterRate, Rate>();
+                //.ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
             });
         }
     }

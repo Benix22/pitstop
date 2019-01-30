@@ -12,6 +12,7 @@ namespace Pitstop.ContractManagementAPI.Migrations
                 {
                     RateId = table.Column<int>(nullable: false).Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Nombre = table.Column<string>(nullable: false),
+                    Poliza = table.Column<string>(nullable: false),
                     Grupo = table.Column<string>(nullable: false),
                     Dias = table.Column<int>(nullable: false),
                     Precio = table.Column<decimal>(nullable: false)

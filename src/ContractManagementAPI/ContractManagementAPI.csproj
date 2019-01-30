@@ -1,10 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <DockerTargetOS>Linux</DockerTargetOS>
+    <!--<DockerTargetOS>Linux</DockerTargetOS>
     <UserSecretsId>7e6008ea-5562-485a-ba59-5d9f33794eb5</UserSecretsId>
-    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>-->
+    <RootNamespace>Pitstop.ContractManagementAPI</RootNamespace>
+    <AssemblyName>Pitstop.ContractManagementAPI</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

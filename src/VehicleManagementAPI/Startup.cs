@@ -108,17 +108,17 @@ namespace Pitstop.Application.VehicleManagement
                 try
                 {
                     cfg.CreateMap<Vehicle, RegisterVehicle>()
-                            .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid())); ;
+                            .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
                     cfg.CreateMap<RegisterVehicle, VehicleRegistered>()
                         .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
 
                     cfg.CreateMap<Owner, RegisterOwner>()
-                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid())); ;
+                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
                     cfg.CreateMap<RegisterOwner, OwnerRegistered>()
                         .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
 
                     cfg.CreateMap<Insurance, RegisterInsurance>()
-                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid())); ;
+                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
                     cfg.CreateMap<RegisterInsurance, InsuranceRegistered>()
                         .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
                 }

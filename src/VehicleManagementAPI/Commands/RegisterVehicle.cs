@@ -9,26 +9,26 @@ namespace Pitstop.Application.VehicleManagement.Commands
     {
         public readonly int Codigo;
         public int OwnerId { get; set; }
-        public readonly string Matricula;
-        public readonly string Marca;
-        public readonly string Modelo;
-        public readonly string Color;
-        public readonly string Bastidor;
-        public readonly string Grupo;
-        public readonly string Daños;
-        public readonly string Extras;
-        public readonly string Observaciones;
-        public readonly string Aviso;
-        public readonly DateTime PrimerDiaFlota;
-        public readonly DateTime DevolucionPrevista;
-        public readonly DateTime UltimoDiaFlota;
-        public readonly DateTime FechaFabricacion;
-        public readonly DateTime FechaMatriculacion;
-        public readonly string Km;
-        public readonly string Combustible;
-        public readonly string DepositoLitros;
-        public readonly string Plazas;
-        public readonly string Puertas;
+        public string Matricula { get; set; }
+        public string Marca { get; set; }
+        public string Modelo { get; set; }
+        public string Color { get; set; }
+        public string Bastidor { get; set; }
+        public string Grupo { get; set; }
+        public string Daños { get; set; }
+        public string Extras { get; set; }
+        public string Observaciones { get; set; }
+        public string Aviso { get; set; }
+        public DateTime PrimerDiaFlota { get; set; }
+        public DateTime DevolucionPrevista { get; set; }
+        public DateTime UltimoDiaFlota { get; set; }
+        public DateTime FechaFabricacion { get; set; }
+        public DateTime FechaMatriculacion { get; set; }
+        public string Km { get; set; }
+        public string Combustible { get; set; }
+        public string DepositoLitros { get; set; }
+        public string Plazas { get; set; }
+        public string Puertas { get; set; }
 
         public RegisterVehicle(Guid messageId,
             int codigo,

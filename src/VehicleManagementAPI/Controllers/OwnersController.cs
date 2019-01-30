@@ -63,8 +63,8 @@ namespace Pitstop.Application.VehicleManagement.Controllers
                     await _dbContext.SaveChangesAsync();
 
                     // send event
-                    //var e = Mapper.Map<OwnerRegistered>(command);
-                    //await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
+                    var e = Mapper.Map<OwnerRegistered>(command);
+                    await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
 
                     //return result
                     return CreatedAtRoute("GetOwnerById", new { ownerID = owner.OwnerId }, owner);

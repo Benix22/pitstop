@@ -21,6 +21,7 @@ namespace Pitstop.ContractManagementAPI.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Nombre");
+                    b.Property<string>("Poliza");
                     b.Property<string>("Grupo");
                     b.Property<int>("Dias");
                     b.Property<decimal>("Precio");
