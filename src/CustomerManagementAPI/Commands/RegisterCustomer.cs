@@ -7,43 +7,41 @@ namespace Pitstop.CustomerManagementAPI.Commands
 {
     public class RegisterCustomer : Command
     {
-        public readonly string CustomerId;
+        public string CustomerId;
 
-        public readonly bool EsPersona;
-        public readonly string Nombre;
-        public readonly string Pais;
-        public readonly string NIF;
-        public readonly DateTime FechaAlta;
-        public readonly DateTime FechaBaja;
+        public bool EsPersona;
+        public string Nombre;
+        public string Pais;
+        public string NIF;
+        public DateTime FechaAlta;
+        public DateTime FechaBaja;
 
-        public readonly string Direccion;
-        public readonly string PaisDireccion;
-        public readonly string CodigoPostal;
-        public readonly string Poblacion;
-        public readonly string Provincia;
-        public readonly string Telefono;
-        public readonly string Telefono2;
-        public readonly string Movil;
+        public string Direccion;
+        public string PaisDireccion;
+        public string CodigoPostal;
+        public string Poblacion;
+        public string Provincia;
+        public string Telefono;
+        public string Telefono2;
+        public string Movil;
 
-        public readonly DateTime FechaExpNIF;
-        public readonly string PoblacionExpNIF;
-        public readonly DateTime FechaNacimiento;
-        public readonly string PoblacionNacimiento;
-        public readonly string TipoPermiso;
-        public readonly string NumeroPermiso;
-        public readonly DateTime FechaExpPermiso;
-        public readonly DateTime FechaCadPermiso;
+        public DateTime FechaExpNIF;
+        public string PoblacionExpNIF;
+        public DateTime FechaNacimiento;
+        public string PoblacionNacimiento;
+        public string TipoPermiso;
+        public string NumeroPermiso;
+        public DateTime FechaExpPermiso;
+        public DateTime FechaCadPermiso;
         
-        public readonly string Email;
+        public string Email;
                 
-        public readonly bool Moroso;
-        public readonly bool Bloqueado;
+        public bool Moroso;
+        public bool Bloqueado;
 
-        public readonly string NumeroTarjetaCred;
-        public readonly string TitularTarjetaCred;
-        public readonly DateTime FechaCadTarjetaCred;
-        
-
+        public string NumeroTarjetaCred;
+        public string TitularTarjetaCred;
+        public DateTime FechaCadTarjetaCred;
 
         public RegisterCustomer(Guid messageId,
             string customerId,
