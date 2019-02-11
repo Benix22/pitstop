@@ -2,7 +2,7 @@
   "ReRoutes": [
     {
       "Key": "VehicleManagementAPI",
-      "UpstreamPathTemplate": "/api/Vehicles/",
+      "UpstreamPathTemplate": "/api/vehicles/",
       "DownstreamPathTemplate": "/api/vehicles",
       "DownstreamScheme": "http",
       "ServiceName": "vehiclemanagementapi",
@@ -12,7 +12,7 @@
     },
     {
       "Key": "VehicleManagementAPI",
-      "UpstreamPathTemplate": "/api/Owners/",
+      "UpstreamPathTemplate": "/api/owners/",
       "DownstreamPathTemplate": "/api/owners",
       "DownstreamScheme": "http",
       "ServiceName": "vehiclemanagementapi",
@@ -22,7 +22,7 @@
     },
     {
       "Key": "VehicleManagementAPI",
-      "UpstreamPathTemplate": "/api/Insurances/",
+      "UpstreamPathTemplate": "/api/insurances/",
       "DownstreamPathTemplate": "/api/insurances",
       "DownstreamScheme": "http",
       "ServiceName": "vehiclemanagementapi",
@@ -32,7 +32,7 @@
     },
     {
       "Key": "VehicleManagementAPI",
-      "UpstreamPathTemplate": "/api/Vehicles/{trailingSegments}",
+      "UpstreamPathTemplate": "/api/vehicles/{trailingSegments}",
       "DownstreamPathTemplate": "/api/vehicles/{trailingSegments}",
       "DownstreamScheme": "http",
       "ServiceName": "vehiclemanagementapi",
@@ -42,7 +42,7 @@
     },
     {
       "Key": "VehicleManagementAPI",
-      "UpstreamPathTemplate": "/api/Owners/{trailingSegments}",
+      "UpstreamPathTemplate": "/api/owners/{trailingSegments}",
       "DownstreamPathTemplate": "/api/owners/{trailingSegments}",
       "DownstreamScheme": "http",
       "ServiceName": "vehiclemanagementapi",
@@ -52,7 +52,7 @@
     },
     {
       "Key": "VehicleManagementAPI",
-      "UpstreamPathTemplate": "/api/Insurances/{trailingSegments}",
+      "UpstreamPathTemplate": "/api/insurances/{trailingSegments}",
       "DownstreamPathTemplate": "/api/insurances/{trailingSegments}",
       "DownstreamScheme": "http",
       "ServiceName": "vehiclemanagementapi",

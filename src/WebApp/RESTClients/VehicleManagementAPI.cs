@@ -6,6 +6,7 @@ using Refit;
 using WebApp.Commands;
 using System.Net;
 using Pitstop.Application.VehicleManagement.Model;
+using Microsoft.Extensions.Configuration;
 
 namespace WebApp.RESTClients
 {
@@ -13,11 +14,10 @@ namespace WebApp.RESTClients
     {
         private IVehicleManagementAPI _client;
 
-        public  VehicleManagementAPI(IHostingEnvironment env)
+        public  VehicleManagementAPI(IConfiguration config)
         {
-            string apiHost = env.IsDevelopment() ? "localhost" : "apigateway";
-            int apiPort = 10000;
-            string baseUri = $"http://{apiHost}:{apiPort}/api";
+            string apiHostAndPort = config.GetSection("APIServiceLocations").GetValue<string>("VehicleManagementAPI");
+            string baseUri = $"http://{apiHostAndPort}/api";
             _client = RestService.For<IVehicleManagementAPI>(baseUri);
         }
 
