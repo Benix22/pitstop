@@ -2,17 +2,19 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pitstop.ContractManagementAPI.DataAccess;
 
 namespace Pitstop.ContractManagementAPI.Migrations
 {
     [DbContext(typeof(ContractManagementDBContext))]
-    partial class ContractManagementDBContextModelSnapshot : ModelSnapshot
+    [Migration("20190205191709_v1")]
+    partial class v1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
-
+#pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.1-servicing-10028")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
@@ -21,7 +23,8 @@ namespace Pitstop.ContractManagementAPI.Migrations
             modelBuilder.Entity("Pitstop.ContractManagementAPI.Model.Rate", b =>
                 {
                     b.Property<int>("RateId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Dias");
 
@@ -37,7 +40,7 @@ namespace Pitstop.ContractManagementAPI.Migrations
 
                     b.ToTable("Rate");
                 });
-
+#pragma warning restore 612, 618
         }
     }
 }
