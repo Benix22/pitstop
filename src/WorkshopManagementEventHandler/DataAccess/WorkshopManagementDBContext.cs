@@ -17,7 +17,7 @@ namespace Pitstop.WorkshopManagementEventHandler.DataAccess
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Vehicle>().HasKey(entity => entity.Matricula);
+            builder.Entity<Vehicle>().HasKey(entity => entity.Codigo);
             builder.Entity<Vehicle>().ToTable("Vehicle");
 
             builder.Entity<Customer>().HasKey(entity => entity.CustomerId);
@@ -29,15 +29,15 @@ namespace Pitstop.WorkshopManagementEventHandler.DataAccess
             base.OnModelCreating(builder);
         }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    // only used by EF tooling
-        //    // TODO: make CN configurable
-        //    if (!optionsBuilder.IsConfigured)
-        //    {
-        //        optionsBuilder.UseSqlServer("server=localhost:1434;user id=sa;password=Pinveco123;database=WorkshopManagement;");
-        //    }
-        //    base.OnConfiguring(optionsBuilder);
-        //}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            // only used by EF tooling
+            // TODO: make CN configurable
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("server=localhost:1434;user id=sa;password=Pinveco123;database=WorkshopManagement;");
+            }
+            base.OnConfiguring(optionsBuilder);
+        }
     }
 }

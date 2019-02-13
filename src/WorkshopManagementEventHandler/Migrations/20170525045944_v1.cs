@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Pitstop.WorkshopManagementEventHandler.Migrations
@@ -12,7 +13,7 @@ namespace Pitstop.WorkshopManagementEventHandler.Migrations
                 name: "Customer",
                 columns: table => new
                 {
-                    CustomerId = table.Column<string>(nullable: false),
+                    CustomerId = table.Column<string>(nullable: false).Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Nombre = table.Column<string>(nullable: true),
                     Telefono = table.Column<string>(nullable: true)
                 },
@@ -25,6 +26,7 @@ namespace Pitstop.WorkshopManagementEventHandler.Migrations
                 name: "Vehicle",
                 columns: table => new
                 {
+                    Codigo = table.Column<int>(nullable: false).Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Matricula = table.Column<string>(nullable: false),
                     Marca = table.Column<string>(nullable: true),
                     OwnerId = table.Column<string>(nullable: true),
@@ -39,7 +41,7 @@ namespace Pitstop.WorkshopManagementEventHandler.Migrations
                 name: "MaintenanceJob",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<Guid>(nullable: false).Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ActualEndTime = table.Column<DateTime>(nullable: true),
                     ActualStartTime = table.Column<DateTime>(nullable: true),
                     CustomerId = table.Column<string>(nullable: true),

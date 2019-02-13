@@ -39,7 +39,7 @@ namespace PitStop.Controllers
                 };
                 return View(model);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return View("Offline", new VehicleOwnerManagementOfflineViewModel());
             }
@@ -58,7 +58,7 @@ namespace PitStop.Controllers
                 };
                 return View(model);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return View("Offline", new VehicleOwnerManagementOfflineViewModel());
             }
@@ -77,24 +77,31 @@ namespace PitStop.Controllers
         [HttpPost]
         public async Task<IActionResult> Register([FromForm] VehicleOwnerManagementNewViewModel inputModel)
         {
-            if (ModelState.IsValid)
+            try
             {
-                return await _resiliencyHelper.ExecuteResilient(async () =>
+                if (ModelState.IsValid)
                 {
-                    RegisterOwner cmd = new RegisterOwner(new Guid(),
-                       inputModel.Owner.OwnerId,
-                       inputModel.Owner.RazonSocial,
-                       inputModel.Owner.CIF,
-                       inputModel.Owner.Direccion,
-                       inputModel.Owner.Contacto,
-                       inputModel.Owner.Telefono);
-                    await _vehicleManagementAPI.RegisterOwner(cmd);
-                    return RedirectToAction("Index");
-                }, View("Offline", new VehicleOwnerManagementOfflineViewModel()));
+                    return await _resiliencyHelper.ExecuteResilient(async () =>
+                    {
+                        RegisterOwner cmd = new RegisterOwner(new Guid(),
+                           inputModel.Owner.OwnerId,
+                           inputModel.Owner.RazonSocial,
+                           inputModel.Owner.CIF,
+                           inputModel.Owner.Direccion,
+                           inputModel.Owner.Contacto,
+                           inputModel.Owner.Telefono);
+                        await _vehicleManagementAPI.RegisterOwner(cmd);
+                        return RedirectToAction("Index");
+                    }, View("Offline", new VehicleOwnerManagementOfflineViewModel()));
+                }
+                else
+                {
+                    return View("New", inputModel);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return View("New", inputModel);
+                return View("Offline", new VehicleOwnerManagementOfflineViewModel());
             }
         }
 

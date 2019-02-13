@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Pitstop.Application.VehicleManagement.Model
 {
     public class Vehicle
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Codigo { get; set; }
         public int OwnerId { get; set; }
         public string Matricula { get; set; }

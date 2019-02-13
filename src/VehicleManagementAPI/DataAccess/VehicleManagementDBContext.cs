@@ -8,6 +8,11 @@ namespace Pitstop.Application.VehicleManagement.DataAccess
 {
     public class VehicleManagementDBContext : DbContext
     {
+        public VehicleManagementDBContext()
+        {
+
+        }
+
         public VehicleManagementDBContext(DbContextOptions<VehicleManagementDBContext> options) : base(options)
         {
             Policy
@@ -32,6 +37,17 @@ namespace Pitstop.Application.VehicleManagement.DataAccess
             builder.Entity<Insurance>().ToTable("Insurance");
 
             base.OnModelCreating(builder);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            // only used by EF tooling
+            // TODO: make CN configurable
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("server=localhost:1434;user id=sa;password=Pinveco123;database=VehicleManagement;");
+            }
+            base.OnConfiguring(optionsBuilder);
         }
     }
 }

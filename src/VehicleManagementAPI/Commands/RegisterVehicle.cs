@@ -7,7 +7,7 @@ namespace Pitstop.Application.VehicleManagement.Commands
 {
     public class RegisterVehicle : Command
     {
-        public readonly int Codigo;
+        public int Codigo { get; set; }
         public int OwnerId { get; set; }
         public string Matricula { get; set; }
         public string Marca { get; set; }

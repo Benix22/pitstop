@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Pitstop.Application.VehicleManagement.Migrations
@@ -12,7 +13,7 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                 name: "Owner",
                 columns: table => new
                 {
-                    OwnerId = table.Column<int>(nullable: false),
+                    OwnerId = table.Column<int>(nullable: false).Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     RazonSocial = table.Column<string>(nullable: false),
                     CIF = table.Column<string>(nullable: false),
                     Direccion = table.Column<string>(nullable: true),
@@ -28,7 +29,7 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                 name: "Vehicle",
                 columns: table => new
                 {
-                    Codigo = table.Column<int>(nullable: false),
+                    Codigo = table.Column<int>(nullable: false).Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
 
                     OwnerId = table.Column<int>(nullable: false),
                     Matricula = table.Column<string>(nullable: true),
@@ -68,7 +69,7 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                name: "Insurance",
                columns: table => new
                {
-                   InsuranceId = table.Column<int>(nullable: false),
+                   InsuranceId = table.Column<int>(nullable: false).Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                    Nombre = table.Column<string>(nullable: false),
                    Poliza = table.Column<string>(nullable: false),
                    Corredor = table.Column<string>(nullable: true),

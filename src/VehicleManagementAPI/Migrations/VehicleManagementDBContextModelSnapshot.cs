@@ -13,7 +13,9 @@ namespace Pitstop.Application.VehicleManagement.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.1.1");
+                .HasAnnotation("ProductVersion", "2.2.1-servicing-10028")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Pitstop.Application.VehicleManagement.Model.Owner", b =>
             {
@@ -25,6 +27,7 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                 b.Property<string>("Direccion");
                 b.Property<string>("Contacto");
                 b.Property<string>("Telefono");
+                b.HasKey("OwnerId");
 
                 b.ToTable("Owner");
             });
@@ -55,8 +58,27 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                 b.Property<string>("DepositoLitros");
                 b.Property<string>("Plazas");
                 b.Property<string>("Puertas");
+                b.HasKey("Codigo");
 
                 b.ToTable("Vehicle");
+            });
+
+            modelBuilder.Entity("Pitstop.Application.VehicleManagement.Model.Insurance", b =>
+            {
+                b.Property<int>("InsuranceId")
+                        .ValueGeneratedOnAdd();
+
+                b.Property<string>("Nombre");
+                b.Property<string>("Poliza");
+                b.Property<string>("Corredor");
+                b.Property<DateTime>("FechaAlta");
+                b.Property<DateTime>("FechaVencimiento");
+                b.Property<decimal>("Importe");
+                b.Property<string>("Tipo");
+                b.Property<int>("VehicleId");
+                b.HasKey("InsuranceId");
+
+                b.ToTable("Insurance");
             });
         }
     }
