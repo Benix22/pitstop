@@ -6,7 +6,7 @@
     <ProjectGuid>5f7291b0-8a88-487c-8d28-fb389b804f37</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
-    <DockerServiceName>contractmanagementapi</DockerServiceName>
+    <DockerServiceName>customermanagementapi</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

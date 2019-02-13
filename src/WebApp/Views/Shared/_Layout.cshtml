@@ -4,8 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - PitStop</title>
-
+    <title>@ViewData["Title"] - Pinveco</title>
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -16,39 +15,58 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/style.css" />
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">PitStop</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a id="MainMenu.Home" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a id="MainMenu.CustomerManagement" asp-area="" asp-controller="CustomerManagement" asp-action="Index">Customer Management</a></li>
-                    <li><a id="MainMenu.VehicleOwnerManagement" asp-area="" asp-controller="VehicleOwnerManagement" asp-action="Index">Vehicle Owner Management</a></li>
-                    <li><a id="MainMenu.VehicleInsuranceManagement" asp-area="" asp-controller="VehicleInsuranceManagement" asp-action="Index">Vehicle Insurance Management</a></li>
-                    <li><a id="MainMenu.VehicleManagement" asp-area="" asp-controller="VehicleManagement" asp-action="Index">Vehicle Management</a></li>
-                    <li><a id="MainMenu.WorkshopManagement" asp-area="" asp-controller="WorkshopManagement" asp-action="Index">Workshop Management</a></li>
-                    <li><a id="MainMenu.ContractManagement" asp-area="" asp-controller="ContractManagement" asp-action="Index">Rate Management</a></li>
-                    <li><a id="MainMenu.About" asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                </ul>
-            </div>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg navbar-template">
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">PINVECO</a>
+        <div class="d-flex flex-row order-2 order-lg-3">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
+                <span class="glyphicon glyphicon-menu-hamburger"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse order-3 order-lg-2" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" id="MainMenu.Home" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="MainMenu.CustomerManagement" asp-area="" asp-controller="CustomerManagement" asp-action="Index">Customers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="MainMenu.VehicleOwnerManagement" asp-area="" asp-controller="VehicleOwnerManagement" asp-action="Index">Vehicle Owner</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="MainMenu.VehicleInsuranceManagement" asp-area="" asp-controller="VehicleInsuranceManagement" asp-action="Index">Vehicle Insurance</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="MainMenu.VehicleManagement" asp-area="" asp-controller="VehicleManagement" asp-action="Index">Vehicle</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="MainMenu.WorkshopManagement" asp-area="" asp-controller="WorkshopManagement" asp-action="Index">Workshop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="MainMenu.ContractManagement" asp-area="" asp-controller="ContractManagement" asp-action="Index">Rate</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="MainMenu.About" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto navbar-right">
+                <!-- no sé si va a serte de utilidad, elimínalo si no te hace falta -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                </li>
+            </ul>
         </div>
     </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2017 - PitStop</p>
+            <p>&copy; 2019 - Pinveco </p>
         </footer>
     </div>
 

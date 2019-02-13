@@ -15,8 +15,6 @@ using Pitstop.Application.VehicleManagement.Events;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using Microsoft.Extensions.HealthChecks;
-using Pitstop.Infrastructure.ServiceDiscovery;
-using Consul;
 using Pitstop.Application.VehicleOwnerManagement.Commands;
 
 namespace Pitstop.Application.VehicleManagement
@@ -48,14 +46,6 @@ namespace Pitstop.Application.VehicleManagement
             string userName = configSection["UserName"];
             string password = configSection["Password"];
             services.AddTransient<IMessagePublisher>((sp) => new RabbitMQMessagePublisher(host, userName, password, "Pitstop"));
-
-            // add consul
-            services.Configure<ConsulConfig>(Configuration.GetSection("consulConfig"));
-            services.AddSingleton<IConsulClient, ConsulClient>(p => new ConsulClient(consulConfig =>
-            {
-                var address = Configuration["consulConfig:address"];
-                consulConfig.Address = new Uri(address);
-            })); 
 
             // Add framework services.
             services.AddMvc()
@@ -96,9 +86,7 @@ namespace Pitstop.Application.VehicleManagement
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "VehicleManagement API - v1");
             });
 
-            // register service in Consul
-            app.RegisterWithConsul(lifetime);            
-        }
+         }
 
         private void SetupAutoMapper()
         {

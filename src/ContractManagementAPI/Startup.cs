@@ -1,5 +1,4 @@
 using AutoMapper;
-using Consul;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +11,6 @@ using Pitstop.ContractManagementAPI.DataAccess;
 using Pitstop.ContractManagementAPI.Events;
 using Pitstop.ContractManagementAPI.Model;
 using Pitstop.Infrastructure.Messaging;
-using Pitstop.Infrastructure.ServiceDiscovery;
 using Serilog;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
@@ -46,14 +44,6 @@ namespace Pitstop.ContractManagementAPI
             string userName = configSection["UserName"];
             string password = configSection["Password"];
             services.AddTransient<IMessagePublisher>((sp) => new RabbitMQMessagePublisher(host, userName, password, "Pitstop"));
-
-            // add consul
-            services.Configure<ConsulConfig>(Configuration.GetSection("consulConfig"));
-            services.AddSingleton<IConsulClient, ConsulClient>(p => new ConsulClient(consulConfig =>
-            {
-                var address = Configuration["consulConfig:address"];
-                consulConfig.Address = new Uri(address);
-            }));
 
             // Add framework services.
             services.AddMvc()
@@ -94,8 +84,6 @@ namespace Pitstop.ContractManagementAPI
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "ContractManagement API - v1");
             });
 
-            // register service in Consul
-            app.RegisterWithConsul(lifetime);
         }
 
         private void SetupAutoMapper()

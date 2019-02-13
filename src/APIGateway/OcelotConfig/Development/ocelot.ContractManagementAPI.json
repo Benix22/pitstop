@@ -2,7 +2,7 @@
   "ReRoutes": [
     {
       "Key": "ContractManagementAPI",
-      "UpstreamPathTemplate": "/api/Rates/",
+      "UpstreamPathTemplate": "/api/rates/",
       "DownstreamPathTemplate": "/api/rates",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -14,7 +14,7 @@
     },
     {
       "Key": "ContractManagementAPI",
-      "UpstreamPathTemplate": "/api/Rates/{trailingSegments}",
+      "UpstreamPathTemplate": "/api/rates/{trailingSegments}",
       "DownstreamPathTemplate": "/api/rates/{trailingSegments}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [

@@ -39,9 +39,9 @@ namespace PitStop.Controllers
                 };
                 return View(model);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return View("Offline", new VehicleOwnerManagementOfflineViewModel(ex.Message));
+                return View("Offline", new VehicleOwnerManagementOfflineViewModel());
             }
         }
 
@@ -58,9 +58,9 @@ namespace PitStop.Controllers
                 };
                 return View(model);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return View("Offline", new VehicleOwnerManagementOfflineViewModel(ex.Message));
+                return View("Offline", new VehicleOwnerManagementOfflineViewModel());
             }
         }
 
@@ -79,17 +79,18 @@ namespace PitStop.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                try
+                return await _resiliencyHelper.ExecuteResilient(async () =>
                 {
-                    RegisterOwner cmd = Mapper.Map<RegisterOwner>(inputModel.Owner);
+                    RegisterOwner cmd = new RegisterOwner(new Guid(),
+                       inputModel.Owner.OwnerId,
+                       inputModel.Owner.RazonSocial,
+                       inputModel.Owner.CIF,
+                       inputModel.Owner.Direccion,
+                       inputModel.Owner.Contacto,
+                       inputModel.Owner.Telefono);
                     await _vehicleManagementAPI.RegisterOwner(cmd);
                     return RedirectToAction("Index");
-                }
-                catch (Exception ex)
-                {
-                    return View("Offline", new VehicleOwnerManagementOfflineViewModel(ex.Message));
-                }
+                }, View("Offline", new VehicleOwnerManagementOfflineViewModel()));
             }
             else
             {

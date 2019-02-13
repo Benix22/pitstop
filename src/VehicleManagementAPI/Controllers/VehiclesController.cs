@@ -69,16 +69,16 @@ namespace Pitstop.Application.VehicleManagement.Controllers
                     _dbContext.Vehicles.Add(vehicle);
                     await _dbContext.SaveChangesAsync();
 
-                    // send event.
-                    var e = Mapper.Map<VehicleRegistered>(command);
-                    await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
+                    //// send event.
+                    //var e = Mapper.Map<VehicleRegistered>(command);
+                    //await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
 
                     //return result
                     return CreatedAtRoute("GetByCodigo", new { codigo = vehicle.Codigo }, vehicle);
                 }
                 return BadRequest();
             }
-            catch (DbUpdateException ex)
+            catch (DbUpdateException)
             {
                 ModelState.AddModelError("", "Unable to save changes. " +
                     "Try again, and if the problem persists " +

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using WebApp.Commands;
+using Microsoft.Extensions.Configuration;
 
 namespace WebApp.RESTClients
 {
@@ -12,11 +13,10 @@ namespace WebApp.RESTClients
     {
         private IContractManagementAPI _client;
 
-        public ContractManagementAPI(IHostingEnvironment env)
+        public ContractManagementAPI(IConfiguration config)
         {
-            string apiHost = env.IsDevelopment() ? "localhost" : "apigateway";
-            int apiPort = 10000;
-            string baseUri = $"http://{apiHost}:{apiPort}/api";
+            string apiHostAndPort = config.GetSection("APIServiceLocations").GetValue<string>("ContractManagementAPI");
+            string baseUri = $"http://{apiHostAndPort}/api";
             _client = RestService.For<IContractManagementAPI>(baseUri);
         }
 

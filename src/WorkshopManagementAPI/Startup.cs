@@ -3,22 +3,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Pitstop.Infrastructure.Messaging;
 using Swashbuckle.AspNetCore.Swagger;
-using AutoMapper;
 using Pitstop.WorkshopManagementAPI.Repositories;
-using Pitstop.WorkshopManagementAPI.Commands;
-using Pitstop.WorkshopManagementAPI.Events;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using Microsoft.Extensions.HealthChecks;
-using Consul;
-using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.Hosting.Server.Features;
-using System.Linq;
-using Pitstop.Infrastructure.ServiceDiscovery;
 using WorkshopManagementAPI.CommandHandlers;
 
 namespace Pitstop.WorkshopManagementAPI
@@ -62,14 +52,6 @@ namespace Pitstop.WorkshopManagementAPI
             // add commandhandlers
             services.AddCommandHandlers();
 
-            // add consul
-            services.Configure<ConsulConfig>(Configuration.GetSection("consulConfig"));
-            services.AddSingleton<IConsulClient, ConsulClient>(p => new ConsulClient(consulConfig =>
-            {
-                var address = Configuration["consulConfig:address"];
-                consulConfig.Address = new Uri(address);
-            }));          
-
             // Add framework services.
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -110,8 +92,6 @@ namespace Pitstop.WorkshopManagementAPI
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "WorkshopManagement API - v1");
             });
 
-            // register service in Consul
-            app.RegisterWithConsul(lifetime);
         }     
     }
 }
