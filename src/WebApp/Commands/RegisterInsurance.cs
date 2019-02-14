@@ -6,14 +6,15 @@ namespace WebApp.Commands
     public class RegisterInsurance : Command
     {
         public readonly int InsuranceId;
-        public readonly string Nombre;
-        public readonly string Poliza;
-        public readonly string Corredor;
-        public readonly DateTime FechaAlta;
-        public readonly DateTime FechaVencimiento;
-        public readonly decimal Importe;
-        public readonly string Tipo;
-        public readonly int VehicleId;
+
+        public string Nombre;
+        public string Poliza;
+        public string Corredor;
+        public DateTime FechaAlta;
+        public DateTime FechaVencimiento;
+        public decimal Importe;
+        public string Tipo;
+        public int VehicleId;
 
         public RegisterInsurance(Guid messageId,
             int insuranceId,

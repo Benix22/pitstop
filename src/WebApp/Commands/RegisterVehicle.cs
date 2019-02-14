@@ -6,27 +6,28 @@ namespace WebApp.Commands
     public class RegisterVehicle : Command
     {
         public readonly int Codigo;
-        public readonly int OwnerId;
-        public readonly string Matricula;
-        public readonly string Marca;
-        public readonly string Modelo;
-        public readonly string Color;
-        public readonly string Bastidor;
-        public readonly string Grupo;
-        public readonly string Daños;
-        public readonly string Extras;
-        public readonly string Observaciones;
-        public readonly string Aviso;
-        public readonly DateTime PrimerDiaFlota;
-        public readonly DateTime DevolucionPrevista;
-        public readonly DateTime UltimoDiaFlota;
-        public readonly DateTime FechaFabricacion;
-        public readonly DateTime FechaMatriculacion;
-        public readonly string Km;
-        public readonly string Combustible;
-        public readonly string DepositoLitros;
-        public readonly string Plazas;
-        public readonly string Puertas;
+
+        public int OwnerId;
+        public string Matricula;
+        public string Marca;
+        public string Modelo;
+        public string Color;
+        public string Bastidor;
+        public string Grupo;
+        public string Daños;
+        public string Extras;
+        public string Observaciones;
+        public string Aviso;
+        public DateTime PrimerDiaFlota;
+        public DateTime DevolucionPrevista;
+        public DateTime UltimoDiaFlota;
+        public DateTime FechaFabricacion;
+        public DateTime FechaMatriculacion;
+        public string Km;
+        public string Combustible;
+        public string DepositoLitros;
+        public string Plazas;
+        public string Puertas;
 
         public RegisterVehicle(Guid messageId,
             int codigo,
