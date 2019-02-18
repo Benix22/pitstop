@@ -1,23 +1,22 @@
-﻿using System;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
-using Pitstop.Application.VehicleManagement.DataAccess;
-using Swashbuckle.AspNetCore.Swagger;
-using AutoMapper;
-using Pitstop.Application.VehicleManagement.Model;
-using Pitstop.Infrastructure.Messaging;
-using Pitstop.Application.VehicleManagement.Commands;
-using Pitstop.Application.VehicleManagement.Events;
-using Microsoft.AspNetCore.Mvc;
-using Serilog;
 using Microsoft.Extensions.HealthChecks;
+using Pitstop.Application.VehicleManagement.Commands;
+using Pitstop.Application.VehicleManagement.DataAccess;
+using Pitstop.Application.VehicleManagement.Events;
+using Pitstop.Application.VehicleManagement.Model;
 using Pitstop.Application.VehicleOwnerManagement.Commands;
+using Pitstop.Infrastructure.Messaging;
+using Serilog;
+using Swashbuckle.AspNetCore.Swagger;
+using System;
 
-namespace Pitstop.Application.VehicleManagement
+namespace Pitstop.VehicleManagement
 {
     public class Startup
     {
@@ -49,7 +48,14 @@ namespace Pitstop.Application.VehicleManagement
 
             // Add framework services.
             services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .ConfigureApiBehaviorOptions(options =>
+                {
+                    options
+                        .SuppressModelStateInvalidFilter = true;
+                    options
+                      .SuppressUseValidationProblemDetailsForInvalidModelStateResponses = true;                    
+                });
 
             // Register the Swagger generator, defining one or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -65,7 +71,7 @@ namespace Pitstop.Application.VehicleManagement
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApplicationLifetime lifetime, VehicleManagementDBContext dbContext)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApplicationLifetime lifetime)
         {
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(Configuration)
@@ -86,7 +92,9 @@ namespace Pitstop.Application.VehicleManagement
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "VehicleManagement API - v1");
             });
 
-         }
+            app.UseDeveloperExceptionPage();
+
+        }
 
         private void SetupAutoMapper()
         {

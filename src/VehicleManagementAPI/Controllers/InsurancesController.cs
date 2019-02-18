@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 namespace Pitstop.Application.VehicleManagement.Controllers
 {
     [Route("/api/[controller]")]
+    [ApiController]
     public class InsurancesController : Controller
     {
         IMessagePublisher _messagePublisher;

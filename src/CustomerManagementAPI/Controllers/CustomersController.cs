@@ -12,6 +12,7 @@ using Pitstop.CustomerManagementAPI.Commands;
 namespace Pitstop.Application.VehicleManagement.Controllers
 {
     [Route("/api/[controller]")]
+    [ApiController]
     public class CustomersController : Controller
     {
         IMessagePublisher _messagePublisher;

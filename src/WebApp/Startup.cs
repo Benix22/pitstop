@@ -39,13 +39,20 @@ namespace PitStop
         {
             // Add framework services
             services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .ConfigureApiBehaviorOptions(options =>
+                {
+                    options
+                        .SuppressModelStateInvalidFilter = true;
+                    options
+                      .SuppressUseValidationProblemDetailsForInvalidModelStateResponses = true;
+                });
 
             // add custom services
-            services.AddTransient<IContractManagementAPI, ContractManagementAPI>();
-            services.AddTransient<ICustomerManagementAPI, CustomerManagementAPI>();
-            services.AddTransient<IVehicleManagementAPI, VehicleManagementAPI>();
-            services.AddTransient<IWorkshopManagementAPI, WorkshopManagementAPI>();
+            services.AddScoped<IContractManagementAPI, ContractManagementAPI>();
+            services.AddScoped<ICustomerManagementAPI, CustomerManagementAPI>();
+            services.AddScoped<IVehicleManagementAPI, VehicleManagementAPI>();
+            services.AddScoped<IWorkshopManagementAPI, WorkshopManagementAPI>();
             
             services.AddHealthChecks(checks =>
             {

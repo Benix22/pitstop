@@ -34,7 +34,7 @@ namespace Pitstop.ContractManagementAPI.DataAccess
         //    // TODO: make CN configurable
         //    if (!optionsBuilder.IsConfigured)
         //    {
-        //        optionsBuilder.UseSqlServer("server=localhost:1434;user id=sa;password=Pinveco123;database=ContractManagement;");
+        //        optionsBuilder.UseSqlServer("server=localhost,1434;user id=sa;password=Pinveco123;database=ContractManagement;");
         //    }
         //    base.OnConfiguring(optionsBuilder);
         //}

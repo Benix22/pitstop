@@ -60,12 +60,12 @@ namespace Pitstop.CustomerManagementAPI
             services.AddHealthChecks(checks =>
             {
                 checks.WithDefaultCacheDuration(TimeSpan.FromSeconds(1));
-                checks.AddSqlCheck("CustomerManagementCN", Configuration.GetConnectionString("CustomerManagementCN"));
+                checks.AddSqlCheck("ContractManagementCN", sqlConnectionString);
             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApplicationLifetime lifetime, CustomerManagementDBContext dbContext)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApplicationLifetime lifetime)
         {
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(Configuration)
@@ -86,6 +86,8 @@ namespace Pitstop.CustomerManagementAPI
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "CustomerManagement API - v1");
             });
 
+            app.UseDeveloperExceptionPage();
+            app.UseDatabaseErrorPage();
         }
 
         private void SetupAutoMapper()

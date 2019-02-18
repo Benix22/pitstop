@@ -14,7 +14,6 @@ using Pitstop.Application.VehicleManagement.Model;
 
 namespace PitStop.Controllers
 {
-    [ApiController]
     public class VehicleOwnerManagementController : Controller
     {
         private readonly IVehicleManagementAPI _vehicleManagementAPI;

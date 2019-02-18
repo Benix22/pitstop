@@ -18,6 +18,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Pitstop.WorkshopManagementAPI.Controllers
 {
     [Route("/api/[controller]")]
+    [ApiController]
     public class WorkshopPlanningController : Controller
     {
         private readonly IWorkshopPlanningRepository _planningRepo;

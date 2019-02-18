@@ -13,6 +13,7 @@ using System;
 namespace Pitstop.Application.VehicleManagement.Controllers
 {
     [Route("/api/[controller]")]
+    [ApiController]
     public class VehiclesController : Controller
     {
         IMessagePublisher _messagePublisher;

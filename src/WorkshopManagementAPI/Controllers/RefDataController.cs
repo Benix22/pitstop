@@ -5,6 +5,7 @@ using Pitstop.WorkshopManagementAPI.Repositories;
 namespace Pitstop.WorkshopManagementAPI.Controllers
 {
     [Route("/api/[controller]")]
+    [ApiController]
     public class RefDataController : Controller
     {
         ICustomerRepository _customerRepo;

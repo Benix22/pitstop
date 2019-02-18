@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Serilog;
+using System.IO;
 
 namespace Pitstop.ContractManagementAPI
 {
@@ -8,13 +9,19 @@ namespace Pitstop.ContractManagementAPI
     {
         public static void Main(string[] args)
         {
+            CreateWebHostBuilder(args).Build().Run();
+        }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseDefaultServiceProvider(options =>  options.ValidateScopes = false)
+                .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseApplicationInsights()
+                .UseKestrel()
                 .UseSerilog()
                 .UseHealthChecks("/hc")
-                .UseStartup<Startup>()
-                .Build()
-                .Run();
-        }
+                .UseUrls(urls: "http://*:5300")
+                .UseStartup<Startup>();
+
     }
 }

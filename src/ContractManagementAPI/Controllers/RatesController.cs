@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 namespace Pitstop.ContractManagementAPI.Controllers
 {
     [Route("/api/[controller]")]
+    [ApiController]
     public class RatesController : Controller
     {
         IMessagePublisher _messagePublisher;
