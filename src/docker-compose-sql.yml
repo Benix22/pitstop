@@ -1,0 +1,19 @@
+version: '3'
+services:
+
+  sqlserver:
+    image: microsoft/mssql-server-linux:latest
+    container_name: sqlserver
+    volumes:
+      - sqlserverdata:/var/opt/mssql 
+    ports:
+      - "1434:1433"
+    environment:
+      - ACCEPT_EULA=Y 
+      - MSSQL_PID=Developer
+      - SA_PASSWORD=Pinveco123
+
+  
+volumes:
+  sqlserverdata:
+    external: true    

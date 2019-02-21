@@ -24,6 +24,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuditlogService", "AuditlogService\AuditlogService.csproj", "{3B1D211F-D875-4EE0-9827-13A682D408A7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csproj", "{EBA1A075-B694-4039-A5E3-E40B03DFC989}"
+	ProjectSection(ProjectDependencies) = postProject
+		{498DCE4C-2F77-409F-AA93-FF52AFA807DA} = {498DCE4C-2F77-409F-AA93-FF52AFA807DA}
+		{9C0B9864-8CF3-4352-A84C-BC0521668BCB} = {9C0B9864-8CF3-4352-A84C-BC0521668BCB}
+		{3B11AE9B-E87E-4747-BD8E-04B4FD9C5190} = {3B11AE9B-E87E-4747-BD8E-04B4FD9C5190}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkshopManagementEventHandler", "WorkshopManagementEventHandler\WorkshopManagementEventHandler.csproj", "{E8E53F09-AA3A-4D44-94AF-157E1F9E9F43}"
 EndProject

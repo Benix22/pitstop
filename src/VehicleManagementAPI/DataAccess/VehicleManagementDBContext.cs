@@ -39,15 +39,15 @@ namespace Pitstop.Application.VehicleManagement.DataAccess
             base.OnModelCreating(builder);
         }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    // only used by EF tooling
-        //    // TODO: make CN configurable
-        //    if (!optionsBuilder.IsConfigured)
-        //    {
-        //        optionsBuilder.UseSqlServer("server=localhost,1434;user id=sa;password=Pinveco123;database=VehicleManagement;");
-        //    }
-        //    base.OnConfiguring(optionsBuilder);
-        //}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            // only used by EF tooling
+            // TODO: make CN configurable
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("server=localhost,1434;user id=sa;password=Pinveco123;database=VehicleManagement;");
+            }
+            base.OnConfiguring(optionsBuilder);
+        }
     }
 }
