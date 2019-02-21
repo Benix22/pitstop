@@ -15,11 +15,13 @@
     <tbody>
         @foreach (var vehicle in Model.Vehicles)
         {
-            <tr class="clickable" onclick="location.href = '@(Url.Action("Details", "VehicleManagement", new { id = vehicle.Codigo }))'">
-                <td>@vehicle.Matricula</td>
-                <td>@vehicle.Marca</td>
-                <td>@vehicle.Modelo</td>
-            </tr>
+        <tr>
+            <td>@vehicle.Matricula</td>
+            <td>@vehicle.Marca</td>
+            <td>@vehicle.Modelo</td>
+            <td><a id="EditVehicleButton" onclick="location.href = '@(Url.Action("Details", "VehicleManagement", new { id = vehicle.Codigo }))'" class="btn-info">Edit Vehicle</a></td>
+            <td><a id="DeleteVehicleButton" onclick="location.href = '@(Url.Action("Delete", "VehicleManagement", new { id = vehicle.Codigo }))'" class="btn-danger">Delete Vehicle</a></td>
+        </tr>
         }
     </tbody>
 </table>

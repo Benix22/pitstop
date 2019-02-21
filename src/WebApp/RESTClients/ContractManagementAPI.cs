@@ -55,5 +55,10 @@ namespace WebApp.RESTClients
                 throw e.InnerException;
             }
         }
+
+        public async Task<List<Rate>> DeleteRate(int rateId)
+        {
+            return await _client.DeleteRate(rateId);
+        }
     }
 }

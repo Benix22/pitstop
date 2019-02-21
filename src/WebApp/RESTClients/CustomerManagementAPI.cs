@@ -56,5 +56,10 @@ namespace WebApp.RESTClients
                 throw e.InnerException;
             }
         }
+
+        public async Task<List<Customer>> DeleteCustomer(string customerId)
+        {
+            return await _client.DeleteCustomer(customerId);
+        }
     }
 }

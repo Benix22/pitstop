@@ -71,5 +71,18 @@ namespace Pitstop.ContractManagementAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteRate(int id)
+        {
+            var rate = await _dbContext.Rates.FirstOrDefaultAsync(c => c.RateId == id);
+            if(rate != null)
+            {
+                _dbContext.Rates.Remove(rate);
+                await _dbContext.SaveChangesAsync();
+            }
+            
+            return Ok();
+        }
     }
 }

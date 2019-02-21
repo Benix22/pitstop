@@ -52,6 +52,11 @@ namespace WebApp.RESTClients
             await _client.RegisterVehicle(command);
         }
 
+        public async Task<List<Vehicle>> DeleteVehicle(int id)
+        {
+            return await _client.DeleteVehicle(id);
+        }
+
         #endregion
 
         #region Owners
@@ -85,6 +90,11 @@ namespace WebApp.RESTClients
             await _client.RegisterOwner(command);
         }
 
+        public async Task<List<Owner>> DeleteOwner(int id)
+        {
+            return await _client.DeleteOwner(id);
+        }
+
         #endregion
 
         #region Insurance       
@@ -116,6 +126,11 @@ namespace WebApp.RESTClients
         public async Task RegisterInsurance(RegisterInsurance command)
         {
             await _client.RegisterInsurance(command);
+        }
+
+        public async Task<List<Insurance>> DeleteInsurance(int id)
+        {
+            return await _client.DeleteInsurance(id);
         }
 
         #endregion

@@ -18,6 +18,9 @@ namespace WebApp.RESTClients
         [Post("/vehicles")]
         Task RegisterVehicle(RegisterVehicle command);
 
+        [Delete("/vehicles/{id}")]
+        Task<List<Vehicle>> DeleteVehicle([AliasAs("id")] int id);
+
         [Get("/owners")]
         Task<List<Owner>> GetOwners();
 
@@ -27,6 +30,9 @@ namespace WebApp.RESTClients
         [Post("/owners")]
         Task RegisterOwner(RegisterOwner command);
 
+        [Delete("/owners/{id}")]
+        Task<List<Owner>> DeleteOwner([AliasAs("id")] int id);
+
         [Get("/insurances")]
         Task<List<Insurance>> GetInsurances();
 
@@ -35,5 +41,10 @@ namespace WebApp.RESTClients
 
         [Post("/insurances")]
         Task RegisterInsurance(RegisterInsurance command);
+
+        [Delete("/insurances/{id}")]
+        Task<List<Insurance>> DeleteInsurance([AliasAs("id")] int id);
+
+
     }
 }

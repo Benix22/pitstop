@@ -87,5 +87,18 @@ namespace Pitstop.Application.VehicleManagement.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteVehicle(int id)
+        {
+            var vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(c => c.Codigo == id);
+            if (vehicle != null)
+            {
+                _dbContext.Vehicles.Remove(vehicle);
+                await _dbContext.SaveChangesAsync();
+            }
+
+            return Ok();
+        }
     }
 }

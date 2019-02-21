@@ -16,11 +16,13 @@
     <tbody>
         @foreach (var owner in Model.Owners)
         {
-        <tr class="clickable" onclick="location.href = '@(Url.Action("Details", "VehicleOwnerManagement", new { id = owner.OwnerId }))'">
+        <tr>
             <td>@owner.RazonSocial</td>
             <td>@owner.CIF</td>
             <td>@owner.Contacto</td>
             <td>@owner.Telefono</td>
+            <td><a id="EditOwnerButton" onclick="location.href = '@(Url.Action("Details", "VehicleOwnerManagement", new { id = owner.OwnerId }))'" class="btn-info">Edit Owner</a></td>
+            <td><a id="DeleteOwnerButton" onclick="location.href = '@(Url.Action("Delete", "VehicleOwnerManagement", new { id = owner.OwnerId }))'" class="btn-danger">Delete Owner</a></td>
         </tr>
         }
     </tbody>

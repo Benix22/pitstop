@@ -99,5 +99,12 @@ namespace PitStop.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _vehicleManagementAPI.DeleteInsurance(id);
+            return RedirectToAction("Index");
+        }
     }
 }

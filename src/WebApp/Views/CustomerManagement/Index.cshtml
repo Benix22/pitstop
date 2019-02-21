@@ -7,68 +7,48 @@
 <table class="table">
     <thead>
         <tr>
-            <td>EsPersona</td>
+          
             <td>Nombre</td>
-            <td>Pais</td>
+            
             <td>NIF</td>
             <td>FechaAlta</td>
-            <td>FechaBaja</td>
-            <td>Direccion</td>
-            <td>PaisDireccion</td>
-            <td>CodigoPostal</td>
+          
+         
             <td>Poblacion</td>
-            <td>Provincia</td>
+            
             <td>Telefono</td>
-            <td>Telefono2</td>
+           
             <td>Movil</td>
-            <td>FechaExpNIF</td>
-            <td>PoblacionExpNIF</td>
-            <td>FechaNacimiento</td>
-            <td>PoblacionNacimiento</td>
-            <td>TipoPermiso</td>
-            <td>NumeroPermiso</td>
-            <td>FechaExpPermiso</td>
-            <td>FechaCadPermiso</td>
+           
             <td>Email</td>
             <td>Moroso</td>
             <td>Bloqueado</td>
-            <td>NumeroTarjetaCred</td>
-            <td>TitularTarjetaCred</td>
-            <td>FechaCadTarjetaCred</td>
+            
         </tr>
     </thead>
     <tbody>
         @foreach (var customer in Model.Customers)
         {
-        <tr class="clickable" onclick="location.href = '@(Url.Action("Details", "CustomerManagement", new { id = customer.CustomerId }))'">
-            <td>@customer.EsPersona</td>
+        <tr>
+
             <td>@customer.Nombre</td>
-            <td>@customer.Pais</td>
+
             <td>@customer.NIF</td>
             <td>@customer.FechaAlta</td>
-            <td>@customer.FechaBaja</td>
-            <td>@customer.Direccion</td>
-            <td>@customer.PaisDireccion</td>
-            <td>@customer.CodigoPostal</td>
+
             <td>@customer.Poblacion</td>
-            <td>@customer.Provincia</td>
+
             <td>@customer.Telefono</td>
-            <td>@customer.Telefono2</td>
+
             <td>@customer.Movil</td>
-            <td>@customer.FechaExpNIF</td>
-            <td>@customer.PoblacionExpNIF</td>
-            <td>@customer.FechaNacimiento</td>
-            <td>@customer.PoblacionNacimiento</td>
-            <td>@customer.TipoPermiso</td>
-            <td>@customer.NumeroPermiso</td>
-            <td>@customer.FechaExpPermiso</td>
-            <td>@customer.FechaCadPermiso</td>
+
             <td>@customer.Email</td>
             <td>@customer.Moroso</td>
             <td>@customer.Bloqueado</td>
-            <td>@customer.NumeroTarjetaCred</td>
-            <td>@customer.TitularTarjetaCred</td>
-            <td>@customer.FechaCadTarjetaCred</td>
+
+            <td><a id="EditCustomerButton" onclick="location.href = '@(Url.Action("Details", "CustomerManagement", new { id = customer.CustomerId }))'" class="btn-info">Edit Customer</a></td>
+            <td><a id="DeleteCustomerButton" onclick="location.href = '@(Url.Action("Delete", "CustomerManagement", new { id = customer.CustomerId }))'" class="btn-danger">Delete Customer</a></td>
+
         </tr>
         }
     </tbody>

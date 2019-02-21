@@ -75,5 +75,12 @@ namespace PitStop.Controllers
                 return View("New", inputModel);
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+                await _contractManagementAPI.DeleteRate(id);
+                return RedirectToAction("Index");
+        }
     }
 }
