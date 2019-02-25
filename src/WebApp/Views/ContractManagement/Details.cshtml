@@ -4,29 +4,33 @@
 }
 <h3 id="PageTitle">Contract Management - Rate Details</h3>
 
-<table class="table">
-    <tbody>
-        <tr>
-            <td width="150">Tarifa :</td>
-            <td><b>@Model.Rate.Nombre</b></td>
-        </tr>
-        <tr>
-            <td width="150">Poliza :</td>
-            <td><b>@Model.Rate.Poliza</b></td>
-        </tr>
-        <tr>
-            <td width="150">Grupo :</td>
-            <td><b>@Model.Rate.Grupo</b></td>
-        </tr>
-        <tr>
-            <td width="150">Dias :</td>
-            <td><b>@Model.Rate.Dias</b></td>
-        </tr>
-        <tr>
-            <td width="150">Precio :</td>
-            <td><b>@Model.Rate.Precio</b></td>
-        </tr>
-    </tbody>
-</table>
-<span><a id="BackButton" asp-action="Index" asp-controller="ContractManagement" class="btn btn-default">Back</a></span>
+<form asp-controller="ContractManagement" asp-action="Update" method="post">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td width="150">Tarifa :</td>
+                <td>@Html.TextBoxFor(x => x.Rate.Nombre)</td>
+            </tr>
+            <tr>
+                <td width="150">Poliza :</td>
+                <td>@Html.TextBoxFor(x => x.Rate.Poliza)</td>
+            </tr>
+            <tr>
+                <td width="150">Grupo :</td>
+                <td>@Html.TextBoxFor(x => x.Rate.Grupo)
+            </tr>
+            <tr>
+                <td width="150">Dias :</td>
+                <td>@Html.TextBoxFor(x => x.Rate.Dias)</td>
+            </tr>
+            <tr>
+                <td width="150">Precio :</td>
+                <td>@Html.TextBoxFor(x => x.Rate.Precio)</td>
+            </tr>
+        </tbody>
+    </table>
+    @Html.HiddenFor(x => x.Rate.RateId)
+    <span><button id="SubmitButton" type="submit" class="btn btn-default">Update</button></span>
+    <span><a id="BackButton" asp-action="Index" asp-controller="ContractManagement" class="btn btn-default">Back</a></span>
+ </form>
 

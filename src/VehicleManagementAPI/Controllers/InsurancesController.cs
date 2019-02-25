@@ -60,6 +60,7 @@ namespace Pitstop.Application.VehicleManagement.Controllers
                 {
                     // insert insurance
                     Insurance insurance = Mapper.Map<Insurance>(command);
+                    insurance.Matricula = _dbContext.Vehicles.FirstOrDefaultAsync(x => x.Codigo == insurance.VehicleId).Result.Matricula;
                     _dbContext.Insurances.Add(insurance);
                     await _dbContext.SaveChangesAsync();
 

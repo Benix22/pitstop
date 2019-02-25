@@ -47,6 +47,29 @@ namespace WebApp.RESTClients
             }
         }
 
+        public async Task<string> GetMatriculaByCode(string codigo)
+        {
+            try
+            {
+                var vehiculo = await _client.GetVehicleByCode(codigo);
+                if (vehiculo != null)
+                    return vehiculo.Matricula;
+
+                return null;
+            }
+            catch (ApiException ex)
+            {
+                if (ex.StatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
         public async Task RegisterVehicle(RegisterVehicle command)
         {
             await _client.RegisterVehicle(command);

@@ -76,6 +76,24 @@ namespace PitStop.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Update([FromForm] ContractManagementNewViewModel inputModel)
+        {
+            if (ModelState.IsValid)
+            {
+                return await _resiliencyHelper.ExecuteResilient(async () =>
+                {
+                    RegisterRate cmd = Mapper.Map<RegisterRate>(inputModel.Rate);
+                    await _contractManagementAPI.UpdateRate(cmd);
+                    return RedirectToAction("Index");
+                }, View("Offline", new ContractManagementOfflineViewModel()));
+            }
+            else
+            {
+                return View("New", inputModel);
+            }
+        }
+
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {

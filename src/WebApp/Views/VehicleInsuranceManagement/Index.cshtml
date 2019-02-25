@@ -28,7 +28,8 @@
             <td>@insurance.FechaVencimiento</td>
             <td>@insurance.Importe</td>
             <td>@insurance.Tipo</td>
-            <td><a href='@(Url.Action("Details", "VehicleManagement", new { id = insurance.VehicleId }))'>@insurance.VehicleId</a></td>
+            <td><a href='@(Url.Action("Details", "VehicleManagement", new { id = insurance.VehicleId }))'>@insurance.Matricula</a>
+            </td>
             <td><a id="EditInsuranceButton" onclick="location.href = '@(Url.Action("Details", "VehicleInsuranceManagement", new { id = insurance.InsuranceId }))'" class="btn-info">Edit Insurance</a></td>
             <td><a id="DeleteCustomerButton" onclick="location.href = '@(Url.Action("Delete", "VehicleInsuranceManagement", new { id = insurance.InsuranceId }))'" class="btn-danger">Delete Insurance</a></td>
         </tr>

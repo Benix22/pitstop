@@ -15,6 +15,7 @@ namespace WebApp.Commands
         public decimal Importe;
         public string Tipo;
         public int VehicleId;
+        public string Matricula;
 
         public RegisterInsurance(Guid messageId,
             int insuranceId,
@@ -25,7 +26,8 @@ namespace WebApp.Commands
             DateTime fechaVencimiento,
             decimal importe,
             string tipo,
-            int vehicleId
+            int vehicleId,
+            string matricula
             ) :
             base(messageId)
         {
@@ -38,6 +40,7 @@ namespace WebApp.Commands
             Importe = importe;
             Tipo = tipo;
             VehicleId = vehicleId;
+            Matricula = matricula;
         }
     }
 }

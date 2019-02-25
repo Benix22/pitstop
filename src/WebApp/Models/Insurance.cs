@@ -29,5 +29,7 @@ namespace Pitstop.Application.VehicleManagement.Model
         public string Tipo { get; set; }
 
         public int VehicleId { get; set; }
+
+        public string Matricula { get; set; }
     }
 }

@@ -114,7 +114,7 @@ namespace PitStop
 
                 cfg.CreateMap<VehicleInsuranceManagementNewViewModel, RegisterInsurance>().ConvertUsing((vi, ri) =>
                 new RegisterInsurance(Guid.NewGuid(), vi.Insurance.InsuranceId, vi.Insurance.Nombre, vi.Insurance.Poliza, vi.Insurance.Corredor,
-                vi.Insurance.FechaAlta, vi.Insurance.FechaVencimiento, vi.Insurance.Importe, vi.Insurance.Tipo, vi.Insurance.VehicleId));
+                vi.Insurance.FechaAlta, vi.Insurance.FechaVencimiento, vi.Insurance.Importe, vi.Insurance.Tipo, vi.Insurance.VehicleId,vi.Insurance.Matricula));
 
                 cfg.CreateMap<VehicleManagementNewViewModel, RegisterVehicle>().ConvertUsing((vm, rv) =>
                     new RegisterVehicle(Guid.NewGuid(), vm.Vehicle.Codigo, vm.Vehicle.OwnerId, vm.Vehicle.Matricula,

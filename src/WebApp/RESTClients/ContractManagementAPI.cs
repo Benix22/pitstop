@@ -56,6 +56,18 @@ namespace WebApp.RESTClients
             }
         }
 
+        public async Task UpdateRate(RegisterRate command)
+        {
+            try
+            {
+                await _client.UpdateRate(command);
+            }
+            catch (System.Exception e)
+            {
+                throw e.InnerException;
+            }
+        }
+
         public async Task<List<Rate>> DeleteRate(int rateId)
         {
             return await _client.DeleteRate(rateId);

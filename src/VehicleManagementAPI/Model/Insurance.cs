@@ -15,5 +15,6 @@ namespace Pitstop.Application.VehicleManagement.Model
         public decimal Importe { get; set; }
         public string Tipo { get; set; }
         public int VehicleId { get; set; }
+        public string Matricula { get; set; }
     }
 }

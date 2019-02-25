@@ -72,6 +72,37 @@ namespace Pitstop.ContractManagementAPI.Controllers
             }
         }
 
+        [HttpPut]
+        public async Task<IActionResult> UpdateAsync([FromBody] RegisterRate command)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    // insert customer
+                    Rate rate = Mapper.Map<Rate>(command);
+                    _dbContext.Rates.Update(rate);
+                    //_dbContext.Rates.Add(rate);
+                    await _dbContext.SaveChangesAsync();
+
+                    // send event
+                    //RateRegistered e = Mapper.Map<RateRegistered>(command);
+                    //await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
+
+                    // return result
+                    return CreatedAtRoute("GetByRateId", new { rateId = rate.RateId }, rate);
+                }
+                return BadRequest();
+            }
+            catch (DbUpdateException ex)
+            {
+                ModelState.AddModelError("", "Unable to save changes. " +
+                    "Try again, and if the problem persists " +
+                    "see your system administrator." + " -" + ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRate(int id)
         {

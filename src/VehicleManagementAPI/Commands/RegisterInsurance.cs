@@ -14,6 +14,7 @@ namespace Pitstop.Application.VehicleManagement.Commands
         public decimal Importe { get; set; }
         public string Tipo { get; set; }
         public int VehicleId { get; set; }
+        public string Matricula { get; set; }
 
         public RegisterInsurance(Guid messageId,
             int insuranceId,
@@ -24,7 +25,8 @@ namespace Pitstop.Application.VehicleManagement.Commands
             DateTime fechaVencimiento,
             decimal importe,
             string tipo,
-            int vehicleId
+            int vehicleId,
+            string matricula
             ) :
             base(messageId)
         {
@@ -37,6 +39,7 @@ namespace Pitstop.Application.VehicleManagement.Commands
             Importe = importe;
             Tipo = tipo;
             VehicleId = vehicleId;
+            Matricula = matricula;
         }
     }
 }

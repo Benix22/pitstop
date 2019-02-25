@@ -76,6 +76,7 @@ namespace Pitstop.Application.VehicleManagement.Migrations
                 b.Property<decimal>("Importe");
                 b.Property<string>("Tipo");
                 b.Property<int>("VehicleId");
+                b.Property<string>("Matricula");
                 b.HasKey("InsuranceId");
 
                 b.ToTable("Insurance");

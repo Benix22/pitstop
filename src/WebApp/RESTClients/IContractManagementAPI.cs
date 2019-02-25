@@ -18,6 +18,9 @@ namespace WebApp.RESTClients
         [Post("/rates")]
         Task RegisterRate(RegisterRate command);
 
+        [Put("/rates")]
+        Task UpdateRate(RegisterRate command);
+
         [Delete("/rates/{id}")]
         Task<List<Rate>> DeleteRate([AliasAs("id")] int rateId);
     }
