@@ -4,32 +4,35 @@
 }
 
 <h3 id="PageTitle">Vehicle Owner Management - Details</h3>
-
-<table class="table">
-    <tbody>
-        <tr>
-            <td width="150">Razón Social :</td>
-            <td><b>@Model.Owner.RazonSocial</b></td>
-        </tr>
-        <tr>
-            <td width="150">CIF :</td>
-            <td><b>@Model.Owner.CIF</b></td>
-        </tr>
-        <tr>
-            <td width="150">Direccion :</td>
-            <td><b>@Model.Owner.Direccion</b></td>
-        </tr>
-        <tr>
-            <td width="150">Contacto :</td>
-            <td><b>@Model.Owner.Contacto</b></td>
-        </tr>
-        <tr>
-            <td width="150">Telefono :</td>
-            <td><b>@Model.Owner.Telefono</b></td>
-        </tr>
-    </tbody>
-</table>
-<span><a id="BackButton" asp-action="Index" asp-controller="CustomerOwnerManagement" class="btn btn-default">Back</a></span>
-
+<form asp-controller="VehicleOwnerManagement" asp-action="Update" method="post">
+    <div class="form-group">
+        <label asp-for="Owner.RazonSocial"></label>
+        <input asp-for="Owner.RazonSocial" type="text" class="form-control" />
+        <span asp-validation-for="Owner.RazonSocial" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Owner.CIF"></label>
+        <input asp-for="Owner.CIF" type="text" class="form-control" />
+        <span asp-validation-for="Owner.CIF" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Owner.Direccion"></label>
+        <input asp-for="Owner.Direccion" type="text" class="form-control" />
+        <span asp-validation-for="Owner.Direccion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Owner.Contacto"></label>
+        <input asp-for="Owner.Contacto" type="text" class="form-control" />
+        <span asp-validation-for="Owner.Contacto" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Owner.Telefono"></label>
+        <input asp-for="Owner.Telefono" type="text" class="form-control" />
+        <span asp-validation-for="Owner.Telefono" class="text-danger"></span>
+    </div>
+    @Html.HiddenFor(x => x.Owner.OwnerId)
+    <span><button id="SubmitButton" type="submit" class="btn btn-default">Update</button></span>
+    <span><a id="BackButton" asp-action="Index" asp-controller="VehicleOwnerManagement" class="btn btn-default">Back</a></span>
+</form>
 
 

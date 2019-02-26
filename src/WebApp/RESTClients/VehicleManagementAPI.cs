@@ -75,6 +75,11 @@ namespace WebApp.RESTClients
             await _client.RegisterVehicle(command);
         }
 
+        public async Task UpdateVehicle(RegisterVehicle command)
+        {
+            await _client.UpdateVehicle(command);
+        }
+
         public async Task<List<Vehicle>> DeleteVehicle(int id)
         {
             return await _client.DeleteVehicle(id);
@@ -113,6 +118,11 @@ namespace WebApp.RESTClients
             await _client.RegisterOwner(command);
         }
 
+        public async Task UpdateOwner(RegisterOwner command)
+        {
+            await _client.UpdateOwner(command);
+        }
+
         public async Task<List<Owner>> DeleteOwner(int id)
         {
             return await _client.DeleteOwner(id);
@@ -149,6 +159,11 @@ namespace WebApp.RESTClients
         public async Task RegisterInsurance(RegisterInsurance command)
         {
             await _client.RegisterInsurance(command);
+        }
+
+        public async Task UpdateInsurance(RegisterInsurance command)
+        {
+            await _client.UpdateInsurance(command);
         }
 
         public async Task<List<Insurance>> DeleteInsurance(int id)

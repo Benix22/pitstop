@@ -4,44 +4,50 @@
 }
 
 <h3 id="PageTitle">Vehicle Insurance Management - Details</h3>
-
-<table class="table">
-    <tbody>
-        <tr>
-            <td width="150">Compañia :</td>
-            <td><b>@Model.Insurance.Nombre</b></td>
-        </tr>
-        <tr>
-            <td width="150">Nº Poliza :</td>
-            <td><b>@Model.Insurance.Poliza</b></td>
-        </tr>
-        <tr>
-            <td width="150">Corredor :</td>
-            <td><b>@Model.Insurance.Corredor</b></td>
-        </tr>
-        <tr>
-            <td width="150">FechaAlta :</td>
-            <td><b>@Model.Insurance.FechaAlta</b></td>
-        </tr>
-        <tr>
-            <td width="150">FechaVencimiento :</td>
-            <td><b>@Model.Insurance.FechaVencimiento</b></td>
-        </tr>
-        <tr>
-            <td width="150">Importe :</td>
-            <td><b>@Model.Insurance.Importe</b></td>
-        </tr>
-        <tr>
-            <td width="150">Tipo :</td>
-            <td><b>@Model.Insurance.Tipo</b></td>
-        </tr>
-        <tr>
-            <td width="150">Vehículo :</td>
-            <td><b>@string.Format("{0} {1} ({2})", Model.Vehicle.Marca, Model.Vehicle.Modelo, Model.Vehicle.Matricula)</b></td>
-        </tr>
-    </tbody>
-</table>
-<span><a id="BackButton" asp-action="Index" asp-controller="VehicleInsuranceManagement" class="btn btn-default">Back</a></span>
-
+<form asp-controller="VehicleInsuranceManagement" asp-action="Update" method="post">
+    <div class="form-group">
+        <label asp-for="Insurance.Nombre"></label>
+        <input asp-for="Insurance.Nombre" type="text" class="form-control" />
+        <span asp-validation-for="Insurance.Nombre" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Insurance.Poliza"></label>
+        <input asp-for="Insurance.Poliza" type="text" class="form-control" />
+        <span asp-validation-for="Insurance.Poliza" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Insurance.Corredor"></label>
+        <input asp-for="Insurance.Corredor" type="text" class="form-control" />
+        <span asp-validation-for="Insurance.Corredor" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Insurance.FechaAlta"></label>
+        <input asp-for="Insurance.FechaAlta" type="date" class="form-control" />
+        <span asp-validation-for="Insurance.FechaAlta" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Insurance.FechaVencimiento"></label>
+        <input asp-for="Insurance.FechaVencimiento" type="date" class="form-control" />
+        <span asp-validation-for="Insurance.FechaVencimiento" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Insurance.Importe"></label>
+        <input asp-for="Insurance.Importe" type="text" class="form-control" />
+        <span asp-validation-for="Insurance.Importe" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Insurance.Tipo"></label>
+        <input asp-for="Insurance.Tipo" type="text" class="form-control" />
+        <span asp-validation-for="Insurance.Tipo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Insurance.VehicleId"></label>
+        <select asp-for="Insurance.VehicleId" asp-items="Model.Vehicles" class="form-control"></select>
+        <span asp-validation-for="Insurance.VehicleId" class="text-danger"></span>
+    </div>
+    @Html.HiddenFor(x => x.Insurance.InsuranceId)
+    <span><button id="SubmitButton" type="submit" class="btn btn-default">Update</button></span>
+    <span><a id="BackButton" asp-action="Index" asp-controller="VehicleInsuranceManagement" class="btn btn-default">Back</a></span>
+</form>
 
 

@@ -5,27 +5,117 @@
 
 <h3 id="PageTitle">Vehicle Management - details</h3>
 
-<table class="table">
-    <tbody>
-        <tr>
-            <td width="150">Matricula :</td>
-            <td><b>@Model.Vehicle.Matricula</b></td>
-        </tr>
-        <tr>
-            <td width="150">Marca :</td>
-            <td><b>@Model.Vehicle.Marca</b></td>
-        </tr>
-        <tr>
-            <td width="150">Modelo :</td>
-            <td><b>@Model.Vehicle.Modelo</b></td>
-        </tr>
-        @*<tr>
-            <td width="150">Owner :</td>
-            <td><b><a href='@(Url.Action("Details", "CustomerManagement", new { id = Model.Vehicle.CustomerId }))'>@Model.CustomerId</a></b></td>
-        </tr>*@
-    </tbody>
-</table>
-<span><a id="BackButton" asp-action="Index" asp-controller="VehicleManagement" class="btn btn-default">Back</a></span>
+<form asp-controller="VehicleManagement" asp-action="Update" method="post">
+    <div class="form-group">
+        <label asp-for="Vehicle.OwnerId"></label>
+        <select asp-for="Vehicle.OwnerId" asp-items="Model.Owners" class="form-control"></select>
+        <span asp-validation-for="Vehicle.OwnerId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vehicle.Matricula"></label>
+        <input asp-for="Vehicle.Matricula" type="text" class="form-control" />
+        <span asp-validation-for="Vehicle.Matricula" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vehicle.Marca"></label>
+        <input asp-for="Vehicle.Marca" type="text" class="form-control" />
+        <span asp-validation-for="Vehicle.Marca" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vehicle.Modelo"></label>
+        <input asp-for="Vehicle.Modelo" type="text" class="form-control" />
+        <span asp-validation-for="Vehicle.Modelo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vehicle.Color"></label>
+        <input asp-for="Vehicle.Color" type="text" class="form-control" />
+        <span asp-validation-for="Vehicle.Color" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vehicle.Bastidor"></label>
+        <input asp-for="Vehicle.Bastidor" type="text" class="form-control" />
+        <span asp-validation-for="Vehicle.Bastidor" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vehicle.Grupo"></label>
+        <input asp-for="Vehicle.Grupo" type="text" class="form-control" />
+        <span asp-validation-for="Vehicle.Grupo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vehicle.Daños"></label>
+        <input asp-for="Vehicle.Daños" type="text" class="form-control" />
+        <span asp-validation-for="Vehicle.Daños" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vehicle.Extras"></label>
+        <input asp-for="Vehicle.Extras" type="text" class="form-control" />
+        <span asp-validation-for="Vehicle.Extras" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vehicle.Observaciones"></label>
+        <input asp-for="Vehicle.Observaciones" type="text" class="form-control" />
+        <span asp-validation-for="Vehicle.Observaciones" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vehicle.Aviso"></label>
+        <input asp-for="Vehicle.Aviso" type="text" class="form-control" />
+        <span asp-validation-for="Vehicle.Aviso" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vehicle.PrimerDiaFlota"></label>
+        <input asp-for="Vehicle.PrimerDiaFlota" type="text" class="form-control" />
+        <span asp-validation-for="Vehicle.PrimerDiaFlota" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vehicle.DevolucionPrevista"></label>
+        <input asp-for="Vehicle.DevolucionPrevista" type="text" class="form-control" />
+        <span asp-validation-for="Vehicle.DevolucionPrevista" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vehicle.UltimoDiaFlota"></label>
+        <input asp-for="Vehicle.UltimoDiaFlota" type="text" class="form-control" />
+        <span asp-validation-for="Vehicle.UltimoDiaFlota" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vehicle.FechaFabricacion"></label>
+        <input asp-for="Vehicle.FechaFabricacion" type="text" class="form-control" />
+        <span asp-validation-for="Vehicle.FechaFabricacion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vehicle.FechaMatriculacion"></label>
+        <input asp-for="Vehicle.FechaMatriculacion" type="text" class="form-control" />
+        <span asp-validation-for="Vehicle.FechaMatriculacion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vehicle.Km"></label>
+        <input asp-for="Vehicle.Km" type="text" class="form-control" />
+        <span asp-validation-for="Vehicle.Km" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vehicle.Combustible"></label>
+        <input asp-for="Vehicle.Combustible" type="text" class="form-control" />
+        <span asp-validation-for="Vehicle.Combustible" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vehicle.DepositoLitros"></label>
+        <input asp-for="Vehicle.DepositoLitros" type="text" class="form-control" />
+        <span asp-validation-for="Vehicle.DepositoLitros" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vehicle.Plazas"></label>
+        <input asp-for="Vehicle.Plazas" type="text" class="form-control" />
+        <span asp-validation-for="Vehicle.Plazas" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vehicle.Puertas"></label>
+        <input asp-for="Vehicle.Puertas" type="text" class="form-control" />
+        <span asp-validation-for="Vehicle.Puertas" class="text-danger"></span>
+    </div>
+    @Html.HiddenFor(x => x.Vehicle.Codigo)
+    <span><button id="SubmitButton" type="submit" class="btn btn-default">Update</button></span>
+    <span><a id="CancelButton" asp-action="Index" asp-controller="VehicleManagement" class="btn btn-default">Cancel</a></span>
+</form>
+
 
 
 

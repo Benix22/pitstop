@@ -57,6 +57,18 @@ namespace WebApp.RESTClients
             }
         }
 
+        public async Task UpdateCustomer(RegisterCustomer command)
+        {
+            try
+            {
+                await _client.UpdateCustomer(command);
+            }
+            catch (System.Exception e)
+            {
+                throw e.InnerException;
+            }
+        }
+
         public async Task<List<Customer>> DeleteCustomer(string customerId)
         {
             return await _client.DeleteCustomer(customerId);

@@ -72,6 +72,36 @@ namespace Pitstop.Application.VehicleManagement.Controllers
             }
         }
 
+        [HttpPut]
+        public async Task<IActionResult> UpdateAsync([FromBody] RegisterCustomer command)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    // insert customer
+                    Customer customer = Mapper.Map<Customer>(command);
+                    _dbContext.Customers.Update(customer);
+                    await _dbContext.SaveChangesAsync();
+
+                    // send event
+                    //CustomerRegistered e = Mapper.Map<CustomerRegistered>(command);
+                    //await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
+
+                    // return result
+                    return CreatedAtRoute("GetByCustomerId", new { customerId = customer.CustomerId }, customer);
+                }
+                return BadRequest();
+            }
+            catch (DbUpdateException ex)
+            {
+                ModelState.AddModelError("", "Unable to save changes. " +
+                    "Try again, and if the problem persists " +
+                    "see your system administrator." + " -" + ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCustomer(string id)
         {

@@ -18,6 +18,9 @@ namespace WebApp.RESTClients
         [Post("/customers")]
         Task RegisterCustomer(RegisterCustomer command);
 
+        [Put("/customers")]
+        Task UpdateCustomer(RegisterCustomer command);
+
         [Delete("/customers/{id}")]
         Task<List<Customer>> DeleteCustomer([AliasAs("id")] string customerId);
     }

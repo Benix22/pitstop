@@ -47,13 +47,15 @@ namespace PitStop.Controllers
         {
             return await _resiliencyHelper.ExecuteResilient(async () =>
             {
+                //get vehicle
                 Vehicle vehicle = await _vehicleManagementAPI.GetVehicleByCode(id);
-               //Customer customer = await _customerManagementAPI.GetCustomerById(vehicle.CustomerId);
+                //get ownersList
+                var owners = await _vehicleManagementAPI.GetOwners();
 
                 var model = new VehicleManagementDetailsViewModel
                 {
-                    Vehicle = vehicle
-                  // CustomerId = customer.Nombre
+                    Vehicle = vehicle,
+                    Owners = owners.Select(c => new SelectListItem { Value = c.OwnerId.ToString(), Text = c.RazonSocial })
                 };
                 return View(model);
             }, View("Offline", new VehicleManagementOfflineViewModel()));
@@ -92,6 +94,31 @@ namespace PitStop.Controllers
                 {
                     throw ex;
                 }
+                }, View("Offline", new VehicleManagementOfflineViewModel()));
+            }
+            else
+            {
+                return View("New", inputModel);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update([FromForm] VehicleManagementNewViewModel inputModel)
+        {
+            if (ModelState.IsValid)
+            {
+                return await _resiliencyHelper.ExecuteResilient(async () =>
+                {
+                    try
+                    {
+                        RegisterVehicle cmd = Mapper.Map<RegisterVehicle>(inputModel.Vehicle);
+                        await _vehicleManagementAPI.UpdateVehicle(cmd);
+                        return RedirectToAction("Index");
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
                 }, View("Offline", new VehicleManagementOfflineViewModel()));
             }
             else

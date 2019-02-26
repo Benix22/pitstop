@@ -105,6 +105,37 @@ namespace PitStop.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Update([FromForm] VehicleOwnerManagementNewViewModel inputModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    return await _resiliencyHelper.ExecuteResilient(async () =>
+                    {
+                        RegisterOwner cmd = new RegisterOwner(new Guid(),
+                           inputModel.Owner.OwnerId,
+                           inputModel.Owner.RazonSocial,
+                           inputModel.Owner.CIF,
+                           inputModel.Owner.Direccion,
+                           inputModel.Owner.Contacto,
+                           inputModel.Owner.Telefono);
+                        await _vehicleManagementAPI.UpdateOwner(cmd);
+                        return RedirectToAction("Index");
+                    }, View("Offline", new VehicleOwnerManagementOfflineViewModel()));
+                }
+                else
+                {
+                    return View("New", inputModel);
+                }
+            }
+            catch (Exception)
+            {
+                return View("Offline", new VehicleOwnerManagementOfflineViewModel());
+            }
+        }
+
         [HttpGet]
         public IActionResult Error()
         {

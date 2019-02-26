@@ -81,6 +81,36 @@ namespace Pitstop.Application.VehicleManagement.Controllers
             }
         }
 
+        [HttpPut]
+        public async Task<IActionResult> UpdateAsync([FromBody] RegisterOwner command)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    // insert owner
+                    Owner owner = Mapper.Map<Owner>(command);
+                    _dbContext.Owners.Update(owner);
+                    await _dbContext.SaveChangesAsync();
+
+                    // send event
+                    //var e = Mapper.Map<OwnerRegistered>(command);
+                    //await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
+
+                    //return result
+                    return CreatedAtRoute("GetOwnerById", new { ownerID = owner.OwnerId }, owner);
+                }
+                return BadRequest();
+            }
+            catch (Exception Ex)
+            {
+                ModelState.AddModelError("", "Unable to save changes. " +
+                    "Try again, and if the problem persists " +
+                    "see your system administrator.");
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOwner(int id)
         {

@@ -82,6 +82,37 @@ namespace Pitstop.Application.VehicleManagement.Controllers
             }
         }
 
+        [HttpPut]
+        public async Task<IActionResult> UpdateAsync([FromBody] RegisterInsurance command)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    // insert insurance
+                    Insurance insurance = Mapper.Map<Insurance>(command);
+                    insurance.Matricula = _dbContext.Vehicles.FirstOrDefaultAsync(x => x.Codigo == insurance.VehicleId).Result.Matricula;
+                    _dbContext.Insurances.Update(insurance);
+                    await _dbContext.SaveChangesAsync();
+
+                    // send event
+                    //var e = Mapper.Map<InsuranceRegistered>(command);
+                    //await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
+
+                    //return result
+                    return CreatedAtRoute("GetInsuranceById", new { insuranceId = insurance.InsuranceId }, insurance);
+                }
+                return BadRequest();
+            }
+            catch (DbUpdateException)
+            {
+                ModelState.AddModelError("", "Unable to save changes. " +
+                    "Try again, and if the problem persists " +
+                    "see your system administrator.");
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteInsurance(int id)
         {

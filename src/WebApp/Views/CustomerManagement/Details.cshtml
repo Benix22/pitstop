@@ -3,122 +3,145 @@
     ViewData["Title"] = "Customer Details";
 }
 <h3 id="PageTitle">Customer Management - details</h3>
-
-<table class="table">
-    <tbody>
-        <tr>
-            <td width="150">EsPersona :</td>
-            <td><b>@Model.Customer.EsPersona</b></td>
-        </tr>
-        <tr>
-            <td width="150">Nombre :</td>
-            <td><b>@Model.Customer.Nombre</b></td>
-        </tr>
-        <tr>
-            <td width="150">Pais :</td>
-            <td><b>@Model.Customer.Pais</b></td>
-        </tr>
-        <tr>
-            <td width="150">NIF :</td>
-            <td><b>@Model.Customer.NIF</b></td>
-        </tr>
-        <tr>
-            <td width="150">Fecha Alta :</td>
-            <td><b>@Model.Customer.FechaAlta</b></td>
-        </tr>
-        <tr>
-            <td width="150">Fecha Baja :</td>
-            <td><b>@Model.Customer.FechaBaja</b></td>
-        </tr>
-        <tr>
-            <td width="150">Direccion :</td>
-            <td><b>@Model.Customer.Direccion</b></td>
-        </tr>
-        <tr>
-            <td width="150">Pais :</td>
-            <td><b>@Model.Customer.PaisDireccion</b></td>
-        </tr>
-        <tr>
-            <td width="150">Codigo Postal :</td>
-            <td><b>@Model.Customer.CodigoPostal</b></td>
-        </tr>
-        <tr>
-            <td width="150">Poblacion :</td>
-            <td><b>@Model.Customer.Poblacion</b></td>
-        </tr>
-        <tr>
-            <td width="150">Provincia :</td>
-            <td><b>@Model.Customer.Provincia</b></td>
-        </tr>
-        <tr>
-            <td width="150">Telefono :</td>
-            <td><b>@Model.Customer.Telefono</b></td>
-        </tr>
-        <tr>
-            <td width="150">Telefono2 :</td>
-            <td><b>@Model.Customer.Telefono2</b></td>
-        </tr>
-        <tr>
-            <td width="150">Movil :</td>
-            <td><b>@Model.Customer.Movil</b></td>
-        </tr>
-        <tr>
-            <td width="150">Fecha Exp. NIF :</td>
-            <td><b>@Model.Customer.FechaExpNIF</b></td>
-        </tr>
-        <tr>
-            <td width="150">En :</td>
-            <td><b>@Model.Customer.PoblacionExpNIF</b></td>
-        </tr>
-        <tr>
-            <td width="150">Fecha Nacimiento :</td>
-            <td><b>@Model.Customer.FechaNacimiento</b></td>
-        </tr>
-        <tr>
-            <td width="150">En :</td>
-            <td><b>@Model.Customer.PoblacionNacimiento</b></td>
-        </tr>
-        <tr>
-            <td width="150">Tipo Permiso :</td>
-            <td><b>@Model.Customer.TipoPermiso</b></td>
-        </tr>
-        <tr>
-            <td width="150">Numero :</td>
-            <td><b>@Model.Customer.NumeroPermiso</b></td>
-        </tr>
-        <tr>
-            <td width="150">Fecha Exp. Permiso :</td>
-            <td><b>@Model.Customer.FechaExpPermiso</b></td>
-        </tr>
-        <tr>
-            <td width="150">Fecha Cad. Permiso :</td>
-            <td><b>@Model.Customer.FechaCadPermiso</b></td>
-        </tr>
-        <tr>
-            <td width="150">Email :</td>
-            <td><b>@Model.Customer.Email</b></td>
-        </tr>
-        <tr>
-            <td width="150">Moroso :</td>
-            <td><b>@Model.Customer.Moroso</b></td>
-        </tr>
-        <tr>
-            <td width="150">Bloqueado :</td>
-            <td><b>@Model.Customer.Bloqueado</b></td>
-        </tr>
-        <tr>
-            <td width="150">Numero Tar. Credito :</td>
-            <td><b>@Model.Customer.NumeroTarjetaCred</b></td>
-        </tr>
-        <tr>
-            <td width="150">Titular :</td>
-            <td><b>@Model.Customer.TitularTarjetaCred</b></td>
-        </tr>
-        <tr>
-            <td width="150">Fecha Cad. Tarj. Credito :</td>
-            <td><b>@Model.Customer.FechaCadTarjetaCred</b></td>
-        </tr>
-    </tbody>
-</table>
-<span><a id="BackButton" asp-action="Index" asp-controller="CustomerManagement" class="btn btn-default">Back</a></span>
-
+<form asp-controller="CustomerManagement" asp-action="Update" method="post">
+    <div class="form-group">
+        <label asp-for="Customer.EsPersona"></label>
+        <input asp-for="Customer.EsPersona" type="checkbox" class="form-control" />
+        <span asp-validation-for="Customer.EsPersona" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.Nombre"></label>
+        <input asp-for="Customer.Nombre" type="text" class="form-control" />
+        <span asp-validation-for="Customer.Nombre" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.Pais"></label>
+        <input asp-for="Customer.Pais" type="text" class="form-control" />
+        <span asp-validation-for="Customer.Pais" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.NIF"></label>
+        <input asp-for="Customer.NIF" type="text" class="form-control" />
+        <span asp-validation-for="Customer.NIF" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.FechaAlta"></label>
+        <input asp-for="Customer.FechaAlta" type="date" class="form-control" />
+        <span asp-validation-for="Customer.FechaAlta" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.FechaBaja"></label>
+        <input asp-for="Customer.FechaBaja" type="date" class="form-control" />
+        <span asp-validation-for="Customer.FechaBaja" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.Direccion"></label>
+        <input asp-for="Customer.Direccion" type="text" class="form-control" />
+        <span asp-validation-for="Customer.Direccion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.PaisDireccion"></label>
+        <input asp-for="Customer.PaisDireccion" type="text" class="form-control" />
+        <span asp-validation-for="Customer.PaisDireccion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.CodigoPostal"></label>
+        <input asp-for="Customer.CodigoPostal" type="text" class="form-control" />
+        <span asp-validation-for="Customer.CodigoPostal" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.Poblacion"></label>
+        <input asp-for="Customer.Poblacion" type="text" class="form-control" />
+        <span asp-validation-for="Customer.Poblacion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.Provincia"></label>
+        <input asp-for="Customer.Provincia" type="text" class="form-control" />
+        <span asp-validation-for="Customer.Provincia" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.Telefono"></label>
+        <input asp-for="Customer.Telefono" type="text" class="form-control" />
+        <span asp-validation-for="Customer.Telefono" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.Telefono2"></label>
+        <input asp-for="Customer.Telefono2" type="text" class="form-control" />
+        <span asp-validation-for="Customer.Telefono2" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.Movil"></label>
+        <input asp-for="Customer.Movil" type="text" class="form-control" />
+        <span asp-validation-for="Customer.Movil" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.FechaExpNIF"></label>
+        <input asp-for="Customer.FechaExpNIF" type="date" class="form-control" />
+        <span asp-validation-for="Customer.FechaExpNIF" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.PoblacionExpNIF"></label>
+        <input asp-for="Customer.PoblacionExpNIF" type="text" class="form-control" />
+        <span asp-validation-for="Customer.PoblacionExpNIF" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.FechaNacimiento"></label>
+        <input asp-for="Customer.FechaNacimiento" type="date" class="form-control" />
+        <span asp-validation-for="Customer.FechaNacimiento" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.PoblacionNacimiento"></label>
+        <input asp-for="Customer.PoblacionNacimiento" type="text" class="form-control" />
+        <span asp-validation-for="Customer.PoblacionNacimiento" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.TipoPermiso"></label>
+        <input asp-for="Customer.TipoPermiso" type="text" class="form-control" />
+        <span asp-validation-for="Customer.TipoPermiso" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.NumeroPermiso"></label>
+        <input asp-for="Customer.NumeroPermiso" type="text" class="form-control" />
+        <span asp-validation-for="Customer.NumeroPermiso" class="text-danger"></span>
+    </div><div class="form-group">
+        <label asp-for="Customer.FechaExpPermiso"></label>
+        <input asp-for="Customer.FechaExpPermiso" type="date" class="form-control" />
+        <span asp-validation-for="Customer.FechaExpPermiso" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.FechaCadPermiso"></label>
+        <input asp-for="Customer.FechaCadPermiso" type="date" class="form-control" />
+        <span asp-validation-for="Customer.FechaCadPermiso" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.Email"></label>
+        <input asp-for="Customer.Email" type="email" class="form-control" />
+        <span asp-validation-for="Customer.Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.Moroso"></label>
+        <input asp-for="Customer.Moroso" type="checkbox" class="form-control" />
+        <span asp-validation-for="Customer.Moroso" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.Bloqueado"></label>
+        <input asp-for="Customer.Bloqueado" type="checkbox" class="form-control" />
+        <span asp-validation-for="Customer.Bloqueado" class="text-danger"></span>
+    </div><div class="form-group">
+        <label asp-for="Customer.NumeroTarjetaCred"></label>
+        <input asp-for="Customer.NumeroTarjetaCred" type="text" class="form-control" />
+        <span asp-validation-for="Customer.NumeroTarjetaCred" class="text-danger"></span>
+    </div><div class="form-group">
+        <label asp-for="Customer.TitularTarjetaCred"></label>
+        <input asp-for="Customer.TitularTarjetaCred" type="text" class="form-control" />
+        <span asp-validation-for="Customer.TitularTarjetaCred" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.FechaCadTarjetaCred"></label>
+        <input asp-for="Customer.FechaCadTarjetaCred" type="date" class="form-control" />
+        <span asp-validation-for="Customer.FechaCadTarjetaCred" class="text-danger"></span>
+    </div>
+    @Html.HiddenFor(x => x.Customer.CustomerId)
+    <span><button id="SubmitButton" type="submit" class="btn btn-default">Update</button></span>
+    <span><a id="BackButton" asp-action="Index" asp-controller="CustomerManagement" class="btn btn-default">Back</a></span>
+</form>

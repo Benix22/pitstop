@@ -47,13 +47,14 @@ namespace PitStop.Controllers
             return await _resiliencyHelper.ExecuteResilient(async () =>
             {
                 var insurance = await _vehicleManagementAPI.GeInsuranceById(id);
-
                 var vehicle = await _vehicleManagementAPI.GetVehicleByCode(insurance.VehicleId.ToString());
+                var vehicles = await _vehicleManagementAPI.GetVehicles();
 
                 var model = new VehicleInsuranceManagementDetailsViewModel
                 {
                     Insurance = insurance,
-                    Vehicle = vehicle
+                    Vehicle = vehicle,
+                    Vehicles = vehicles.Select(c => new SelectListItem { Value = c.Codigo.ToString(), Text = c.Matricula })
                 };
                 return View(model);
             }, View("Offline", new VehicleInsuranceManagementOfflineViewModel()));
@@ -85,6 +86,24 @@ namespace PitStop.Controllers
                 {
                     RegisterInsurance cmd = Mapper.Map<RegisterInsurance>(inputModel.Insurance);
                     await _vehicleManagementAPI.RegisterInsurance(cmd);
+                    return RedirectToAction("Index");
+                }, View("Offline", new VehicleInsuranceManagementOfflineViewModel()));
+            }
+            else
+            {
+                return View("New", inputModel);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update([FromForm] VehicleInsuranceManagementNewViewModel inputModel)
+        {
+            if (ModelState.IsValid)
+            {
+                return await _resiliencyHelper.ExecuteResilient(async () =>
+                {
+                    RegisterInsurance cmd = Mapper.Map<RegisterInsurance>(inputModel.Insurance);
+                    await _vehicleManagementAPI.UpdateInsurance(cmd);
                     return RedirectToAction("Index");
                 }, View("Offline", new VehicleInsuranceManagementOfflineViewModel()));
             }
