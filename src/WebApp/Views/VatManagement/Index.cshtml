@@ -1,0 +1,30 @@
+﻿@model Pitstop.ViewModels.ContractManagement.ContractManagementViewModel
+@{
+    ViewData["Title"] = "Vats Overview";
+}
+<h3 id="PageTitle">Contract Management - Vats Overview</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Nombre</td>
+            <td>Tipo</td>
+            <td>Actual</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var vat in Model.Vats)
+        {
+        <tr>
+            <td>@vat.Nombre</td>
+            <td>@vat.Tipo</td>
+            <td>@vat.Current</td>
+            <td><a id="EditVatButton" onclick="location.href = '@(Url.Action("Details", "VatManagement", new { id = vat.VatId }))'" class="btn-info">Edit rate</a></td>
+            <td><a id="DeleteVatButton" onclick="location.href = '@(Url.Action("Delete", "VatManagement", new { id = vat.VatId }))'" class="btn-danger">Delete rate</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+<a id="RegisterVatButton" asp-action="New" asp-controller="VatManagement" class="btn btn-default">Register VAT</a>
+
+

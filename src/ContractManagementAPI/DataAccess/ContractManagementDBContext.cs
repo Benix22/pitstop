@@ -20,11 +20,20 @@ namespace Pitstop.ContractManagementAPI.DataAccess
         }
 
         public DbSet<Rate> Rates { get; set; }
+        public DbSet<VAT> Vats { get; set; }
+        public DbSet<Contract> Contracts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Rate>().HasKey(m => m.RateId);
             builder.Entity<Rate>().ToTable("Rate");
+
+            builder.Entity<VAT>().HasKey(m => m.VatId);
+            builder.Entity<VAT>().ToTable("VAT");
+
+            builder.Entity<Contract>().HasKey(m => m.ContractId);
+            builder.Entity<Contract>().ToTable("Contract");
+
             base.OnModelCreating(builder);
         }
 

@@ -97,6 +97,9 @@ namespace PitStop
             // setup automapper
             Mapper.Initialize(cfg =>
             {
+                cfg.CreateMap<VAT, RegisterVat>()
+                   .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
+
                 cfg.CreateMap<Rate, RegisterRate>()
                     .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
 

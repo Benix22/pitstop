@@ -20,6 +20,7 @@ namespace WebApp.RESTClients
             _client = RestService.For<IContractManagementAPI>(baseUri);
         }
 
+        #region Rates
         public async Task<List<Rate>> GetRates()
         {
             return await _client.GetRates();
@@ -72,5 +73,64 @@ namespace WebApp.RESTClients
         {
             return await _client.DeleteRate(rateId);
         }
+
+        #endregion
+
+        #region Vats
+
+        public async Task<List<VAT>> GetVats()
+        {
+            return await _client.GetVats();
+        }
+
+        public async Task<VAT> GetByVatId([AliasAs("id")] int vatId)
+        {
+            try
+            {
+                return await _client.GetByVatId(vatId);
+            }
+            catch (ApiException ex)
+            {
+                if (ex.StatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
+        public async Task RegisterVat(RegisterVat command)
+        {
+            try
+            {
+                await _client.RegisterVat(command);
+            }
+            catch (System.Exception e)
+            {
+                throw e.InnerException;
+            }
+        }
+
+        public async Task UpdateVat(RegisterVat command)
+        {
+            try
+            {
+                await _client.UpdateVat(command);
+            }
+            catch (System.Exception e)
+            {
+                throw e.InnerException;
+            }
+        }
+
+        public async Task<List<VAT>> DeleteVat(int vatId)
+        {
+            return await _client.DeleteVat(vatId);
+        }
+
+        #endregion
     }
 }

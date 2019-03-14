@@ -38,6 +38,38 @@ namespace Pitstop.ContractManagementAPI.Migrations
                     b.ToTable("Rate");
                 });
 
+            modelBuilder.Entity("Pitstop.ContractManagementAPI.Model.Contract", b =>
+            {
+                b.Property<int>("ContractId")
+                    .ValueGeneratedOnAdd();
+
+                b.Property<int>("CustomerId");
+
+                b.Property<int>("VehicleId");
+
+                b.Property<int>("RateId");
+
+                b.HasKey("ContractId");
+
+                b.ToTable("Contract");
+            });
+
+            modelBuilder.Entity("Pitstop.ContractManagementAPI.Model.VAT", b =>
+            {
+                b.Property<int>("VatId")
+                    .ValueGeneratedOnAdd();
+
+                b.Property<string>("Nombre");
+
+                b.Property<int>("Tipo");
+
+                b.Property<bool>("Current");
+
+                b.HasKey("VatId");
+
+                b.ToTable("VAT");
+            });
+
         }
     }
 }

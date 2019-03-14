@@ -23,5 +23,20 @@ namespace WebApp.RESTClients
 
         [Delete("/rates/{id}")]
         Task<List<Rate>> DeleteRate([AliasAs("id")] int rateId);
+
+        [Get("/vats")]
+        Task<List<VAT>> GetVats();
+
+        [Get("/vats/{id}")]
+        Task<VAT> GetByVatId([AliasAs("id")] int vatId);
+
+        [Post("/vats")]
+        Task RegisterVat(RegisterVat command);
+
+        [Put("/vats")]
+        Task UpdateVat(RegisterVat command);
+
+        [Delete("/vats/{id}")]
+        Task<List<VAT>> DeleteVat([AliasAs("id")] int vatId);
     }
 }

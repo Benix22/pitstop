@@ -9,13 +9,13 @@ using WebApp.RESTClients;
 
 namespace PitStop.Controllers
 {
-    public class ContractManagementController : Controller
+    public class RateManagementController : Controller
     {
         private readonly IContractManagementAPI _contractManagementAPI;
         private readonly ILogger _logger;
         private ResiliencyHelper _resiliencyHelper;
 
-        public ContractManagementController(IContractManagementAPI contractManagementAPI, ILogger<ContractManagementController> logger)
+        public RateManagementController(IContractManagementAPI contractManagementAPI, ILogger<RateManagementController> logger)
         {
             _contractManagementAPI = contractManagementAPI;
             _logger = logger;

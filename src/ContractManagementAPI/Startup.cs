@@ -95,8 +95,15 @@ namespace Pitstop.ContractManagementAPI
             {
                 cfg.CreateMap<Rate, RegisterRate>()
                 .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
-
                 cfg.CreateMap<RegisterRate, Rate>();
+
+                cfg.CreateMap<VAT, RegisterVat>()
+                .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
+                cfg.CreateMap<RegisterVat, VAT>();
+
+                cfg.CreateMap<Contract, RegisterContract>()
+                .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()));
+                cfg.CreateMap<RegisterContract, Contract>();
             });
         }
     }

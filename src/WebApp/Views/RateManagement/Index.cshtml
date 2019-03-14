@@ -23,12 +23,12 @@
             <td>@rate.Grupo</td>
             <td>@rate.Dias</td>
             <td>@rate.Precio</td>
-            <td><a id="EditRateButton" onclick="location.href = '@(Url.Action("Details", "ContractManagement", new { id = rate.RateId }))'" class="btn-info">Edit rate</a></td>
-            <td><a id="DeleteRateButton" onclick="location.href = '@(Url.Action("Delete", "ContractManagement", new { id = rate.RateId }))'" class="btn-danger">Delete rate</a></td>
+            <td><a id="EditRateButton" onclick="location.href = '@(Url.Action("Details", "RateManagement", new { id = rate.RateId }))'" class="btn-info">Edit rate</a></td>
+            <td><a id="DeleteRateButton" onclick="location.href = '@(Url.Action("Delete", "RateManagement", new { id = rate.RateId }))'" class="btn-danger">Delete rate</a></td>
         </tr>
         }
     </tbody>
 </table>
-<a id="RegisterRateButton" asp-action="New" asp-controller="ContractManagement" class="btn btn-default">Register rate</a>
+<a id="RegisterRateButton" asp-action="New" asp-controller="RateManagement" class="btn btn-default">Register rate</a>
 
 
