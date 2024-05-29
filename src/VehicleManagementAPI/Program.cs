@@ -23,6 +23,7 @@ namespace Pitstop.VehicleManagement
                 .UseHealthChecks("/hc")
                 .UseUrls(urls: "http://*:5000")
                 .UseStartup<Startup>();
+        
 
     }
 }
