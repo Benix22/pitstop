@@ -13,7 +13,7 @@
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.6.1" />
     <PackageReference Include="Microsoft.AspNetCore.DataProtection.Redis" Version="0.4.1" />
     <PackageReference Include="Microsoft.AspNetCore.HealthChecks" Version="1.0.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.4.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
     <PackageReference Include="Pitstop.Infrastructure.Messaging" Version="2.0.0" />
     <PackageReference Include="AutoMapper" Version="8.0.0" />
