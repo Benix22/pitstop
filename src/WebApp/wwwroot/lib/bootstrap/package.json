@@ -119,7 +119,7 @@
     "karma-coverage-istanbul-reporter": "^2.0.1",
     "karma-detect-browsers": "^2.3.2",
     "karma-firefox-launcher": "^1.1.0",
-    "karma-qunit": "^2.1.0",
+    "karma-qunit": "^4.0.0",
     "karma-sinon": "^1.0.5",
     "node-sass": "^7.0.0",
     "nodemon": "^1.17.5",
