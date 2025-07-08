@@ -122,7 +122,7 @@
     "karma-qunit": "^4.0.0",
     "karma-sinon": "^1.0.5",
     "node-sass": "^7.0.0",
-    "nodemon": "^1.17.5",
+    "nodemon": "^3.0.0",
     "npm-run-all2": "^5.0.0",
     "popper.js": "^1.14.3",
     "postcss-cli": "^5.0.1",
