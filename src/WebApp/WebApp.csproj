@@ -15,7 +15,7 @@
     <PackageReference Include="Microsoft.AspNetCore.HealthChecks" Version="1.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
-    <PackageReference Include="Pitstop.Infrastructure.Messaging" Version="2.0.0" />
+    <PackageReference Include="Pitstop.Infrastructure.Messaging" Version="2.1.0" />
     <PackageReference Include="AutoMapper" Version="15.0.0" />
     <PackageReference Include="Polly" Version="7.0.2" />
     <PackageReference Include="Refit" Version="8.0.0" />

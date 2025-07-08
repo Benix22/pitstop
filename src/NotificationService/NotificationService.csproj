@@ -11,7 +11,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.6" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.6" />
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
-    <PackageReference Include="Pitstop.Infrastructure.Messaging" Version="2.0.0" />
+    <PackageReference Include="Pitstop.Infrastructure.Messaging" Version="2.1.0" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
     <PackageReference Include="Dapper" Version="1.60.9" />
     <PackageReference Include="AutoMapper" Version="15.0.0" />
