@@ -108,7 +108,7 @@
     "clean-css-cli": "^4.1.11",
     "coveralls": "^3.0.2",
     "cross-env": "^7.0.0",
-    "eslint": "^5.0.1",
+    "eslint": "^9.0.0",
     "eslint-plugin-compat": "^2.4.0",
     "glob": "^7.1.2",
     "htmllint-cli": "^0.0.7",
