@@ -105,7 +105,7 @@
     "babel-plugin-istanbul": "^4.1.6",
     "broken-link-checker": "^0.7.8",
     "bundlesize": "^0.18.0",
-    "clean-css-cli": "^4.1.11",
+    "clean-css-cli": "^5.0.0",
     "coveralls": "^3.0.2",
     "cross-env": "^7.0.0",
     "eslint": "^5.0.1",
